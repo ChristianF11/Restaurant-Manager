@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business layer\Business layer.csproj">
+    <ProjectReference Include="..\Business layer\Entities.csproj">
       <Project>{21c6535d-8bf0-4abd-b620-22d3ddedf725}</Project>
-      <Name>Business layer</Name>
+      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant Manager", "Resta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data layer", "Data layer\Data layer.csproj", "{AFFCE59E-EBA2-4EF0-8425-A6D809F242D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business layer", "Business layer\Business layer.csproj", "{21C6535D-8BF0-4ABD-B620-22D3DDEDF725}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Business layer\Entities.csproj", "{21C6535D-8BF0-4ABD-B620-22D3DDEDF725}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

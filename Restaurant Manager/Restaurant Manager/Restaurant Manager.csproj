@@ -115,16 +115,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business layer\Business layer.csproj">
-      <Project>{21c6535d-8bf0-4abd-b620-22d3ddedf725}</Project>
-      <Name>Business layer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data layer\Data layer.csproj">
-      <Project>{affce59e-eba2-4ef0-8425-a6d809f242d0}</Project>
-      <Name>Data layer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business_layer
+namespace Entities
 {
     public class Customer
     {
