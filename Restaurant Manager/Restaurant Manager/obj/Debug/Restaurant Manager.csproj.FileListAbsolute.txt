@@ -1,11 +1,18 @@
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Restaurant Manager.exe.config
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Restaurant Manager.exe
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Restaurant Manager.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Business layer.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Entities.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Data layer.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Business layer.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Entities.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Data layer.pdb
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.AssemblyReference.cache
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.SuggestedBindingRedirects.cache
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.Form1.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.Properties.Resources.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.GenerateResource.cache
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.CoreCompileInputs.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.CopyComplete
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.exe
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.pdb

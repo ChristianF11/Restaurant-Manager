@@ -15,7 +15,7 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
 
-            string query = $"insert into Customer values('{customer.Username}','{customer.Password}',{customer.IsAdmin},'{customer.Info}','{customer.PhoneNum}','{customer.Email}','{customer.City}')";
+            string query = $"insert into Customer values('{customer.Username}','{customer.Password}','{customer.IsAdmin}','{customer.Info}','{customer.PhoneNum}','{customer.Email}','{customer.City}')";
 
             genericOperation.Create(query);
 
@@ -24,11 +24,11 @@ namespace Data_layer
         public DataTable Read()
         {
             DbData genericOperation = new DbData();
-            DataTable cusstomerTable = new DataTable();
+            DataTable customerTable = new DataTable();
             string query = "select * from Customer";
-            cusstomerTable = genericOperation.Read(query);
+            customerTable = genericOperation.Read(query);
 
-            return cusstomerTable;
+            return customerTable;
 
         }
 
@@ -49,6 +49,13 @@ namespace Data_layer
             string query = $"delete from Customer where Username = '{username}'";
             genericOperation.Delete(query);
 
+        }
+
+        public int CheckUsername(string username)
+        {
+            DbData genericOperation = new DbData();
+            string query = $"select count(*) from Customer where Username = '{username}'";
+            return genericOperation.Execute(query);
         }
     }
 }

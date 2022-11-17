@@ -28,7 +28,8 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
             DataTable reservationTable = new DataTable();
-            string query = "select * from Reservation";
+            string query = "select BusinessName as 'Ristorante',Username,RequestDate as 'Giorno prenotazione',ReservationDate as 'Giorno prenotato'," +
+                "NumberCustomers as 'Posti prenotati',Price from Restaurant r inner join Reservation rv on r.IdRestaurant = rv.IdRestaurant";
             reservationTable = genericOperation.Read(query);
 
             return reservationTable;

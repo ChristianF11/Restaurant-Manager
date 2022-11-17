@@ -126,5 +126,15 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business layer\Business layer.csproj">
+      <Project>{e8d509da-63aa-46b5-b5f5-d207ebddebe5}</Project>
+      <Name>Business layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{905b2278-d5e2-400c-b119-92e37ecec97c}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,8 +36,8 @@ namespace Data_layer
         public void Update(Restaurant restaurant, int id)
         {
             DbData genericOperation = new DbData();
-            string query = $"update from Restaurant set BusinessName = '{restaurant.BusinessName}',pIVA = '{restaurant.PIva}',Street = '{restaurant.Street}',City = '{restaurant.City}'," +
-            $"'PhoneNumber = {restaurant.TelephoneNum}',Type = {restaurant.Type},Seats = {restaurant.Seats}, AveragePrice = {restaurant.AvgPrice} where RestaurantId = {id}";
+            string query = $"update Restaurant set BusinessName = '{restaurant.BusinessName}',pIVA = '{restaurant.PIva}',Street = '{restaurant.Street}',City = '{restaurant.City}'," +
+            $"PhoneNumber = '{restaurant.TelephoneNum}',Type = {restaurant.Type},Seats = {restaurant.Seats}, AveragePrice = {restaurant.AvgPrice} where IdRestaurant = {id}";
 
             genericOperation.Update(query);
 
@@ -47,8 +47,19 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
 
-            string query = $"delete from Restaurant where RestaurantId = {id}";
+            string query = $"delete from Restaurant where IdRestaurant = {id}";
             genericOperation.Delete(query);
+        }
+
+        //Metodo che controlla l'unicità delle seguenti proprietà
+        public int CheckUniqueProperty(Restaurant restaurant)
+        {
+
+            DbData genericOperation = new DbData();
+            string query = $"select count(*) from Restaurant where BusinessName = '{restaurant.BusinessName}' and City = '{restaurant.City}' and Street = '{restaurant.Street}'" +
+                $"or pIva = '{restaurant.PIva}' or PhoneNumber = '{restaurant.TelephoneNum}'";
+            return genericOperation.Execute(query);
+
         }
     }
 }

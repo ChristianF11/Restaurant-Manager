@@ -69,5 +69,16 @@ namespace Data_layer
             command.ExecuteScalar();
             Close();
         }
+
+        public int Execute(string query)
+        {
+            SqlCommand command = new SqlCommand(query, sqlConnection);
+            int usernameUsed = 0;
+            Open();
+            usernameUsed = (Int32)command.ExecuteScalar();
+            Close();
+
+            return usernameUsed;
+        }
     }
 }
