@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Resources;
 
 namespace Data_layer
 {
@@ -15,35 +16,30 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
 
-            string query = "insert into Reservation values(@IdRestaurant, @Username, @RequestDate, @ReservationDate, @NumberCustomers, @Price)";
-            SqlCommand command = new SqlCommand(query);
+            string query = $"insert into Reservation values({reservation.IdRestaurant},'{reservation.Username}',convert(datetime,'{reservation.RequestDate}',103)," +
+                $"convert(datetime,'{reservation.ReservationDate}',103),{reservation.NumCustomers},{reservation.Price})";
 
-            //Parametri
 
-            //genericOperation.Create(query);
+            genericOperation.Create(query);
 
         }
 
         public DataTable Read()
         {
             DbData genericOperation = new DbData();
-            DataTable restaurantTable = new DataTable();
+            DataTable reservationTable = new DataTable();
             string query = "select * from Reservation";
-            restaurantTable = genericOperation.Read(query);
+            reservationTable = genericOperation.Read(query);
 
-            return restaurantTable;
+            return reservationTable;
 
         }
 
-        public void Update(Reservation reservation)
+        public void Update(Reservation reservation, int id)
         {
             DbData genericOperation = new DbData();
-            string query = "update from Reservation set IdRestaurant = @IdRestaurant,Username = @Username,RequestDate = @RequestDate," +
-                "ReservationDate = @ReservationDate,NumberCustomers = @NumberCustomers,Price = @Price";
-
-            SqlCommand command = new SqlCommand(query);
-
-            //Parametri
+            string query = $"update Reservation set IdRestaurant = {reservation.IdRestaurant},Username = '{reservation.Username}',RequestDate = convert(datetime,'{reservation.RequestDate}',103)," +
+                $"ReservationDate = convert(datetime,'{reservation.ReservationDate}',103),NumberCustomers = {reservation.NumCustomers},Price = {reservation.Price} where IdReservation = {id}";
 
             genericOperation.Update(query);
 
@@ -53,7 +49,7 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
 
-            string query = "delete from Customer where IdReservation = " + id.ToString();
+            string query = $"delete from Reservation where IdReservation = {id}";
             genericOperation.Delete(query);
 
         }

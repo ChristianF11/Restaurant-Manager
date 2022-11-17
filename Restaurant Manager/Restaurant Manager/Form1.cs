@@ -26,9 +26,7 @@ namespace Restaurant_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DsCustomer custData = new DsCustomer();
-            custData.Delete("Piermenti");
-            dataGridView1.DataSource = custData.Read();
         }
+
     }
 }

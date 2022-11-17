@@ -9,6 +9,7 @@ namespace Business_layer
     public class Reservation
     {
         private int idReservation, idRestaurant, numCustomers;
+        private double price;
         private string username;
         private DateTime requestDate, reservationDate;
 
@@ -18,10 +19,22 @@ namespace Business_layer
             set { idReservation = value; }
         }
 
+        public int IdRestaurant
+        {
+            get { return idRestaurant; }
+            set { idRestaurant = value;}
+        }
+
         public int NumCustomers
         {
             get { return numCustomers; }
             set { numCustomers = value; }
+        }
+
+        public double Price
+        {
+            get { return price; }
+            set { price = value; }
         }
 
         public string Username
@@ -42,16 +55,17 @@ namespace Business_layer
             set { reservationDate = value; }
         }
 
-        public Reservation(int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate)
+        public Reservation(int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate, double price)
         {
             this.idRestaurant = idRestaurant;
             NumCustomers = numCustomers;
             Username = username;
             RequestDate = requestDate;
             ReservationDate = reservationDate;
+            Price = price;
         }
 
-        public Reservation (int idReservation, int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate)
+        public Reservation (int idReservation, int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate, double price)
         {
             IdReservation = idReservation;
             this.idRestaurant = idRestaurant;
@@ -59,6 +73,7 @@ namespace Business_layer
             Username = username;
             RequestDate = requestDate;
             ReservationDate = reservationDate;
+            Price = price;
         }
     }
 }
