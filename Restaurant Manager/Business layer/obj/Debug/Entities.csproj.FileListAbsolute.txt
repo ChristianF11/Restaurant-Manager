@@ -1,6 +1,0 @@
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Business layer\bin\Debug\Business layer.dll
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Business layer\bin\Debug\Business layer.pdb
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Business layer\obj\Debug\Entities.csproj.AssemblyReference.cache
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Business layer\obj\Debug\Entities.csproj.CoreCompileInputs.cache
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Business layer\obj\Debug\Business layer.dll
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Business layer\obj\Debug\Business layer.pdb

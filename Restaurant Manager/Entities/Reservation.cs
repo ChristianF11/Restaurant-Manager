@@ -22,7 +22,7 @@ namespace Entities
         public int IdRestaurant
         {
             get { return idRestaurant; }
-            set { idRestaurant = value;}
+            set { idRestaurant = value; }
         }
 
         public int NumCustomers
@@ -65,7 +65,7 @@ namespace Entities
             Price = price;
         }
 
-        public Reservation (int idReservation, int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate, double price)
+        public Reservation(int idReservation, int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate, double price)
         {
             IdReservation = idReservation;
             this.idRestaurant = idRestaurant;

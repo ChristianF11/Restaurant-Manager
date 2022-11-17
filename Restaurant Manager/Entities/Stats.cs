@@ -13,9 +13,9 @@ namespace Entities
 
         public double Income
         {
-            get { return income; } 
+            get { return income; }
             set { income = value; }
-        
+
         }
 
         public int SeatsBooked
@@ -46,7 +46,7 @@ namespace Entities
 
         public Stats(double income, int seatsBooked) : this(income)
         {
-            SeatsBooked= seatsBooked;
+            SeatsBooked = seatsBooked;
             Reservations = 0;
         }
 

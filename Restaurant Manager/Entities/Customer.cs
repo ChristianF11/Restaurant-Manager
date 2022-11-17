@@ -14,8 +14,8 @@ namespace Entities
 
         public string Username
         {
-            get { return username; } 
-            set { username = value; }  
+            get { return username; }
+            set { username = value; }
         }
 
         public string Password
@@ -32,7 +32,7 @@ namespace Entities
 
         public string PhoneNum
         {
-            get { return phoneNum; } 
+            get { return phoneNum; }
             set { phoneNum = value; }
         }
 
@@ -54,7 +54,7 @@ namespace Entities
             set { isAdmin = value; }
         }
 
-        public Customer (string username, string password, string info, string phoneNum, string email, string city, bool isAdmin)
+        public Customer(string username, string password, string info, string phoneNum, string email, string city, bool isAdmin)
         {
             Username = username;
             Password = password;

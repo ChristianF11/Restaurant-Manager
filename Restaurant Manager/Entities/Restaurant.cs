@@ -14,8 +14,8 @@ namespace Entities
 
         public int IdRestaurant
         {
-            get { return idRestaurant;}
-            set { idRestaurant = value;}
+            get { return idRestaurant; }
+            set { idRestaurant = value; }
         }
 
         public int Type
@@ -91,5 +91,5 @@ namespace Entities
             City = city;
             TelephoneNum = telephoneNum;
         }
-    }   
+    }
 }
