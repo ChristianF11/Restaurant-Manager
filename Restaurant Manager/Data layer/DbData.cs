@@ -73,12 +73,13 @@ namespace Data_layer
         public int Execute(string query)
         {
             SqlCommand command = new SqlCommand(query, sqlConnection);
-            int usernameUsed = 0;
+            int result = 0;
             Open();
-            usernameUsed = (Int32)command.ExecuteScalar();
+            result = (Int32)command.ExecuteScalar();
             Close();
 
-            return usernameUsed;
+            return result;
         }
+
     }
 }

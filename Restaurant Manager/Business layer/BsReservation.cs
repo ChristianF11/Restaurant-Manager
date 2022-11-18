@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,20 +19,26 @@ namespace Business_layer
             if (reservation.Username.Length == 0)
                 return false;
 
-            if(reservationData.CheckUsername(reservation.Username) == 0)
+            if(reservationData.CheckUsername(reservation.Username) == 0) //Verifica l'esistenza del cliente
                 return false;
 
-            if(reservationData.CheckRestaurant(reservation.IdRestaurant) == 0)
+            if(reservationData.CheckRestaurant(reservation.IdRestaurant) == 0) //Verifica l'esistenza del ristorante
                 return false;
 
-            if (reservation.RequestDate > reservation.ReservationDate)
+            if (reservation.RequestDate > reservation.ReservationDate) //Verifica che la data di richiesta non sia dopo quella di prenotazione
+                return false;
+
+            if (reservation.RequestDate > DateTime.Now) //Verifica che la richiesta non avvenga nel futuro
+                return false;
+
+            if (reservation.ReservationDate < DateTime.Now) //Verifica che la prenotazione non venga effettuata nel passato
                 return false;
 
             if (reservation.NumCustomers < 0)
                 return false;
 
-            /*Controllo dei posti disponibili*/
-            //[CREARE METODO]
+            if (reservationData.CountSeats(reservation.NumCustomers, reservation.IdRestaurant) < 0) //Verifica che ci sia ancora posto
+                return false;
 
             return true;
         }
@@ -67,5 +74,6 @@ namespace Business_layer
             DsReservation reservationData = new DsReservation();
             reservationData.Delete(id);
         }
+
     }
 }

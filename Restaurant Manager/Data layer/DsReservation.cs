@@ -54,5 +54,29 @@ namespace Data_layer
             genericOperation.Delete(query);
 
         }
+
+        public int CheckUsername(string username)
+        {
+            DbData genericOperation = new DbData();
+            string query = $"select count(*) from Customer where Username = '{username}'";
+            return genericOperation.Execute(query);
+        }
+
+        public int CheckRestaurant(int id)
+        {
+            DbData genericOperation = new DbData();
+            string query = $"select count(*) from Restaurant where IdRestaurant = '{id}'";
+            return genericOperation.Execute(query);
+        }
+
+        public int CountSeats(int numCustomers, int idRestaurant)
+        {
+            DbData genericOperation = new DbData();
+            int emptySeats = 0;
+            string query = $"update Restaurant set SeatsTaken = SeatsTaken + {numCustomers} where IdRestaurant = {idRestaurant}" +
+                $"select Seats - SeatsTaken from Restaurant where IdRestaurant = {idRestaurant}";
+
+            return genericOperation.Execute(query);
+        }
     }
 }

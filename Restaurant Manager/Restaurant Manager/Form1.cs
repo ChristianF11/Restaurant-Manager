@@ -27,12 +27,15 @@ namespace Restaurant_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Restaurant res = new Restaurant(3, 30, 50, "COTTOletta", "12345678900", "Via del mangiare", "Bologna", "3497569981");
-            BsRestaurant br = new BsRestaurant();
+            BsReservation bRes = new BsReservation();
+            DateTime request = dateTimePicker1.Value;
+            DateTime rsvDate = dateTimePicker2.Value;
 
-            if(br.IsValid(res))
+            Reservation res = new Reservation(3, 56, "christian11", request, rsvDate, 60);
+
+            if(bRes.IsValid(res))
             {
-                br.Create(res);
+                bRes.Create(res);
             }
 
             else
@@ -40,7 +43,7 @@ namespace Restaurant_Manager
                 MessageBox.Show("Errore");
             }
 
-            dataGridView1.DataSource = br.Read();
+            dataGridView1.DataSource = bRes.Read();
         }
 
     }
