@@ -69,10 +69,10 @@ namespace Business_layer
             reservationData.Update(reservation, id);
         }
 
-        public void Delete(int id)
+        public void Delete(int idReservation)
         {
             DsReservation reservationData = new DsReservation();
-            reservationData.Delete(id);
+            reservationData.Delete(idReservation);
         }
 
     }

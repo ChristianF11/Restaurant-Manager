@@ -45,6 +45,7 @@
     <Compile Include="DsCustomer.cs" />
     <Compile Include="DsReservation.cs" />
     <Compile Include="DsRestaurant.cs" />
+    <Compile Include="DsStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,10 +14,12 @@ namespace Data_layer
     {
         public void Create(Reservation reservation)
         {
+            //Al momento della creazione viene aggiornata anche la colonna dei posti occupati nella tabella "Restaurant"
             DbData genericOperation = new DbData();
 
             string query = $"insert into Reservation values({reservation.IdRestaurant},'{reservation.Username}',convert(datetime,'{reservation.RequestDate}',103)," +
-                $"convert(datetime,'{reservation.ReservationDate}',103),{reservation.NumCustomers},{reservation.Price})";
+                $"convert(datetime,'{reservation.ReservationDate}',103),{reservation.NumCustomers},{reservation.Price}) " +
+                $"update Restaurant set SeatsTaken = {reservation.NumCustomers} where IdRestaurant = {reservation.IdRestaurant}";
 
 
             genericOperation.Create(query);
@@ -46,13 +48,12 @@ namespace Data_layer
 
         }
 
-        public void Delete(int id)
+        public void Delete(int idReservation)
         {
-            DbData genericOperation = new DbData();
+            DbData genericOperation = new DbData(); 
+            string query = $""; //Rimuovere prenotazione e rimuovere i posti liberati dalla colonna "SeatsTaken" (in "Restaurant")
 
-            string query = $"delete from Reservation where IdReservation = {id}";
             genericOperation.Delete(query);
-
         }
 
         public int CheckUsername(string username)
@@ -77,5 +78,6 @@ namespace Data_layer
 
             return genericOperation.Execute(query);
         }
+
     }
 }
