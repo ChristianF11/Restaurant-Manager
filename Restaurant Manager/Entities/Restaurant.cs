@@ -67,29 +67,86 @@ namespace Entities
             set { telephoneNum = value; }
         }
 
-        public Restaurant(int type, int seats, double avgPrice, string businessName, string pIva, string street, string city, string telephoneNum)
+        public Restaurant()
+        {
+            Type = 0;
+            Seats = 0;
+            AvgPrice = 0;
+            BusinessName = string.Empty;
+            PIva = string.Empty;
+            Street = string.Empty;
+            City = string.Empty;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type)
         {
             Type = type;
+            Seats = 0;
+            AvgPrice = 0;
+            BusinessName = string.Empty;
+            PIva = string.Empty;
+            Street = string.Empty;
+            City = string.Empty;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type, int seats) : this(type)
+        {
             Seats = seats;
+            AvgPrice = 0;
+            BusinessName = string.Empty;
+            PIva = string.Empty;
+            Street = string.Empty;
+            City = string.Empty;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type, int seats, double avgPrice) : this(type,seats)
+        {
             AvgPrice = avgPrice;
+            BusinessName = string.Empty;
+            PIva = string.Empty;
+            Street = string.Empty;
+            City = string.Empty;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type, int seats, double avgPrice, string businessName) : this(type,seats,avgPrice)
+        {
             BusinessName = businessName;
+            PIva = string.Empty;
+            Street = string.Empty;
+            City = string.Empty;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type, int seats, double avgPrice, string businessName, string pIva) : this(type,seats,avgPrice,businessName)
+        {
             PIva = pIva;
+            Street = string.Empty;
+            City = string.Empty;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type, int seats,double avgPrice, string businessName, string pIva, string street) : this(type,seats,avgPrice,businessName,pIva)
+        {
             Street = street;
+            City = string.Empty;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type, int seats, double avgPrice, string businessName, string pIva, string street, string city) : this(type,seats,avgPrice,businessName,pIva,street)
+        {
             City = city;
+            TelephoneNum = string.Empty;
+        }
+
+        public Restaurant(int type, int seats, double avgPrice, string businessName, string pIva, string street, string city, string telephoneNum) : this(type,seats,avgPrice,businessName,pIva,street,city)
+        {
+
             TelephoneNum = telephoneNum;
         }
 
-        public Restaurant(int idRestaurant, int type, int seats, double avgPrice, string businessName, string pIva, string street, string city, string telephoneNum)
-        {
-            IdRestaurant = idRestaurant;
-            Type = type;
-            Seats = seats;
-            AvgPrice = avgPrice;
-            BusinessName = businessName;
-            PIva = pIva;
-            Street = street;
-            City = city;
-            TelephoneNum = telephoneNum;
-        }
     }
 }

@@ -55,34 +55,49 @@ namespace Entities
             set { reservationDate = value; }
         }
 
-        public Reservation(int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate, double price)
+        public Reservation()
         {
-            this.idRestaurant = idRestaurant;
-            NumCustomers = numCustomers;
-            Username = username;
-            RequestDate = requestDate;
-            ReservationDate = reservationDate;
-            Price = price;
+            IdRestaurant = 0;
+            Username = string.Empty;
+            NumCustomers = 0;
+            RequestDate = DateTime.Now;
+            ReservationDate = DateTime.Now;
         }
 
-        public Reservation(int idReservation, int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate, double price)
+        public Reservation(int idRestaurant)
         {
-            IdReservation = idReservation;
-            this.idRestaurant = idRestaurant;
-            NumCustomers = numCustomers;
-            Username = username;
-            RequestDate = requestDate;
-            ReservationDate = reservationDate;
-            Price = price;
+            IdRestaurant = idRestaurant;
+            Username = string.Empty;
+            NumCustomers = 0;
+            RequestDate = DateTime.Now;
+            ReservationDate = DateTime.Now;
         }
 
-        public Reservation(int idRestaurant, int numCustomers, string username, DateTime requestDate, DateTime reservationDate)
+        public Reservation(int idRestaurant,string username) : this(idRestaurant)
         {
-            this.idRestaurant = idRestaurant;
-            NumCustomers = numCustomers;
             Username = username;
-            RequestDate = requestDate;
-            ReservationDate = reservationDate;
+            NumCustomers = 0;
+            RequestDate = DateTime.Now;
+            ReservationDate = DateTime.Now;
         }
+
+        public Reservation(int idRestaurant,string username,int numCustomers) : this(idRestaurant,username)
+        {
+            NumCustomers = numCustomers;
+            RequestDate = DateTime.Now;
+            ReservationDate = DateTime.Now;
+        }
+
+        public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate) : this(idRestaurant, username,numCustomers)
+        {
+            RequestDate = requestDate;
+            ReservationDate = DateTime.Now;
+        }
+
+        public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate, DateTime reservationDate) : this(idRestaurant, username, numCustomers,requestDate)
+        {
+            ReservationDate = DateTime.Now;
+        }
+
     }
 }

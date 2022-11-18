@@ -72,7 +72,6 @@ namespace Data_layer
         public int CountSeats(int numCustomers, int idRestaurant)
         {
             DbData genericOperation = new DbData();
-            int emptySeats = 0;
             string query = $"update Restaurant set SeatsTaken = SeatsTaken + {numCustomers} where IdRestaurant = {idRestaurant}" +
                 $"select Seats - SeatsTaken from Restaurant where IdRestaurant = {idRestaurant}";
 

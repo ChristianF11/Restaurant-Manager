@@ -58,6 +58,7 @@ namespace Data_layer
             DbData genericOperation = new DbData();
             string query = $"select count(*) from Restaurant where BusinessName = '{restaurant.BusinessName}' and City = '{restaurant.City}' and Street = '{restaurant.Street}'" +
                 $"or pIva = '{restaurant.PIva}' or PhoneNumber = '{restaurant.TelephoneNum}'";
+
             return genericOperation.Execute(query);
 
         }
