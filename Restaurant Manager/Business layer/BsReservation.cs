@@ -18,7 +18,7 @@ namespace Business_layer
 
             if (reservation.Username.Length == 0)
                 return false;
-
+                
             if(reservationData.CheckUsername(reservation.Username) == 0) //Verifica l'esistenza del cliente
                 return false;
 

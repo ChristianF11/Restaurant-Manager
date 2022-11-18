@@ -27,23 +27,7 @@ namespace Restaurant_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BsReservation bRes = new BsReservation();
-            DateTime request = dateTimePicker1.Value;
-            DateTime rsvDate = dateTimePicker2.Value;
 
-            Reservation res = new Reservation(3, 56, "christian11", request, rsvDate, 60);
-
-            if(bRes.IsValid(res))
-            {
-                bRes.Create(res);
-            }
-
-            else
-            {
-                MessageBox.Show("Errore");
-            }
-
-            dataGridView1.DataSource = bRes.Read();
         }
 
     }

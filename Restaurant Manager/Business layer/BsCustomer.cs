@@ -18,6 +18,7 @@ namespace Business_layer
             if (customer.Username.Length == 0 || customer.Password.Length == 0 || customer.Info.Length == 0 || customer.Email.Length == 0 || customer.City.Length == 0)
                 return false;
 
+            //Verifica se lo username è già stato utilizzato
             if (customerData.CheckUsername(customer.Username) != 0)
                 return false;
 
