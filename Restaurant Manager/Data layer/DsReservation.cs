@@ -19,7 +19,7 @@ namespace Data_layer
 
             string query = $"insert into Reservation values({reservation.IdRestaurant},'{reservation.Username}',convert(datetime,'{reservation.RequestDate}',103)," +
                 $"convert(datetime,'{reservation.ReservationDate}',103),{reservation.NumCustomers},{reservation.Price}) " +
-                $"update Restaurant set SeatsTaken = {reservation.NumCustomers} where IdRestaurant = {reservation.IdRestaurant}";
+                $"update Restaurant set SeatsTaken = SeatsTaken + {reservation.NumCustomers} where IdRestaurant = {reservation.IdRestaurant}";
 
 
             genericOperation.Create(query);
@@ -51,7 +51,9 @@ namespace Data_layer
         public void Delete(int idReservation)
         {
             DbData genericOperation = new DbData(); 
-            string query = $""; //Rimuovere prenotazione e rimuovere i posti liberati dalla colonna "SeatsTaken" (in "Restaurant")
+            string query = $"update Restaurant set SeatsTaken = SeatsTaken - rs.NumberCustomers " +
+                $"from Restaurant r inner join Reservation rs on r.IdRestaurant = rs.IdRestaurant where rs.IdReservation = {idReservation}" +
+                $"delete from Reservation where IdReservation = {idReservation}"; //Rimuovere prenotazione e rimuovere i posti liberati dalla colonna "SeatsTaken" (in "Restaurant")
 
             genericOperation.Delete(query);
         }

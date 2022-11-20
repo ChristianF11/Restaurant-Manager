@@ -31,10 +31,23 @@ namespace Restaurant_Manager
             DateTime rsvDate = dateTimePicker2.Value;
 
             BsReservation r = new BsReservation();
-            Reservation res = new Reservation(3,"christian11",5,request,rsvDate);
-            r.Create(res);
+            Reservation res = new Reservation(3,"christian11",21,request,rsvDate);
+
+            if (r.IsValid(res))
+                r.Create(res);
+
+            else
+                MessageBox.Show("Errore");
+
             dataGridView1.DataSource = r.Read();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BsReservation bs = new BsReservation();
+            bs.Delete(24);
+            bs.Delete(25);
+            dataGridView1.DataSource = bs.Read();
+        }
     }
 }
