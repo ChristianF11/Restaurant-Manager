@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreate.Designer.cs">
+      <DependentUpon>FrmCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>restaurantDBDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmCreate.resx">
+      <DependentUpon>FrmCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomer.resx">
       <DependentUpon>FrmCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +182,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MainForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prenotazione.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

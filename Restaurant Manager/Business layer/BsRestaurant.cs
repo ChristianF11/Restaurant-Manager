@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Business_layer
 {
@@ -62,10 +63,12 @@ namespace Business_layer
             return true;
         }
 
-        /*public Restaurant CreateEntity(parametri inseriti in UI)
+        public Restaurant CreateEntity(int type, int seats, double avgPrice, string name, string pIva, string street, string city, string phoneNum)
         {
-            //Metodo che crea un oggetto di tipo "Restaurant"
-        }*/
+            Restaurant rest = new Restaurant(type,seats,avgPrice,name,pIva,street,city,phoneNum);
+
+            return rest;
+        }
 
         public void Create(Restaurant restaurant) 
         {
@@ -96,5 +99,20 @@ namespace Business_layer
             DsRestaurant restaurantData = new DsRestaurant();
             restaurantData.Delete(id);
         }
+
+        //Ripulisce i campi di input destinati alla creeazione di un ristorante
+        public void ClearFields(ref ComboBox cmbType, ref TextBox txtName, ref TextBox txtIva, ref TextBox txtStreet, ref TextBox txtCity, ref TextBox txtTelephone, 
+            ref NumericUpDown valueSeats, ref NumericUpDown valueAvgPrice)
+        {
+            cmbType.Text = string.Empty;
+            txtName.Text = string.Empty;
+            txtIva.Text = string.Empty;
+            txtStreet.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtTelephone.Text = string.Empty;
+            valueSeats.Text = "0";
+            valueAvgPrice.Text = "0";
+        }
+
     }
 }

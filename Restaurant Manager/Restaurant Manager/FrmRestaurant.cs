@@ -28,5 +28,11 @@ namespace Restaurant_Manager
         {
             this.Hide();
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            FrmCreate createForm = new FrmCreate();
+            createForm.ShowDialog();
+        }
     }
 }
