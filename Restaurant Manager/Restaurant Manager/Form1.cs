@@ -27,17 +27,24 @@ namespace Restaurant_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime request = dateTimePicker1.Value;
+            OperationMessage mess = new OperationMessage();
+            DateTime request = DateTime.Now;
             DateTime rsvDate = dateTimePicker2.Value;
 
             BsReservation r = new BsReservation();
-            Reservation res = new Reservation(3,"christian11",21,request,rsvDate);
+            Reservation res = new Reservation(1,"christian11",3,request,rsvDate);
 
-            if (r.IsValid(res))
-                r.Create(res);
+            string message = "";
+            string title = "";
+
+            if (!r.IsValid(res, ref message, ref title))
+                MessageBox.Show(message);
 
             else
-                MessageBox.Show("Errore");
+            {
+                r.Create(res);
+                mess.GetGenericMessage();
+            }
 
             dataGridView1.DataSource = r.Read();
         }
@@ -49,5 +56,6 @@ namespace Restaurant_Manager
             bs.Delete(25);
             dataGridView1.DataSource = bs.Read();
         }
+
     }
 }

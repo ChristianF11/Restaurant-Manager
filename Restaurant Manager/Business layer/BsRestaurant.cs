@@ -12,35 +12,57 @@ namespace Business_layer
 {
     public class BsRestaurant
     {
-        public bool IsValid(Restaurant restaurant)
+        public bool IsValid(Restaurant restaurant, ref string message, ref string title)
         {
             DsRestaurant restaurantData = new DsRestaurant();
+            title = "Gestione Ristorante";
 
             if (restaurant.BusinessName.Length == 0 || restaurant.Street.Length == 0 || restaurant.City.Length == 0)
+            {
+                message = "Compilare tutti i campi di input";
                 return false;
+            }
 
             if(restaurantData.CheckUniqueProperty(restaurant) != 0) //verifica che il nuovo ristorante non abbia gli stessi dati di uno esistente
+            {
+                message = "A quanto pare questo ristorante è già esistente o alcuni dati sono già stati utilizzati";
                 return false;
+            }
 
             if (restaurant.PIva.Length != 11 || !long.TryParse(restaurant.PIva, out long pIva))
+            {
+                message = "Partita IVA non valida";
                 return false;
+            }
 
             if (restaurant.TelephoneNum.Length != 10 || !uint.TryParse(restaurant.TelephoneNum, out uint telephoneNum))
+            {
+                message = "Numero di telefono non valido";
                 return false;
+            }
 
             if (restaurant.Type < 1 || restaurant.Type > 5)
+            {
+                message = "Tipo di ristorante non valido";
                 return false;
+            }
 
             if (restaurant.Seats < 0)
+            {
+                message = "Inserire un numero di posti valido";
                 return false;
+            }
 
             if (restaurant.AvgPrice < 0)
+            {
+                message = "Inserire un prezzo medio valido";
                 return false;
+            }
 
             return true;
         }
 
-        /*public Restaurant Create(parametri inseriti in UI)
+        /*public Restaurant CreateEntity(parametri inseriti in UI)
         {
             //Metodo che crea un oggetto di tipo "Restaurant"
         }*/

@@ -96,7 +96,7 @@ namespace Entities
 
         public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate, DateTime reservationDate) : this(idRestaurant, username, numCustomers,requestDate)
         {
-            ReservationDate = DateTime.Now;
+            ReservationDate = reservationDate;
         }
 
     }
