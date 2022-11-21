@@ -25,7 +25,7 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
             DataTable customerTable = new DataTable();
-            string query = "select * from Customer";
+            string query = "select Username, Password, IsAdmin as 'Admin', Info, PhoneNumber as 'Numero di telefono', Email, City as 'Città' from Customer";
             customerTable = genericOperation.Read(query);
 
             return customerTable;

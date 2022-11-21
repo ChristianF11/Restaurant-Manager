@@ -9,7 +9,9 @@ C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaura
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Data layer.pdb
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.AssemblyReference.cache
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.SuggestedBindingRedirects.cache
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.Form1.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmCustomer.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmRestaurant.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.MainForm.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.Properties.Resources.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.GenerateResource.cache
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.CoreCompileInputs.cache
