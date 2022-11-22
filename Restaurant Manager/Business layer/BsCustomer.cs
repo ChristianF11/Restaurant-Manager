@@ -12,7 +12,7 @@ namespace Business_layer
 {
     public class BsCustomer
     {
-        public bool IsValid(Customer customer, ref string message, ref string title)
+        public bool IsValid(Customer customer, ref string message, ref string title, bool edit)
         {
             DsCustomer customerData = new DsCustomer();
             title = "Gestione Cliente";
@@ -24,13 +24,13 @@ namespace Business_layer
             }
 
             //Verifica se lo username è già stato utilizzato
-            if (customerData.CheckUsername(customer.Username) != 0)
+            if (customerData.CheckUsername(customer.Username) != 0 && !edit)
             {
                 message = "Sembra che questo username sia già stato utilizzato";
                 return false;
             }
 
-            if (customer.PhoneNum.Length != 10 || !int.TryParse(customer.PhoneNum, out int result))
+            if (customer.PhoneNum.Length != 10 || !uint.TryParse(customer.PhoneNum, out uint result))
             {
                 message = "Numero di telefono non valido";
                 return false;
@@ -67,11 +67,32 @@ namespace Business_layer
             customerData.Update(customer);
         }
 
-        public void Delete(string username)
+        public void Delete(string username, ref string message)
         {
-            DsCustomer customerData = new DsCustomer();
-            customerData.Delete(username);
+            try
+            {
+                DsCustomer customerData = new DsCustomer();
+                customerData.Delete(username);
+                message = "Utente rimosso";
+            }
+
+            catch(Exception ex)
+            {
+                message = "Nessun utente selezionato";
+            }
         }
 
+        public void ClearFields(ref TextBox txtUsername, ref TextBox txtPassword, ref TextBox txtCity, ref TextBox txtPhoneNum, ref TextBox txtEmail, 
+            ref RichTextBox rtxtInfo, ref CheckBox cmbIsAdmin)
+        {
+            txtUsername.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtPhoneNum.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            rtxtInfo.Text = string.Empty;
+            cmbIsAdmin.Checked = false;
+
+        }
     }
 }

@@ -32,6 +32,9 @@
             this.cmbType = new System.Windows.Forms.ComboBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.btnBack = new System.Windows.Forms.ToolStripButton();
+            this.separator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSave = new System.Windows.Forms.ToolStripButton();
+            this.btnCancel = new System.Windows.Forms.ToolStripButton();
             this.lblType = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
@@ -48,9 +51,6 @@
             this.lblAvgPrice = new System.Windows.Forms.Label();
             this.valueAvgPrice = new System.Windows.Forms.NumericUpDown();
             this.lblNote = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.ToolStripButton();
-            this.btnCancel = new System.Windows.Forms.ToolStripButton();
-            this.separator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.valueSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.valueAvgPrice)).BeginInit();
@@ -96,6 +96,31 @@
             this.btnBack.Size = new System.Drawing.Size(72, 24);
             this.btnBack.Text = "Indietro";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
+            this.separator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // btnSave
+            // 
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(58, 24);
+            this.btnSave.Text = "Salva";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(72, 24);
+            this.btnCancel.Text = "Annulla";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblType
             // 
@@ -155,7 +180,7 @@
             this.lblStreet.BackColor = System.Drawing.Color.Transparent;
             this.lblStreet.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStreet.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblStreet.Location = new System.Drawing.Point(252, 131);
+            this.lblStreet.Location = new System.Drawing.Point(245, 131);
             this.lblStreet.Name = "lblStreet";
             this.lblStreet.Size = new System.Drawing.Size(101, 26);
             this.lblStreet.TabIndex = 8;
@@ -266,31 +291,6 @@
             this.lblNote.Size = new System.Drawing.Size(74, 18);
             this.lblNote.TabIndex = 17;
             this.lblNote.Text = "*A persona";
-            // 
-            // btnSave
-            // 
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(58, 24);
-            this.btnSave.Text = "Salva";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(72, 24);
-            this.btnCancel.Text = "Annulla";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
-            this.separator1.Size = new System.Drawing.Size(6, 27);
             // 
             // FrmManageRest
             // 

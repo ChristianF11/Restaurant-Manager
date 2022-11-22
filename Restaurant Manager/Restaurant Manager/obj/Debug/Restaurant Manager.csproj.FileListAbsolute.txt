@@ -18,5 +18,5 @@ C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaura
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.CopyComplete
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.exe
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.pdb
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmNewCustomer.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmManageRest.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmManageCust.resources

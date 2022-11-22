@@ -13,7 +13,7 @@ namespace Business_layer
 {
     public class BsRestaurant
     {
-        public bool IsValid(Restaurant restaurant, ref string message, ref string title, bool edit)
+        public bool IsValid(Restaurant restaurant, ref string message, ref string title, bool edit) //La variabile "edit" viene definita a seconda dell'azione (il suo valore sarà "true" se è stato cliccato il bottone "Modifica")
         {
             DsRestaurant restaurantData = new DsRestaurant();
             title = "Gestione Ristorante";
@@ -125,5 +125,14 @@ namespace Business_layer
             valueAvgPrice.Text = "0";
         }
 
+        public bool CheckID(int id)
+        {
+            DsRestaurant restaurantData = new DsRestaurant();
+            
+            if(restaurantData.CheckID(id) == 1)
+                return true;
+
+            return false;
+        }
     }
 }

@@ -65,5 +65,13 @@ namespace Data_layer
             return genericOperation.Execute(query);
 
         }
+
+        public int CheckID(int id)
+        {
+            DbData genericOperation = new DbData();
+            string query = $"select count(*) from Restaurant where IdRestaurant = {id}";
+
+            return genericOperation.Execute(query);
+        }
     }
 }
