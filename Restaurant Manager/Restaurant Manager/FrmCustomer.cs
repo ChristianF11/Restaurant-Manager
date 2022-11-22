@@ -55,12 +55,8 @@ namespace Restaurant_Manager
             string message = "";
             string userSelected = "";
 
-            if (dgvCustomer.CurrentRow.Cells[0].Value == null)
-                userSelected = "";
-
-            else 
-                userSelected = (string)dgvCustomer.CurrentRow.Cells[0].Value;
-
+            userSelected = (string)dgvCustomer.CurrentRow.Cells[0].Value;
+            
             if (DialogResult.Yes == OperationMessage.GetGenericQuestion())
             {
                 bsCustomer.Delete(userSelected, ref message);
