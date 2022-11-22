@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Business_layer
 {
@@ -14,6 +15,7 @@ namespace Business_layer
         public bool IsValid(Customer customer, ref string message, ref string title)
         {
             DsCustomer customerData = new DsCustomer();
+            title = "Gestione Cliente";
 
             if (customer.Username.Length == 0 || customer.Password.Length == 0 || customer.Info.Length == 0 || customer.Email.Length == 0 || customer.City.Length == 0)
             {
@@ -37,10 +39,12 @@ namespace Business_layer
             return true;
         }
 
-        /*public Customer CreateEntity(parametri inseriti in UI)
+        public Customer CreateEntity(string username, string password, bool isAdmin, string info, string phoneNum, string email, string city)
         {
-            //Metodo che crea un oggetto di tipo "Customer"
-        }*/
+            Customer customer = new Customer(username,password,info,phoneNum,email,city,isAdmin);
+
+            return customer;
+        }
 
         public void Create(Customer customer)
         {
@@ -68,5 +72,6 @@ namespace Business_layer
             DsCustomer customerData = new DsCustomer();
             customerData.Delete(username);
         }
+
     }
 }

@@ -55,7 +55,6 @@ namespace Data_layer
         }
         public void Update(string query)
         {
-
             SqlCommand command = new SqlCommand(query, sqlConnection);
             Open();
             command.ExecuteScalar();

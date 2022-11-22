@@ -7,37 +7,50 @@ using System.Windows.Forms;
 
 namespace Restaurant_Manager
 {
-    public class OperationMessage
+    static class OperationMessage
     {
-        public void GetGenericMessage()
+        public static void GetGenericMessage()
         {
             MessageBox.Show("Operazione andata a buon fine", "Esito operazione", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void GetGenericError()
+        public static void GetGenericError()
         {
             MessageBox.Show("Qualcosa è andato storto", "Esito operazione", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void GetCustomMessage(string message, string title)
+        public static void GetCustomMessage(string message, string title)
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void GetCustomError(string message, string title)
+        public static void GetCustomError(string message, string title)
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void GetGenericQuestion()
+        public static void GetCustomWarning(string message, string title)
         {
-            MessageBox.Show("Sicuro di voler confermare l'operazione?", "Conferma operazione", 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            MessageBox.Show(message,title,MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        public void GetCustomQuestion(string message, string title)
+        public static DialogResult GetGenericQuestion()
         {
-            MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult res;
+
+            res = MessageBox.Show("Sicuro di voler confermare l'operazione?", "Conferma operazione", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            return res;
+        }
+
+        public static DialogResult GetCustomQuestion(string message, string title)
+        {
+            DialogResult res;
+
+            res = MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            return res;
         }
 
     }

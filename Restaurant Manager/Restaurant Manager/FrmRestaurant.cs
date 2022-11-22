@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,9 @@ namespace Restaurant_Manager
         {
             BsRestaurant bsRestaurant= new BsRestaurant();
             dgvRestaurant.DataSource = bsRestaurant.Read();
+
+            dgvRestaurant.ReadOnly = true;
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -31,8 +35,39 @@ namespace Restaurant_Manager
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            FrmCreate createForm = new FrmCreate();
+            FrmManageRest createForm = new FrmManageRest();
             createForm.ShowDialog();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+
+            dgvRestaurant.DataSource = bsRestaurant.Read();
+            OperationMessage.GetCustomMessage("Lista aggiornata", "Aggiornamento lista");
+            
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            string message = "";
+            int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
+
+            if(DialogResult.Yes == OperationMessage.GetGenericQuestion())
+            {
+                bsRestaurant.Delete(idSelected, ref message);
+                OperationMessage.GetCustomWarning(message, "Eliminazione Ristorante");
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
+            FrmManageRest editForm = new FrmManageRest(idSelected);
+
+            editForm.ShowDialog();
+        }
+
     }
 }

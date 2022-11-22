@@ -9,7 +9,6 @@ C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaura
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Debug\Data layer.pdb
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.AssemblyReference.cache
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.SuggestedBindingRedirects.cache
-C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmCreate.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmCustomer.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmRestaurant.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.MainForm.resources
@@ -19,3 +18,5 @@ C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaura
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.csproj.CopyComplete
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.exe
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmNewCustomer.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmManageRest.resources

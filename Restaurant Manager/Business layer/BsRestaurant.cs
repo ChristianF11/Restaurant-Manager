@@ -13,7 +13,7 @@ namespace Business_layer
 {
     public class BsRestaurant
     {
-        public bool IsValid(Restaurant restaurant, ref string message, ref string title)
+        public bool IsValid(Restaurant restaurant, ref string message, ref string title, bool edit)
         {
             DsRestaurant restaurantData = new DsRestaurant();
             title = "Gestione Ristorante";
@@ -24,7 +24,7 @@ namespace Business_layer
                 return false;
             }
 
-            if(restaurantData.CheckUniqueProperty(restaurant) != 0) //verifica che il nuovo ristorante non abbia gli stessi dati di uno esistente
+            if(restaurantData.CheckUniqueProperty(restaurant) != 0 && !edit) //verifica che il nuovo ristorante non abbia gli stessi dati di uno esistente
             {
                 message = "A quanto pare questo ristorante è già esistente o alcuni dati sono già stati utilizzati";
                 return false;
@@ -94,10 +94,21 @@ namespace Business_layer
             restaurantData.Update(restaurant, id);
         }
 
-        public void Delete(int id) 
+        public void Delete(int id,ref string message) 
         {
-            DsRestaurant restaurantData = new DsRestaurant();
-            restaurantData.Delete(id);
+           
+            try
+            {
+                DsRestaurant restaurantData = new DsRestaurant();
+                restaurantData.Delete(id);
+
+                message = "Elemento rimosso";
+            }
+            catch(Exception ex)
+            {
+                message = "Nessun ristorante selezionato";
+            }
+
         }
 
         //Ripulisce i campi di input destinati alla creeazione di un ristorante

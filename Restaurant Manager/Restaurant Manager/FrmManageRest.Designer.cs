@@ -1,6 +1,6 @@
 ﻿namespace Restaurant_Manager
 {
-    partial class FrmCreate
+    partial class FrmManageRest
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCreate));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManageRest));
             this.cmbType = new System.Windows.Forms.ComboBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.btnBack = new System.Windows.Forms.ToolStripButton();
@@ -48,8 +48,9 @@
             this.lblAvgPrice = new System.Windows.Forms.Label();
             this.valueAvgPrice = new System.Windows.Forms.NumericUpDown();
             this.lblNote = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.ToolStripButton();
+            this.btnCancel = new System.Windows.Forms.ToolStripButton();
+            this.separator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.valueSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.valueAvgPrice)).BeginInit();
@@ -68,17 +69,21 @@
             "Locale"});
             this.cmbType.Location = new System.Drawing.Point(17, 72);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(139, 28);
+            this.cmbType.Size = new System.Drawing.Size(156, 28);
             this.cmbType.TabIndex = 0;
             // 
             // toolStrip
             // 
             this.toolStrip.BackColor = System.Drawing.Color.Transparent;
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnBack});
+            this.btnBack,
+            this.separator1,
+            this.btnSave,
+            this.btnCancel});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(817, 25);
+            this.toolStrip.Size = new System.Drawing.Size(766, 27);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "Crea Ristorante";
             // 
@@ -88,7 +93,7 @@
             this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
             this.btnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(68, 22);
+            this.btnBack.Size = new System.Drawing.Size(72, 24);
             this.btnBack.Text = "Indietro";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -107,9 +112,9 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(223, 72);
+            this.txtName.Location = new System.Drawing.Point(250, 74);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(154, 26);
+            this.txtName.Size = new System.Drawing.Size(226, 26);
             this.txtName.TabIndex = 1;
             // 
             // lblName
@@ -118,7 +123,7 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblName.Location = new System.Drawing.Point(218, 43);
+            this.lblName.Location = new System.Drawing.Point(245, 43);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(160, 26);
             this.lblName.TabIndex = 4;
@@ -141,7 +146,7 @@
             this.txtIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIva.Location = new System.Drawing.Point(19, 160);
             this.txtIva.Name = "txtIva";
-            this.txtIva.Size = new System.Drawing.Size(154, 26);
+            this.txtIva.Size = new System.Drawing.Size(185, 26);
             this.txtIva.TabIndex = 2;
             // 
             // lblStreet
@@ -150,18 +155,18 @@
             this.lblStreet.BackColor = System.Drawing.Color.Transparent;
             this.lblStreet.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStreet.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblStreet.Location = new System.Drawing.Point(218, 131);
+            this.lblStreet.Location = new System.Drawing.Point(252, 131);
             this.lblStreet.Name = "lblStreet";
-            this.lblStreet.Size = new System.Drawing.Size(40, 26);
+            this.lblStreet.Size = new System.Drawing.Size(101, 26);
             this.lblStreet.TabIndex = 8;
-            this.lblStreet.Text = "Via";
+            this.lblStreet.Text = "Via/Piazza";
             // 
             // txtStreet
             // 
             this.txtStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStreet.Location = new System.Drawing.Point(223, 160);
+            this.txtStreet.Location = new System.Drawing.Point(250, 160);
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(154, 26);
+            this.txtStreet.Size = new System.Drawing.Size(226, 26);
             this.txtStreet.TabIndex = 3;
             // 
             // lblCity
@@ -181,7 +186,7 @@
             this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(19, 251);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(154, 26);
+            this.txtCity.Size = new System.Drawing.Size(185, 26);
             this.txtCity.TabIndex = 4;
             // 
             // lblTelephone
@@ -190,7 +195,7 @@
             this.lblTelephone.BackColor = System.Drawing.Color.Transparent;
             this.lblTelephone.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelephone.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblTelephone.Location = new System.Drawing.Point(218, 222);
+            this.lblTelephone.Location = new System.Drawing.Point(245, 222);
             this.lblTelephone.Name = "lblTelephone";
             this.lblTelephone.Size = new System.Drawing.Size(84, 26);
             this.lblTelephone.TabIndex = 12;
@@ -199,15 +204,15 @@
             // txtTelephone
             // 
             this.txtTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelephone.Location = new System.Drawing.Point(223, 251);
+            this.txtTelephone.Location = new System.Drawing.Point(250, 251);
             this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(154, 26);
+            this.txtTelephone.Size = new System.Drawing.Size(201, 26);
             this.txtTelephone.TabIndex = 5;
             // 
             // valueSeats
             // 
             this.valueSeats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueSeats.Location = new System.Drawing.Point(19, 343);
+            this.valueSeats.Location = new System.Drawing.Point(512, 251);
             this.valueSeats.Name = "valueSeats";
             this.valueSeats.Size = new System.Drawing.Size(139, 26);
             this.valueSeats.TabIndex = 6;
@@ -218,7 +223,7 @@
             this.lblSeats.BackColor = System.Drawing.Color.Transparent;
             this.lblSeats.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSeats.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblSeats.Location = new System.Drawing.Point(14, 314);
+            this.lblSeats.Location = new System.Drawing.Point(507, 222);
             this.lblSeats.Name = "lblSeats";
             this.lblSeats.Size = new System.Drawing.Size(53, 26);
             this.lblSeats.TabIndex = 14;
@@ -230,11 +235,11 @@
             this.lblAvgPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblAvgPrice.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvgPrice.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblAvgPrice.Location = new System.Drawing.Point(218, 314);
+            this.lblAvgPrice.Location = new System.Drawing.Point(507, 131);
             this.lblAvgPrice.Name = "lblAvgPrice";
-            this.lblAvgPrice.Size = new System.Drawing.Size(128, 26);
+            this.lblAvgPrice.Size = new System.Drawing.Size(135, 26);
             this.lblAvgPrice.TabIndex = 16;
-            this.lblAvgPrice.Text = "Prezzo Medio";
+            this.lblAvgPrice.Text = "Prezzo Medio*";
             // 
             // valueAvgPrice
             // 
@@ -245,7 +250,7 @@
             0,
             0,
             131072});
-            this.valueAvgPrice.Location = new System.Drawing.Point(223, 343);
+            this.valueAvgPrice.Location = new System.Drawing.Point(512, 160);
             this.valueAvgPrice.Name = "valueAvgPrice";
             this.valueAvgPrice.Size = new System.Drawing.Size(139, 26);
             this.valueAvgPrice.TabIndex = 7;
@@ -256,44 +261,45 @@
             this.lblNote.BackColor = System.Drawing.Color.Transparent;
             this.lblNote.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNote.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblNote.Location = new System.Drawing.Point(16, 437);
+            this.lblNote.Location = new System.Drawing.Point(16, 402);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(210, 18);
+            this.lblNote.Size = new System.Drawing.Size(74, 18);
             this.lblNote.TabIndex = 17;
-            this.lblNote.Text = "Si prega di compilare tutti i campi";
+            this.lblNote.Text = "*A persona";
             // 
-            // btnCreate
+            // btnSave
             // 
-            this.btnCreate.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(496, 160);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(135, 56);
-            this.btnCreate.TabIndex = 18;
-            this.btnCreate.Text = "Crea Ristorante";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(58, 24);
+            this.btnSave.Text = "Salva";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(496, 251);
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(135, 56);
-            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Size = new System.Drawing.Size(72, 24);
             this.btnCancel.Text = "Annulla";
-            this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // FrmCreate
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
+            this.separator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // FrmManageRest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Prenotazione;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(817, 464);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnCreate);
+            this.ClientSize = new System.Drawing.Size(766, 429);
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.lblAvgPrice);
             this.Controls.Add(this.valueAvgPrice);
@@ -314,9 +320,11 @@
             this.Controls.Add(this.cmbType);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmCreate";
+            this.MaximumSize = new System.Drawing.Size(782, 468);
+            this.MinimumSize = new System.Drawing.Size(782, 468);
+            this.Name = "FrmManageRest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nuovo Ristorante";
+            this.Text = "Gestione Ristorante";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.valueSeats)).EndInit();
@@ -345,8 +353,9 @@
         private System.Windows.Forms.Label lblAvgPrice;
         private System.Windows.Forms.NumericUpDown valueAvgPrice;
         private System.Windows.Forms.Label lblNote;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.ToolStripButton btnSave;
+        private System.Windows.Forms.ToolStripSeparator separator1;
+        private System.Windows.Forms.ToolStripButton btnCancel;
     }
 }
