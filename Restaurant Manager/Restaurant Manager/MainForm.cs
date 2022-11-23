@@ -1,5 +1,4 @@
 ﻿using Business_layer;
-using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +44,12 @@ namespace Restaurant_Manager
         {
             FrmCustomer customerForm = new FrmCustomer();
             customerForm.ShowDialog();
+        }
+
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            FrmReservation reservationForm = new FrmReservation();
+            reservationForm.ShowDialog();
         }
     }
 }

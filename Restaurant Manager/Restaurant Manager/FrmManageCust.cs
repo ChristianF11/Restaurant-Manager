@@ -1,4 +1,5 @@
 ﻿using Business_layer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,7 +82,7 @@ namespace Restaurant_Manager
 
         private void FrmManageCust_Load(object sender, EventArgs e)
         {
-            if(edit)
+            if(edit) //In fase di editing l'username si potrà visualizzare ma non cambiare
             {
                 txtUsername.ReadOnly = true;
                 txtUsername.Text = username;

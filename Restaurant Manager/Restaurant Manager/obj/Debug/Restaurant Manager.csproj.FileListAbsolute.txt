@@ -20,3 +20,5 @@ C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaura
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant Manager.pdb
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmManageRest.resources
 C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmManageCust.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmReservation.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Debug\Restaurant_Manager.FrmManageReser.resources

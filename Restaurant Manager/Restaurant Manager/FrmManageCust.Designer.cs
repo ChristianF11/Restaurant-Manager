@@ -58,18 +58,20 @@
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblUsername.Location = new System.Drawing.Point(12, 43);
+            this.lblUsername.Location = new System.Drawing.Point(16, 53);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(97, 26);
+            this.lblUsername.Size = new System.Drawing.Size(122, 32);
             this.lblUsername.TabIndex = 6;
             this.lblUsername.Text = "Username";
             // 
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(17, 72);
+            this.txtUsername.Location = new System.Drawing.Point(23, 89);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(197, 26);
+            this.txtUsername.Size = new System.Drawing.Size(261, 30);
             this.txtUsername.TabIndex = 1;
             // 
             // lblPassword
@@ -78,19 +80,21 @@
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblPassword.Location = new System.Drawing.Point(284, 43);
+            this.lblPassword.Location = new System.Drawing.Point(379, 53);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(91, 26);
+            this.lblPassword.Size = new System.Drawing.Size(115, 32);
             this.lblPassword.TabIndex = 8;
             this.lblPassword.Text = "Password";
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(289, 72);
+            this.txtPassword.Location = new System.Drawing.Point(385, 89);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(216, 26);
+            this.txtPassword.Size = new System.Drawing.Size(287, 30);
             this.txtPassword.TabIndex = 2;
             // 
             // cbxIsAdmin
@@ -99,9 +103,10 @@
             this.cbxIsAdmin.BackColor = System.Drawing.Color.Transparent;
             this.cbxIsAdmin.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxIsAdmin.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cbxIsAdmin.Location = new System.Drawing.Point(511, 274);
+            this.cbxIsAdmin.Location = new System.Drawing.Point(681, 337);
+            this.cbxIsAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.cbxIsAdmin.Name = "cbxIsAdmin";
-            this.cbxIsAdmin.Size = new System.Drawing.Size(163, 30);
+            this.cbxIsAdmin.Size = new System.Drawing.Size(202, 36);
             this.cbxIsAdmin.TabIndex = 7;
             this.cbxIsAdmin.Text = "Amministratore";
             this.cbxIsAdmin.UseVisualStyleBackColor = false;
@@ -112,18 +117,20 @@
             this.lblPhoneNum.BackColor = System.Drawing.Color.Transparent;
             this.lblPhoneNum.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhoneNum.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblPhoneNum.Location = new System.Drawing.Point(12, 128);
+            this.lblPhoneNum.Location = new System.Drawing.Point(16, 158);
+            this.lblPhoneNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNum.Name = "lblPhoneNum";
-            this.lblPhoneNum.Size = new System.Drawing.Size(180, 26);
+            this.lblPhoneNum.Size = new System.Drawing.Size(224, 32);
             this.lblPhoneNum.TabIndex = 11;
             this.lblPhoneNum.Text = "Numero di Telefono";
             // 
             // txtPhoneNum
             // 
             this.txtPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNum.Location = new System.Drawing.Point(17, 157);
+            this.txtPhoneNum.Location = new System.Drawing.Point(23, 193);
+            this.txtPhoneNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhoneNum.Name = "txtPhoneNum";
-            this.txtPhoneNum.Size = new System.Drawing.Size(228, 26);
+            this.txtPhoneNum.Size = new System.Drawing.Size(303, 30);
             this.txtPhoneNum.TabIndex = 3;
             // 
             // lblEmail
@@ -132,25 +139,28 @@
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
             this.lblEmail.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblEmail.Location = new System.Drawing.Point(284, 128);
+            this.lblEmail.Location = new System.Drawing.Point(379, 158);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(60, 26);
+            this.lblEmail.Size = new System.Drawing.Size(73, 32);
             this.lblEmail.TabIndex = 13;
             this.lblEmail.Text = "Email";
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(289, 157);
+            this.txtEmail.Location = new System.Drawing.Point(385, 193);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(241, 26);
+            this.txtEmail.Size = new System.Drawing.Size(320, 30);
             this.txtEmail.TabIndex = 4;
             // 
             // rtxtInfo
             // 
-            this.rtxtInfo.Location = new System.Drawing.Point(17, 244);
+            this.rtxtInfo.Location = new System.Drawing.Point(23, 300);
+            this.rtxtInfo.Margin = new System.Windows.Forms.Padding(4);
             this.rtxtInfo.Name = "rtxtInfo";
-            this.rtxtInfo.Size = new System.Drawing.Size(446, 96);
+            this.rtxtInfo.Size = new System.Drawing.Size(593, 117);
             this.rtxtInfo.TabIndex = 6;
             this.rtxtInfo.Text = "";
             // 
@@ -160,9 +170,10 @@
             this.lblInfo.BackColor = System.Drawing.Color.Transparent;
             this.lblInfo.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblInfo.Location = new System.Drawing.Point(12, 215);
+            this.lblInfo.Location = new System.Drawing.Point(16, 265);
+            this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(127, 26);
+            this.lblInfo.Size = new System.Drawing.Size(158, 32);
             this.lblInfo.TabIndex = 15;
             this.lblInfo.Text = "Informazioni*";
             // 
@@ -172,9 +183,10 @@
             this.lblNote.BackColor = System.Drawing.Color.Transparent;
             this.lblNote.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNote.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblNote.Location = new System.Drawing.Point(12, 402);
+            this.lblNote.Location = new System.Drawing.Point(16, 495);
+            this.lblNote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(80, 18);
+            this.lblNote.Size = new System.Drawing.Size(100, 23);
             this.lblNote.TabIndex = 18;
             this.lblNote.Text = "*Facoltativo";
             // 
@@ -189,7 +201,7 @@
             this.btnCancel});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(766, 27);
+            this.toolStrip.Size = new System.Drawing.Size(1019, 27);
             this.toolStrip.TabIndex = 21;
             this.toolStrip.Text = "Registra Cliente";
             // 
@@ -199,7 +211,7 @@
             this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
             this.btnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(72, 24);
+            this.btnBack.Size = new System.Drawing.Size(85, 24);
             this.btnBack.Text = "Indietro";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -214,7 +226,7 @@
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(58, 24);
+            this.btnSave.Size = new System.Drawing.Size(68, 24);
             this.btnSave.Text = "Salva";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -224,7 +236,7 @@
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(72, 24);
+            this.btnCancel.Size = new System.Drawing.Size(83, 24);
             this.btnCancel.Text = "Annulla";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -234,18 +246,20 @@
             this.lblCity.BackColor = System.Drawing.Color.Transparent;
             this.lblCity.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCity.Location = new System.Drawing.Point(559, 128);
+            this.lblCity.Location = new System.Drawing.Point(745, 158);
+            this.lblCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(50, 26);
+            this.lblCity.Size = new System.Drawing.Size(64, 32);
             this.lblCity.TabIndex = 23;
             this.lblCity.Text = "Città";
             // 
             // txtCity
             // 
             this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(564, 157);
+            this.txtCity.Location = new System.Drawing.Point(752, 193);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(154, 26);
+            this.txtCity.Size = new System.Drawing.Size(204, 30);
             this.txtCity.TabIndex = 5;
             // 
             // btnShowPassword
@@ -253,21 +267,23 @@
             this.btnShowPassword.BackColor = System.Drawing.Color.Transparent;
             this.btnShowPassword.BackgroundImage = global::Restaurant_Manager.Properties.Resources.eye;
             this.btnShowPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnShowPassword.Location = new System.Drawing.Point(511, 72);
+            this.btnShowPassword.Location = new System.Drawing.Point(681, 89);
+            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(25, 25);
+            this.btnShowPassword.Size = new System.Drawing.Size(33, 31);
             this.btnShowPassword.TabIndex = 24;
             this.btnShowPassword.UseVisualStyleBackColor = false;
             this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
             // 
             // FrmManageCust
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SeaGreen;
+            this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Prenotazione;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(766, 429);
+            this.ClientSize = new System.Drawing.Size(1019, 518);
+            this.ControlBox = false;
             this.Controls.Add(this.btnShowPassword);
             this.Controls.Add(this.lblCity);
             this.Controls.Add(this.txtCity);
@@ -286,8 +302,9 @@
             this.Controls.Add(this.txtUsername);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(782, 468);
-            this.MinimumSize = new System.Drawing.Size(782, 468);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1037, 565);
+            this.MinimumSize = new System.Drawing.Size(1037, 565);
             this.Name = "FrmManageCust";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestione Cliente";

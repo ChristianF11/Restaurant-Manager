@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRestaurant));
             this.dgvRestaurant = new System.Windows.Forms.DataGridView();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
@@ -49,23 +49,24 @@
             this.dgvRestaurant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRestaurant.BackgroundColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvRestaurant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRestaurant.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRestaurant.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRestaurant.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvRestaurant.Location = new System.Drawing.Point(32, 56);
-            this.dgvRestaurant.MaximumSize = new System.Drawing.Size(943, 437);
-            this.dgvRestaurant.MinimumSize = new System.Drawing.Size(943, 437);
+            this.dgvRestaurant.Location = new System.Drawing.Point(43, 69);
+            this.dgvRestaurant.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvRestaurant.MaximumSize = new System.Drawing.Size(1257, 538);
+            this.dgvRestaurant.MinimumSize = new System.Drawing.Size(1257, 538);
             this.dgvRestaurant.MultiSelect = false;
             this.dgvRestaurant.Name = "dgvRestaurant";
             this.dgvRestaurant.RowHeadersWidth = 51;
             this.dgvRestaurant.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRestaurant.Size = new System.Drawing.Size(943, 437);
+            this.dgvRestaurant.Size = new System.Drawing.Size(1257, 538);
             this.dgvRestaurant.TabIndex = 0;
             // 
             // toolStrip
@@ -81,11 +82,11 @@
             this.btnUpdate});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.MaximumSize = new System.Drawing.Size(1013, 25);
-            this.toolStrip.MinimumSize = new System.Drawing.Size(1013, 25);
+            this.toolStrip.MaximumSize = new System.Drawing.Size(1351, 31);
+            this.toolStrip.MinimumSize = new System.Drawing.Size(1351, 31);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip.Size = new System.Drawing.Size(1013, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1351, 31);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "Azioni";
             // 
@@ -97,14 +98,14 @@
             this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
             this.btnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(72, 22);
+            this.btnBack.Size = new System.Drawing.Size(85, 28);
             this.btnBack.Text = "Indietro";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // separator1
             // 
             this.separator1.Name = "separator1";
-            this.separator1.Size = new System.Drawing.Size(6, 25);
+            this.separator1.Size = new System.Drawing.Size(6, 31);
             // 
             // btnNew
             // 
@@ -113,7 +114,7 @@
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(55, 22);
+            this.btnNew.Size = new System.Drawing.Size(63, 28);
             this.btnNew.Text = "Crea";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -123,7 +124,7 @@
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 22);
+            this.btnDelete.Size = new System.Drawing.Size(87, 28);
             this.btnDelete.Text = "Rimuovi";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -133,7 +134,7 @@
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(78, 22);
+            this.btnEdit.Size = new System.Drawing.Size(92, 28);
             this.btnEdit.Text = "Modifica";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -143,24 +144,26 @@
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(80, 22);
+            this.btnUpdate.Size = new System.Drawing.Size(95, 28);
             this.btnUpdate.Text = "Aggiorna";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // FrmRestaurant
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SeaGreen;
+            this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Anagrafica;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1012, 566);
+            this.ClientSize = new System.Drawing.Size(1347, 687);
+            this.ControlBox = false;
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.dgvRestaurant);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1028, 605);
-            this.MinimumSize = new System.Drawing.Size(1028, 605);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1365, 734);
+            this.MinimumSize = new System.Drawing.Size(1365, 734);
             this.Name = "FrmRestaurant";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anagrafica Ristoranti";

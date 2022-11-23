@@ -137,7 +137,7 @@
             this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCustomer.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvCustomer.Location = new System.Drawing.Point(43, 69);
-            this.dgvCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCustomer.MaximumSize = new System.Drawing.Size(1257, 538);
             this.dgvCustomer.MinimumSize = new System.Drawing.Size(1257, 538);
             this.dgvCustomer.Name = "dgvCustomer";
@@ -151,15 +151,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SeaGreen;
+            this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Anagrafica;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1351, 698);
+            this.ControlBox = false;
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.dgvCustomer);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anagrafica Clienti";

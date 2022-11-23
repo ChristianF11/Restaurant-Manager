@@ -68,6 +68,12 @@
     <Compile Include="FrmManageCust.Designer.cs">
       <DependentUpon>FrmManageCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmManageReser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManageReser.Designer.cs">
+      <DependentUpon>FrmManageReser.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmManageRest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,11 +121,17 @@
     <EmbeddedResource Include="FrmManageCust.resx">
       <DependentUpon>FrmManageCust.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmManageReser.resx">
+      <DependentUpon>FrmManageReser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmManageRest.resx">
       <DependentUpon>FrmManageRest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomer.resx">
       <DependentUpon>FrmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReservation.resx">
+      <DependentUpon>FrmReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRestaurant.resx">
       <DependentUpon>FrmRestaurant.cs</DependentUpon>
