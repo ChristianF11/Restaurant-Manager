@@ -7,6 +7,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Business_layer
 {
@@ -65,7 +66,7 @@ namespace Business_layer
             }
                 
 
-            if (reservationData.CountSeats(reservation.NumCustomers, reservation.IdRestaurant) < 0) //Verifica che ci sia ancora posto
+            if (reservationData.CountSeats(reservation.IdRestaurant, reservation.ReservationDate) < 0) //Verifica che ci sia ancora posto
             {
                 message = "Spiacenti, ma siamo al completo. Prova a prenotare per un altro giorno";
                 return false;
@@ -74,10 +75,12 @@ namespace Business_layer
             return true;
         }
 
-        /*public Reservation CreateEntity(parametri inseriti in UI)
+        public Reservation CreateEntity(int idRestaurant, string username, DateTime requestDate, DateTime reservationDate, int numCustomers, decimal price)
         {
-            //Metodo che restituirà un oggetto di tipo Reservation
-        }*/
+            Reservation reservation = new Reservation(idRestaurant,username,numCustomers,requestDate,reservationDate,price);
+
+            return reservation;
+        }
 
         public void Create(Reservation reservation)
         {
@@ -100,11 +103,40 @@ namespace Business_layer
             reservationData.Update(reservation, id);
         }
 
-        public void Delete(int idReservation)
+        public void Delete(int idReservation, ref string message)
         {
-            DsReservation reservationData = new DsReservation();
-            reservationData.Delete(idReservation);
+                DsReservation reservationData = new DsReservation();
+                reservationData.Delete(idReservation);
+                message = "Prenotazione cancellata";
         }
 
+        public void ClearFields(ref TextBox txtUsername, ref NumericUpDown valueCustomers, ref DateTimePicker dtpReservation)
+        {
+            txtUsername.Text = string.Empty;
+            valueCustomers.Text = "0";
+            dtpReservation.Value = DateTime.Now;
+        }
+
+        public int GetEmptySeats(int idRestaurant, DateTime reservationDate)
+        {
+            DsReservation reservationData = new DsReservation();
+            int seatsTaken = 0;
+            int emptySeats = 0;
+
+            seatsTaken = reservationData.CountSeats(idRestaurant, reservationDate);
+            emptySeats = reservationData.GetEmptySeats(seatsTaken, idRestaurant);
+
+            return emptySeats;
+        }
+
+        public decimal GetPrice(int numCustomers, int idRestaurant) //Errore di cast
+        {
+            DsReservation reservationData = new DsReservation();
+            decimal avgPrice = 0;
+
+            avgPrice = (decimal)reservationData.GetPrice(numCustomers,idRestaurant);
+
+            return avgPrice;
+        }
     }
 }

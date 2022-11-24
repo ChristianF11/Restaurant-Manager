@@ -27,13 +27,24 @@ namespace Data_layer
             DbData genericOperation = new DbData();
             DataTable restaurantTable = new DataTable();
             string query = "select IdRestaurant as 'ID', BusinessName as 'Ristorante', pIva as 'IVA',Street as 'Via/Piazza',City as 'Città', PhoneNumber as 'Telefono', t.Descrizione as 'Tipo cucina', " +
-                "Seats as 'Posti totali', SeatsTaken as 'Posti occupati', AveragePrice as 'Prezzo medio'\r\nfrom Restaurant r inner join RestaurantType t on t.Type = r.Type " +
+                "Seats as 'Posti totali', AveragePrice as 'Prezzo medio'\r\nfrom Restaurant r inner join RestaurantType t on t.Type = r.Type " +
                 "where t.Type = r.Type";
 
             restaurantTable = genericOperation.Read(query);
 
             return restaurantTable;
 
+        }
+
+        public DataTable ReadName() //Metodo "speciale" che legge solo i nomi per le "listbox"
+        {
+            DbData genericOperation = new DbData();
+            DataTable restNameTable = new DataTable();
+            string query = "select IdRestaurant as 'ID', BusinessName as 'Ristorante' from Restaurant";
+
+            restNameTable = genericOperation.Read(query);
+
+            return restNameTable;
         }
 
         public void Update(Restaurant restaurant, int id)

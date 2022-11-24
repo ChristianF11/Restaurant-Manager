@@ -283,7 +283,6 @@
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Prenotazione;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1019, 518);
-            this.ControlBox = false;
             this.Controls.Add(this.btnShowPassword);
             this.Controls.Add(this.lblCity);
             this.Controls.Add(this.txtCity);

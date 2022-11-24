@@ -18,9 +18,7 @@ namespace Data_layer
             DbData genericOperation = new DbData();
 
             string query = $"insert into Reservation values({reservation.IdRestaurant},'{reservation.Username}',convert(datetime,'{reservation.RequestDate}',103)," +
-                $"convert(datetime,'{reservation.ReservationDate}',103),{reservation.NumCustomers},{reservation.Price}) " +
-                $"update Restaurant set SeatsTaken = SeatsTaken + {reservation.NumCustomers} where IdRestaurant = {reservation.IdRestaurant}";
-
+                $"convert(datetime,'{reservation.ReservationDate}',103),{reservation.NumCustomers},{reservation.Price}) ";
 
             genericOperation.Create(query);
 
@@ -30,7 +28,7 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
             DataTable reservationTable = new DataTable();
-            string query = "select BusinessName as 'Ristorante',Username,RequestDate as 'Giorno prenotazione',ReservationDate as 'Giorno prenotato'," +
+            string query = "select IdReservation as 'ID', BusinessName as 'Ristorante',Username,RequestDate as 'Giorno prenotazione',ReservationDate as 'Giorno prenotato'," +
                 "NumberCustomers as 'Posti prenotati',Price from Restaurant r inner join Reservation rv on r.IdRestaurant = rv.IdRestaurant";
             reservationTable = genericOperation.Read(query);
 
@@ -72,14 +70,49 @@ namespace Data_layer
             return genericOperation.Execute(query);
         }
 
-        public int CountSeats(int numCustomers, int idRestaurant)
+        public int CountSeats(int idRestaurant, DateTime reservationDate)
         {
             DbData genericOperation = new DbData();
-            string query = $"update Restaurant set SeatsTaken = SeatsTaken + {numCustomers} where IdRestaurant = {idRestaurant}" +
-                $"select Seats - SeatsTaken from Restaurant where IdRestaurant = {idRestaurant}";
-
-            return genericOperation.Execute(query);
+            int seatsTaken = 0;
+            
+            try
+            {
+                //Numero di posti occupati
+                string query = $"select sum(NumberCustomers) from Reservation where IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime,'{reservationDate}',103)";
+                seatsTaken= genericOperation.Execute(query);
+            }
+            catch
+            {
+                seatsTaken = 0;
+            }
+            return seatsTaken;
         }
 
+        public int GetEmptySeats(int seatsTaken, int idRestaurant)
+        {
+            DbData genericOperation = new DbData();
+            int emptySeats = 0;
+
+            try
+            {
+                //Posti liberi
+                string query = $"select Seats - {seatsTaken} from Restaurant where IdRestaurant = {idRestaurant}";
+                emptySeats = genericOperation.Execute(query);
+            }
+            catch
+            {
+                return emptySeats;
+            }
+
+            return emptySeats;
+        }
+
+        public decimal GetPrice(int numCustomers, int idRestaurant) //Errore di cast
+        {
+            DbData genericOperation = new DbData();
+            string query = $"select Price * {numCustomers} from Reservation where IdRestaurant = {idRestaurant}";
+
+            return genericOperation.ExecuteD(query);
+        }
     }
 }

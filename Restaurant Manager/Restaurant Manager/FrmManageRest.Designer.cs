@@ -317,7 +317,6 @@
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Prenotazione;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1019, 518);
-            this.ControlBox = false;
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.lblAvgPrice);
             this.Controls.Add(this.valueAvgPrice);

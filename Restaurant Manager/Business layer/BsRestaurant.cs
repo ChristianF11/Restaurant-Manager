@@ -88,6 +88,16 @@ namespace Business_layer
 
         }
 
+        public DataTable ReadName()
+        {
+            DataTable restNameTable = new DataTable();
+            DsRestaurant restaurantData = new DsRestaurant();
+
+            restNameTable = restaurantData.ReadName();
+
+            return restNameTable;
+        }
+
         public void Update(Restaurant restaurant, int id)
         {
             DsRestaurant restaurantData = new DsRestaurant();

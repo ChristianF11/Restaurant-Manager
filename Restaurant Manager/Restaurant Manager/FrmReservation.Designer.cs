@@ -99,6 +99,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(87, 28);
             this.btnDelete.Text = "Rimuovi";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -108,6 +109,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(92, 28);
             this.btnEdit.Text = "Modifica";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnUpdate
             // 
@@ -123,6 +125,9 @@
             // 
             this.dgvReservation.AllowUserToAddRows = false;
             this.dgvReservation.AllowUserToDeleteRows = false;
+            this.dgvReservation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvReservation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReservation.BackgroundColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvReservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -137,10 +142,10 @@
             this.dgvReservation.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvReservation.Location = new System.Drawing.Point(47, 79);
             this.dgvReservation.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvReservation.MaximumSize = new System.Drawing.Size(1257, 538);
             this.dgvReservation.MinimumSize = new System.Drawing.Size(1257, 538);
             this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
+            this.dgvReservation.ReadOnly = true;
             this.dgvReservation.RowHeadersWidth = 51;
             this.dgvReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReservation.Size = new System.Drawing.Size(1257, 538);
@@ -154,7 +159,6 @@
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Anagrafica;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1350, 696);
-            this.ControlBox = false;
             this.Controls.Add(this.dgvReservation);
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;

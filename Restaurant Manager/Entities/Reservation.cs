@@ -9,7 +9,7 @@ namespace Entities
     public class Reservation
     {
         private int idReservation, idRestaurant, numCustomers;
-        private double price;
+        private decimal price;
         private string username;
         private DateTime requestDate, reservationDate;
 
@@ -31,7 +31,7 @@ namespace Entities
             set { numCustomers = value; }
         }
 
-        public double Price
+        public decimal Price
         {
             get { return price; }
             set { price = value; }
@@ -62,6 +62,7 @@ namespace Entities
             NumCustomers = 0;
             RequestDate = DateTime.Now;
             ReservationDate = DateTime.Now;
+            Price = 0;
         }
 
         public Reservation(int idRestaurant)
@@ -71,6 +72,7 @@ namespace Entities
             NumCustomers = 0;
             RequestDate = DateTime.Now;
             ReservationDate = DateTime.Now;
+            Price = 0;
         }
 
         public Reservation(int idRestaurant,string username) : this(idRestaurant)
@@ -79,6 +81,7 @@ namespace Entities
             NumCustomers = 0;
             RequestDate = DateTime.Now;
             ReservationDate = DateTime.Now;
+            Price = 0;
         }
 
         public Reservation(int idRestaurant,string username,int numCustomers) : this(idRestaurant,username)
@@ -86,17 +89,25 @@ namespace Entities
             NumCustomers = numCustomers;
             RequestDate = DateTime.Now;
             ReservationDate = DateTime.Now;
+            Price = 0;
         }
 
         public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate) : this(idRestaurant, username,numCustomers)
         {
             RequestDate = requestDate;
             ReservationDate = DateTime.Now;
+            Price = 0;
         }
 
         public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate, DateTime reservationDate) : this(idRestaurant, username, numCustomers,requestDate)
         {
             ReservationDate = reservationDate;
+            Price = 0;
+        }
+
+        public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate, DateTime reservationDate, decimal price) : this(idRestaurant, username, numCustomers, requestDate,reservationDate)
+        {
+            Price = price;
         }
 
     }

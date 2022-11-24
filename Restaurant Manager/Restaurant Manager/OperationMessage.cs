@@ -53,5 +53,10 @@ namespace Restaurant_Manager
             return res;
         }
 
+        public static void GetIsEmpty()
+        {
+            MessageBox.Show("Nessun elemento in lista. Impossibile effettuare l'operazione", "Errore operazione", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }

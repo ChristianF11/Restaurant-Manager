@@ -25,6 +25,7 @@ namespace Restaurant_Manager
             dgvRestaurant.DataSource = bsRestaurant.Read();
 
             dgvRestaurant.ReadOnly = true;
+            dgvRestaurant.Columns[0].Visible = false;
 
         }
 
@@ -42,32 +43,50 @@ namespace Restaurant_Manager
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
-
             dgvRestaurant.DataSource = bsRestaurant.Read();
-            OperationMessage.GetCustomMessage("Lista aggiornata", "Aggiornamento lista");
             
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (CountRows() == 0)
+                OperationMessage.GetIsEmpty();
+
+            else
+                DeleteElement();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if(CountRows() == 0)
+                OperationMessage.GetIsEmpty();
+
+            else
+                UpdateElement();
+        }
+
+        private void DeleteElement()
+        {
             BsRestaurant bsRestaurant = new BsRestaurant();
             string message = "";
             int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
 
-            if(DialogResult.Yes == OperationMessage.GetGenericQuestion())
+            if (DialogResult.Yes == OperationMessage.GetGenericQuestion())
             {
                 bsRestaurant.Delete(idSelected, ref message);
                 OperationMessage.GetCustomWarning(message, "Eliminazione Ristorante");
             }
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void UpdateElement()
         {
             int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
             FrmManageRest editForm = new FrmManageRest(idSelected);
 
             editForm.ShowDialog();
         }
-
+        private int CountRows()
+        {
+            return dgvRestaurant.Rows.Count;
+        }
     }
 }

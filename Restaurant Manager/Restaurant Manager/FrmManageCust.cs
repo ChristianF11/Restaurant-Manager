@@ -37,7 +37,7 @@ namespace Restaurant_Manager
         private void btnCancel_Click(object sender, EventArgs e)
         {
             BsCustomer bsCustomer = new BsCustomer();
-            bsCustomer.ClearFields(ref txtUsername, ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
+            bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -58,26 +58,27 @@ namespace Restaurant_Manager
                 if(edit)
                 {
                     bsCustomer.Update(entity);
+                    bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
                 }
 
                 else
                 {
                     bsCustomer.Create(entity);
-
+                    bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
+                    txtUsername.Text = "";
                 }
                 
                 OperationMessage.GetGenericMessage();
-                bsCustomer.ClearFields(ref txtUsername, ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
             }
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
         {
-            if(txtPassword.UseSystemPasswordChar)
-                txtPassword.UseSystemPasswordChar = false;
+            if (txtPassword.PasswordChar == '\0')
+                txtPassword.PasswordChar = '*';
 
             else
-                txtPassword.UseSystemPasswordChar = true;
+                txtPassword.PasswordChar = '\0';
         }
 
         private void FrmManageCust_Load(object sender, EventArgs e)

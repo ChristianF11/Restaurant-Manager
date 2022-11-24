@@ -44,24 +44,44 @@ namespace Restaurant_Manager
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            BsCustomer bsCustomer = new BsCustomer();
-            dgvCustomer.DataSource = bsCustomer.Read();
-            OperationMessage.GetCustomMessage("Lista aggiornata", "Aggiornamento lista");
+            if (CountRows() == 0)
+                OperationMessage.GetIsEmpty();
+
+            else
+                UpdateElement();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (CountRows() == 0)
+                OperationMessage.GetIsEmpty();
+
+            else
+                DeleteElement();
+        }
+
+        private void DeleteElement()
         {
             BsCustomer bsCustomer = new BsCustomer();
             string message = "";
             string userSelected = "";
 
             userSelected = (string)dgvCustomer.CurrentRow.Cells[0].Value;
-            
+
             if (DialogResult.Yes == OperationMessage.GetGenericQuestion())
             {
                 bsCustomer.Delete(userSelected, ref message);
                 OperationMessage.GetCustomWarning(message, "Eliminazione Utente");
             }
+        }
+        private void UpdateElement()
+        {
+            BsCustomer bsCustomer = new BsCustomer();
+            dgvCustomer.DataSource = bsCustomer.Read();
+        }
+        private int CountRows()
+        {
+            return dgvCustomer.Rows.Count;
         }
     }
 }

@@ -82,10 +82,10 @@ namespace Business_layer
             }
         }
 
-        public void ClearFields(ref TextBox txtUsername, ref TextBox txtPassword, ref TextBox txtCity, ref TextBox txtPhoneNum, ref TextBox txtEmail, 
+        public void ClearFields(ref TextBox txtPassword, ref TextBox txtCity, ref TextBox txtPhoneNum, ref TextBox txtEmail, 
             ref RichTextBox rtxtInfo, ref CheckBox cmbIsAdmin)
         {
-            txtUsername.Text = string.Empty;
+
             txtPassword.Text = string.Empty;
             txtCity.Text = string.Empty;
             txtPhoneNum.Text = string.Empty;

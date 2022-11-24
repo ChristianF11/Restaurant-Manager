@@ -80,5 +80,16 @@ namespace Data_layer
             return result;
         }
 
+        public decimal ExecuteD(string query)
+        {
+            SqlCommand command = new SqlCommand(query, sqlConnection);
+            decimal result = 0;
+            Open();
+            result = (decimal)command.ExecuteScalar();
+            Close();
+
+            return result;
+        }
+
     }
 }
