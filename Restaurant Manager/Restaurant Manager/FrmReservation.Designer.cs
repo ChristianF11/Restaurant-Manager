@@ -55,11 +55,10 @@
             this.btnUpdate});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.MaximumSize = new System.Drawing.Size(1351, 31);
-            this.toolStrip.MinimumSize = new System.Drawing.Size(1351, 31);
+            this.toolStrip.MinimumSize = new System.Drawing.Size(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip.Size = new System.Drawing.Size(1351, 31);
+            this.toolStrip.Size = new System.Drawing.Size(1012, 27);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "Azioni";
             // 
@@ -71,14 +70,14 @@
             this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
             this.btnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(85, 28);
+            this.btnBack.Size = new System.Drawing.Size(72, 24);
             this.btnBack.Text = "Indietro";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // separator1
             // 
             this.separator1.Name = "separator1";
-            this.separator1.Size = new System.Drawing.Size(6, 31);
+            this.separator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnNew
             // 
@@ -87,7 +86,7 @@
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(63, 28);
+            this.btnNew.Size = new System.Drawing.Size(55, 24);
             this.btnNew.Text = "Crea";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -97,7 +96,7 @@
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 28);
+            this.btnDelete.Size = new System.Drawing.Size(75, 24);
             this.btnDelete.Text = "Rimuovi";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -107,7 +106,7 @@
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(92, 28);
+            this.btnEdit.Size = new System.Drawing.Size(78, 24);
             this.btnEdit.Text = "Modifica";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -117,7 +116,7 @@
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(95, 28);
+            this.btnUpdate.Size = new System.Drawing.Size(80, 24);
             this.btnUpdate.Text = "Aggiorna";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -140,29 +139,29 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvReservation.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReservation.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvReservation.Location = new System.Drawing.Point(47, 79);
-            this.dgvReservation.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvReservation.MinimumSize = new System.Drawing.Size(1257, 538);
+            this.dgvReservation.Location = new System.Drawing.Point(35, 64);
+            this.dgvReservation.MinimumSize = new System.Drawing.Size(943, 437);
             this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
             this.dgvReservation.ReadOnly = true;
             this.dgvReservation.RowHeadersWidth = 51;
             this.dgvReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReservation.Size = new System.Drawing.Size(1257, 538);
+            this.dgvReservation.Size = new System.Drawing.Size(943, 437);
             this.dgvReservation.TabIndex = 3;
             // 
             // FrmReservation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Anagrafica;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1350, 696);
+            this.ClientSize = new System.Drawing.Size(1012, 566);
             this.Controls.Add(this.dgvReservation);
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmReservation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Elenco Prenotazioni";

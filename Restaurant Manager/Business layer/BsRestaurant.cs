@@ -78,11 +78,19 @@ namespace Business_layer
 
         }
 
-        public DataTable Read()
+        public DataTable Read(string name,string city,int type)
         {
             DataTable dtRestaurant = new DataTable();
             DsRestaurant restaurantData = new DsRestaurant();
-            dtRestaurant = restaurantData.Read();
+            string restType = "";
+
+            if (type == 0)
+                restType = "1-4";
+
+            else
+                restType = Convert.ToString(type);
+                
+            dtRestaurant = restaurantData.Read(name,city,restType);
 
             return dtRestaurant;
 

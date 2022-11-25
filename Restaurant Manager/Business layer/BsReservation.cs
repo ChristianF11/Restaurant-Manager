@@ -13,7 +13,7 @@ namespace Business_layer
 {
     public class BsReservation
     {
-        public bool IsValid(Reservation reservation, ref string message, ref string title)
+        public bool IsValid(Reservation reservation, ref string message, ref string title, bool edit, int idSelected)
         {
             DsReservation reservationData = new DsReservation();
             title = "Gestione prenotazione";
@@ -66,16 +66,22 @@ namespace Business_layer
             }
                 
 
-            if (reservationData.CountSeats(reservation.IdRestaurant, reservation.ReservationDate) < 0) //Verifica che ci sia ancora posto
+            if (reservationData.CountSeats(reservation.IdRestaurant, reservation.ReservationDate, reservation.NumCustomers) < 0 && !edit) //Verifica che ci sia ancora posto
             {
                 message = "Spiacenti, ma siamo al completo. Prova a prenotare per un altro giorno";
                 return false;
             }
-                
+            //In questo caso la prenotazione viene modificat e quindi il numero di clienti da verificare è il nuovo valore che sostituirà quello vecchio
+            else if(edit && GetRestoredSeats(reservation.IdRestaurant,reservation.ReservationDate,idSelected) - reservation.NumCustomers < 0)
+            {
+                message = "Spiacenti, ma siamo al completo. Prova a prenotare per un altro giorno";
+                return false;
+            }
+
             return true;
         }
 
-        public Reservation CreateEntity(int idRestaurant, string username, DateTime requestDate, DateTime reservationDate, int numCustomers, decimal price)
+        public Reservation CreateEntity(int idRestaurant, string username, DateTime requestDate, DateTime reservationDate, int numCustomers, int price)
         {
             Reservation reservation = new Reservation(idRestaurant,username,numCustomers,requestDate,reservationDate,price);
 
@@ -110,14 +116,13 @@ namespace Business_layer
                 message = "Prenotazione cancellata";
         }
 
-        public void ClearFields(ref TextBox txtUsername, ref NumericUpDown valueCustomers, ref DateTimePicker dtpReservation)
+        public void ClearFields(ref TextBox txtUsername, ref NumericUpDown valueCustomers)
         {
             txtUsername.Text = string.Empty;
             valueCustomers.Text = "0";
-            dtpReservation.Value = DateTime.Now;
         }
 
-        public int GetEmptySeats(int idRestaurant, DateTime reservationDate)
+        public int GetEmptySeats(int idRestaurant, DateTime reservationDate) //Restituisce il valore dei posti rimanenti
         {
             DsReservation reservationData = new DsReservation();
             int seatsTaken = 0;
@@ -129,14 +134,31 @@ namespace Business_layer
             return emptySeats;
         }
 
-        public decimal GetPrice(int numCustomers, int idRestaurant) //Errore di cast
+        public int GetPrice(int numCustomers, int idRestaurant) 
         {
             DsReservation reservationData = new DsReservation();
-            decimal avgPrice = 0;
+            int avgPrice = 0;
 
-            avgPrice = (decimal)reservationData.GetPrice(numCustomers,idRestaurant);
+            avgPrice = reservationData.GetPrice(numCustomers,idRestaurant);
 
             return avgPrice;
         }
+
+        public int GetNumCustomers(int idReservation)
+        {
+            DsReservation reservationData = new DsReservation();
+            int numCustomers = 0;
+            numCustomers = reservationData.GetNumCustomers(idReservation);
+
+            return numCustomers;
+        }
+
+        public int GetRestoredSeats(int idRestaurant, DateTime reservationDate, int idReservation) //Numero di posti senza una determinata prenotazione (in quanto sta per essere modificata)
+        {
+            int restoredSeats = GetEmptySeats(idRestaurant, reservationDate) + GetNumCustomers(idReservation);
+
+            return restoredSeats;
+        }
+
     }
 }

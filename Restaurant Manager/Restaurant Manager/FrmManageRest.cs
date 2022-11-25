@@ -69,5 +69,11 @@ namespace Restaurant_Manager
             bsRestaurant.ClearFields(ref cmbType, ref txtName, ref txtIva, ref txtStreet, ref txtCity, ref txtTelephone, ref valueSeats, ref valueAvgPrice);
 
         }
+
+        private void FrmManageRest_Load(object sender, EventArgs e)
+        {
+            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbType.SelectedIndex = 0;
+        }
     }
 }

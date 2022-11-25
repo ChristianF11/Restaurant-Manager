@@ -73,19 +73,20 @@ namespace Data_layer
         {
             SqlCommand command = new SqlCommand(query, sqlConnection);
             int result = 0;
-            Open();
-            result = (Int32)command.ExecuteScalar();
-            Close();
 
-            return result;
-        }
-
-        public decimal ExecuteD(string query)
-        {
-            SqlCommand command = new SqlCommand(query, sqlConnection);
-            decimal result = 0;
             Open();
-            result = (decimal)command.ExecuteScalar();
+
+            try
+            {
+                var value = command.ExecuteScalar();
+                result = Convert.ToInt32(value);
+            }
+
+            catch (Exception ex)
+            {
+                result = 0;
+            }
+
             Close();
 
             return result;

@@ -42,10 +42,12 @@
             this.lblSelectedRest = new System.Windows.Forms.Label();
             this.txtRestaurant = new System.Windows.Forms.TextBox();
             this.lblCustomers = new System.Windows.Forms.Label();
-            this.dtpReservation = new System.Windows.Forms.DateTimePicker();
             this.lblReservDate = new System.Windows.Forms.Label();
             this.valueCustomers = new System.Windows.Forms.NumericUpDown();
             this.dgvRestaurants = new System.Windows.Forms.DataGridView();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.valueCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRestaurants)).BeginInit();
@@ -116,8 +118,8 @@
             // txtSeats
             // 
             this.txtSeats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeats.Location = new System.Drawing.Point(558, 203);
-            this.txtSeats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSeats.Location = new System.Drawing.Point(568, 151);
+            this.txtSeats.Margin = new System.Windows.Forms.Padding(2);
             this.txtSeats.Name = "txtSeats";
             this.txtSeats.ReadOnly = true;
             this.txtSeats.Size = new System.Drawing.Size(92, 26);
@@ -130,7 +132,7 @@
             this.lblSeats.BackColor = System.Drawing.Color.Transparent;
             this.lblSeats.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSeats.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblSeats.Location = new System.Drawing.Point(554, 175);
+            this.lblSeats.Location = new System.Drawing.Point(564, 123);
             this.lblSeats.Name = "lblSeats";
             this.lblSeats.Size = new System.Drawing.Size(100, 26);
             this.lblSeats.TabIndex = 27;
@@ -190,40 +192,37 @@
             this.lblCustomers.TabIndex = 33;
             this.lblCustomers.Text = "N° Persone";
             // 
-            // dtpReservation
-            // 
-            this.dtpReservation.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpReservation.CustomFormat = "dd/MM/yyyy hh:mm";
-            this.dtpReservation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReservation.Location = new System.Drawing.Point(557, 305);
-            this.dtpReservation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dtpReservation.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpReservation.Name = "dtpReservation";
-            this.dtpReservation.Size = new System.Drawing.Size(152, 20);
-            this.dtpReservation.TabIndex = 34;
-            this.dtpReservation.ValueChanged += new System.EventHandler(this.dtpReservation_ValueChanged);
-            // 
             // lblReservDate
             // 
             this.lblReservDate.AutoSize = true;
             this.lblReservDate.BackColor = System.Drawing.Color.Transparent;
             this.lblReservDate.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReservDate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblReservDate.Location = new System.Drawing.Point(553, 271);
+            this.lblReservDate.Location = new System.Drawing.Point(315, 55);
             this.lblReservDate.Name = "lblReservDate";
             this.lblReservDate.Size = new System.Drawing.Size(185, 26);
             this.lblReservDate.TabIndex = 35;
             this.lblReservDate.Text = "Data di prenotazione";
-            this.lblReservDate.Click += new System.EventHandler(this.lblReservDate_Click);
             // 
             // valueCustomers
             // 
             this.valueCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueCustomers.Location = new System.Drawing.Point(290, 387);
-            this.valueCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.valueCustomers.Margin = new System.Windows.Forms.Padding(2);
+            this.valueCustomers.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.valueCustomers.Name = "valueCustomers";
             this.valueCustomers.Size = new System.Drawing.Size(134, 26);
             this.valueCustomers.TabIndex = 36;
+            this.valueCustomers.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.valueCustomers.ValueChanged += new System.EventHandler(this.valueCustomers_ValueChanged);
             // 
             // dgvRestaurants
             // 
@@ -235,7 +234,7 @@
             this.dgvRestaurants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRestaurants.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvRestaurants.Location = new System.Drawing.Point(20, 67);
-            this.dgvRestaurants.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvRestaurants.Margin = new System.Windows.Forms.Padding(2);
             this.dgvRestaurants.MultiSelect = false;
             this.dgvRestaurants.Name = "dgvRestaurants";
             this.dgvRestaurants.ReadOnly = true;
@@ -247,6 +246,36 @@
             this.dgvRestaurants.TabStop = false;
             this.dgvRestaurants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRestaurants_CellClick);
             // 
+            // monthCalendar
+            // 
+            this.monthCalendar.Location = new System.Drawing.Point(320, 90);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 38;
+            this.monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.dtpReservation_DateChanged);
+            // 
+            // lblPrice
+            // 
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrice.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblPrice.Location = new System.Drawing.Point(564, 198);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(127, 26);
+            this.lblPrice.TabIndex = 40;
+            this.lblPrice.Text = "Prezzo medio";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Location = new System.Drawing.Point(568, 226);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(92, 26);
+            this.txtPrice.TabIndex = 39;
+            this.txtPrice.TabStop = false;
+            // 
             // FrmManageReser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,10 +284,12 @@
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Prenotazione;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(767, 434);
+            this.Controls.Add(this.lblPrice);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.dgvRestaurants);
             this.Controls.Add(this.valueCustomers);
             this.Controls.Add(this.lblReservDate);
-            this.Controls.Add(this.dtpReservation);
             this.Controls.Add(this.lblCustomers);
             this.Controls.Add(this.lblSelectedRest);
             this.Controls.Add(this.txtRestaurant);
@@ -270,7 +301,7 @@
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(783, 473);
             this.MinimumSize = new System.Drawing.Size(783, 473);
             this.Name = "FrmManageReser";
@@ -300,9 +331,11 @@
         private System.Windows.Forms.Label lblSelectedRest;
         private System.Windows.Forms.TextBox txtRestaurant;
         private System.Windows.Forms.Label lblCustomers;
-        private System.Windows.Forms.DateTimePicker dtpReservation;
         private System.Windows.Forms.Label lblReservDate;
         private System.Windows.Forms.NumericUpDown valueCustomers;
         private System.Windows.Forms.DataGridView dgvRestaurants;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.TextBox txtPrice;
     }
 }

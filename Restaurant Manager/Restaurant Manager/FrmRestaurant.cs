@@ -22,10 +22,15 @@ namespace Restaurant_Manager
         private void FrmRestaurant_Load(object sender, EventArgs e)
         {
             BsRestaurant bsRestaurant= new BsRestaurant();
-            dgvRestaurant.DataSource = bsRestaurant.Read();
+            dgvRestaurant.DataSource = bsRestaurant.Read("","",0); //Caricamento della lista completa
 
+            //La tabella viene settata di default "ReadOnly" e viene nascosta la prima colonnna dedicata all'ID
             dgvRestaurant.ReadOnly = true;
             dgvRestaurant.Columns[0].Visible = false;
+
+            //Viene negata la scrittura all'interno della ComboBox e inizializzata con l'elemento "Tutti i tipi"
+            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbType.SelectedIndex = 0;
 
         }
 
@@ -43,7 +48,14 @@ namespace Restaurant_Manager
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
-            dgvRestaurant.DataSource = bsRestaurant.Read();
+
+            if (txtName == null)
+                txtName.Text = "";
+
+            if (txtCity == null)
+                txtCity.Text = "";
+
+            dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text,txtCity.Text,cmbType.SelectedIndex);
             
         }
 
@@ -88,5 +100,6 @@ namespace Restaurant_Manager
         {
             return dgvRestaurant.Rows.Count;
         }
+
     }
 }

@@ -8,8 +8,7 @@ namespace Entities
 {
     public class Reservation
     {
-        private int idReservation, idRestaurant, numCustomers;
-        private decimal price;
+        private int idReservation, idRestaurant, numCustomers, price;
         private string username;
         private DateTime requestDate, reservationDate;
 
@@ -31,7 +30,7 @@ namespace Entities
             set { numCustomers = value; }
         }
 
-        public decimal Price
+        public int Price
         {
             get { return price; }
             set { price = value; }
@@ -105,7 +104,7 @@ namespace Entities
             Price = 0;
         }
 
-        public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate, DateTime reservationDate, decimal price) : this(idRestaurant, username, numCustomers, requestDate,reservationDate)
+        public Reservation(int idRestaurant, string username, int numCustomers, DateTime requestDate, DateTime reservationDate, int price) : this(idRestaurant, username, numCustomers, requestDate,reservationDate)
         {
             Price = price;
         }
