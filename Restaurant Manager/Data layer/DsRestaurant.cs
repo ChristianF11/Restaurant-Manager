@@ -16,7 +16,7 @@ namespace Data_layer
         {
             DbData genericOperation = new DbData();
             string query = $"insert into Restaurant values('{restaurant.BusinessName}','{restaurant.PIva}','{restaurant.Street}','{restaurant.City}','{restaurant.TelephoneNum}',{restaurant.Type}," +
-            $"{restaurant.Seats},0,{restaurant.AvgPrice})";
+            $"{restaurant.Seats},{restaurant.AvgPrice})";
 
             genericOperation.Create(query);
 

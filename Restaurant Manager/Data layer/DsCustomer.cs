@@ -21,11 +21,13 @@ namespace Data_layer
 
         }
 
-        public DataTable Read()
+        public DataTable Read(string username, string city, string email, bool isAdmin)
         {
             DbData genericOperation = new DbData();
             DataTable customerTable = new DataTable();
-            string query = "select Username, Password, IsAdmin as 'Admin', Info, PhoneNumber as 'Numero di telefono', Email, City as 'Città' from Customer";
+            string query = "select Username, Password, IsAdmin as 'Admin', Info, PhoneNumber as 'Numero di telefono', Email, City as 'Città' from Customer" +
+                $" where Username like '{username}%' and City like '{city}%' and Email like '{email}%' and (IsAdmin = '{isAdmin}' or IsAdmin = 'true')";
+
             customerTable = genericOperation.Read(query);
 
             return customerTable;

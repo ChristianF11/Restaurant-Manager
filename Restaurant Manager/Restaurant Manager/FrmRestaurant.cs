@@ -48,15 +48,8 @@ namespace Restaurant_Manager
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
-
-            if (txtName == null)
-                txtName.Text = "";
-
-            if (txtCity == null)
-                txtCity.Text = "";
-
-            dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text,txtCity.Text,cmbType.SelectedIndex);
-            
+            CheckFilterFields();
+            dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text, txtCity.Text, cmbType.SelectedIndex);           
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -87,6 +80,8 @@ namespace Restaurant_Manager
             {
                 bsRestaurant.Delete(idSelected, ref message);
                 OperationMessage.GetCustomWarning(message, "Eliminazione Ristorante");
+                CheckFilterFields();
+                dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text,txtCity.Text,cmbType.SelectedIndex);
             }
         }
         private void UpdateElement()
@@ -99,6 +94,14 @@ namespace Restaurant_Manager
         private int CountRows()
         {
             return dgvRestaurant.Rows.Count;
+        }
+        private void CheckFilterFields()
+        {
+            if (txtName == null)
+                txtName.Text = "";
+
+            if (txtCity == null)
+                txtCity.Text = "";
         }
 
     }

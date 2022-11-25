@@ -24,12 +24,14 @@ namespace Data_layer
 
         }
 
-        public DataTable Read()
+        public DataTable Read(string customerName, string city)
         {
             DbData genericOperation = new DbData();
             DataTable reservationTable = new DataTable();
             string query = "select IdReservation as 'ID', BusinessName as 'Ristorante',Username,RequestDate as 'Giorno prenotazione',ReservationDate as 'Giorno prenotato'," +
-                "NumberCustomers as 'Posti prenotati',Price from Restaurant r inner join Reservation rv on r.IdRestaurant = rv.IdRestaurant";
+                "NumberCustomers as 'Posti prenotati',Price from Restaurant r inner join Reservation rv on r.IdRestaurant = rv.IdRestaurant " +
+                $"where Username like '{customerName}%' and r.City like '{city}%' ";
+
             reservationTable = genericOperation.Read(query);
 
             return reservationTable;
@@ -49,9 +51,7 @@ namespace Data_layer
         public void Delete(int idReservation)
         {
             DbData genericOperation = new DbData(); 
-            string query = $"update Restaurant set SeatsTaken = SeatsTaken - rs.NumberCustomers " +
-                $"from Restaurant r inner join Reservation rs on r.IdRestaurant = rs.IdRestaurant where rs.IdReservation = {idReservation}" +
-                $"delete from Reservation where IdReservation = {idReservation}"; //Rimuovere prenotazione e rimuovere i posti liberati dalla colonna "SeatsTaken" (in "Restaurant")
+            string query = $"delete from Reservation where IdReservation = {idReservation}";
 
             genericOperation.Delete(query);
         }

@@ -83,6 +83,16 @@ namespace Restaurant_Manager.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FrmStats_design {
+            get {
+                object obj = ResourceManager.GetObject("FrmStats design", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MainForm {
             get {
                 object obj = ResourceManager.GetObject("MainForm", resourceCulture);

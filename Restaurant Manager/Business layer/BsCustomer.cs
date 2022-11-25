@@ -52,11 +52,11 @@ namespace Business_layer
             customerData.Create(customer);
         }
 
-        public DataTable Read()
+        public DataTable Read(string username, string city,string email, bool isAdmin)
         {
             DataTable dtCustomer = new DataTable();
             DsCustomer customerData = new DsCustomer();
-            dtCustomer = customerData.Read();
+            dtCustomer = customerData.Read(username,city,email,isAdmin);
 
             return dtCustomer;
         }

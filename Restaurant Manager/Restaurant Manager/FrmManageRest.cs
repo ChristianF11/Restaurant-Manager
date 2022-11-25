@@ -31,7 +31,8 @@ namespace Restaurant_Manager
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Hide();
+
+            this.Hide();   
         }
 
  
@@ -48,18 +49,27 @@ namespace Restaurant_Manager
             }
             else
             {
-                if(edit)
+                try
                 {
-                    bsRestaurant.Update(entity, idSelected);
+                    if (edit)
+                    {
+                        bsRestaurant.Update(entity, idSelected);
+                    }
+
+                    else
+                    {
+                        bsRestaurant.Create(entity);
+                    }
+
+                    OperationMessage.GetGenericMessage();
+                    bsRestaurant.ClearFields(ref cmbType, ref txtName, ref txtIva, ref txtStreet, ref txtCity, ref txtTelephone, ref valueSeats, ref valueAvgPrice);
+
                 }
 
-                else
+                catch(Exception ex) 
                 {
-                    bsRestaurant.Create(entity);
+                    OperationMessage.GetGenericError();
                 }
-
-                OperationMessage.GetGenericMessage();
-                bsRestaurant.ClearFields(ref cmbType, ref txtName, ref txtIva, ref txtStreet, ref txtCity, ref txtTelephone, ref valueSeats, ref valueAvgPrice);
             }
         }
 

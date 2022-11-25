@@ -21,7 +21,7 @@ namespace Restaurant_Manager
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
             BsCustomer bsCustomer = new BsCustomer();
-            dgvCustomer.DataSource = bsCustomer.Read();
+            dgvCustomer.DataSource = bsCustomer.Read("","","",false);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -37,18 +37,20 @@ namespace Restaurant_Manager
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string userSelected = (string)dgvCustomer.CurrentRow.Cells[0].Value;
-            FrmManageCust editCustomerFrm = new FrmManageCust(userSelected);
-            editCustomerFrm.ShowDialog();
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
             if (CountRows() == 0)
                 OperationMessage.GetIsEmpty();
 
             else
-                UpdateElement();
+            {
+                string userSelected = (string)dgvCustomer.CurrentRow.Cells[0].Value;
+                FrmManageCust editCustomerFrm = new FrmManageCust(userSelected);
+                editCustomerFrm.ShowDialog();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateElement();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -72,16 +74,32 @@ namespace Restaurant_Manager
             {
                 bsCustomer.Delete(userSelected, ref message);
                 OperationMessage.GetCustomWarning(message, "Eliminazione Utente");
+                CheckFilterFields();
+                dgvCustomer.DataSource = bsCustomer.Read(txtName.Text, txtCity.Text, txtMail.Text, cbxAdmin.Checked);
+
             }
         }
         private void UpdateElement()
         {
+            CheckFilterFields();
+
             BsCustomer bsCustomer = new BsCustomer();
-            dgvCustomer.DataSource = bsCustomer.Read();
+            dgvCustomer.DataSource = bsCustomer.Read(txtName.Text,txtCity.Text,txtMail.Text,cbxAdmin.Checked);
         }
         private int CountRows()
         {
             return dgvCustomer.Rows.Count;
+        }
+        private void CheckFilterFields()
+        {
+            if (txtName.Text == null)
+                txtName.Text = "";
+
+            if (txtCity.Text == null)
+                txtCity.Text = "";
+
+            if (txtMail.Text == null)
+                txtMail.Text = "";
         }
     }
 }

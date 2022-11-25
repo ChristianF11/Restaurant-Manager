@@ -21,14 +21,16 @@ namespace Restaurant_Manager
         private void FrmReservation_Load(object sender, EventArgs e)
         {
             BsReservation bsReservation = new BsReservation();
-            dgvReservation.DataSource = bsReservation.Read();
+            dgvReservation.DataSource = bsReservation.Read("","");
             dgvReservation.Columns[0].Visible= false;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            CheckFilterFields();
+
             BsReservation bsReservation = new BsReservation();
-            dgvReservation.DataSource = bsReservation.Read();
+            dgvReservation.DataSource = bsReservation.Read(txtName.Text, txtCity.Text);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -72,6 +74,8 @@ namespace Restaurant_Manager
             {
                 bsReservation.Delete(idSelected, ref message);
                 OperationMessage.GetCustomMessage(message, "Eliminazione Prenotazione");
+                CheckFilterFields();
+                dgvReservation.DataSource = bsReservation.Read(txtName.Text,txtCity.Text);
             }
         }
         private void UpdateElement()
@@ -84,6 +88,14 @@ namespace Restaurant_Manager
         private int CountRows()
         {
             return dgvReservation.Rows.Count;
+        }
+        private void CheckFilterFields()
+        {
+            if (txtName.Text == null)
+                txtName.Text = "";
+
+            if (txtCity.Text == null)
+                txtCity.Text = "";
         }
     }
 }

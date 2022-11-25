@@ -94,11 +94,11 @@ namespace Business_layer
             reservationData.Create(reservation);
         }
 
-        public DataTable Read()
+        public DataTable Read(string customerName, string city)
         {
             DataTable dtReservation = new DataTable();
             DsReservation reservationData = new DsReservation();
-            dtReservation = reservationData.Read();
+            dtReservation = reservationData.Read(customerName,city);
 
             return dtReservation;
         }

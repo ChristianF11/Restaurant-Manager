@@ -28,10 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStats));
+            this.SuspendLayout();
+            // 
+            // FrmStats
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FrmStats";
+            this.BackColor = System.Drawing.Color.Green;
+            this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.FrmStats_design;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1349, 716);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1367, 763);
+            this.Name = "FrmStats";
+            this.Text = "Statistiche";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

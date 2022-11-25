@@ -33,6 +33,7 @@ namespace Data_layer
         public void Create(string query)
         {
             SqlCommand command = new SqlCommand(query, sqlConnection);
+            
             Open();
             command.ExecuteScalar();
             Close();
