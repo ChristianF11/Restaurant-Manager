@@ -9,19 +9,26 @@ namespace Data_layer
 {
     public class DsStats
     {
-        public int GetIncome(int idRestaurant)
+        public DataTable RestaurantsIncome(int month)
         {
             DbData genericOperation = new DbData();
-            string query = $"select sum(Price) from Reservation where IdRestaurant = {idRestaurant}";
+            DataTable dt = new DataTable();
+            string query = $"select BusinessName,Sum(Price) as 'Incasso' from ViewReservations  where Month(ReservationDate) = {month} group by BusinessName order by 'Incasso' desc";
 
-            return genericOperation.Execute(query);
+            dt = genericOperation.Read(query);
+
+            return dt;
         }
-        public DataTable GetPrenotationRank()
+
+        public DataTable RestaurantsCustomers(int month)
         {
             DbData genericOperation = new DbData();
-            string query = "select BusinessName,City,SeatsTaken from Restaurant order by SeatsTaken desc";
-
-            return genericOperation.Read(query);
+            DataTable dt = new DataTable();
+            string query = $"select BusinessName,Sum(NumberCustomers) as 'Clienti' from ViewReservations  where Month(ReservationDate) = {month} group by BusinessName order by 'Clienti' desc";
+        
+            dt = genericOperation.Read(query);
+            
+            return dt;
         }
 
     }

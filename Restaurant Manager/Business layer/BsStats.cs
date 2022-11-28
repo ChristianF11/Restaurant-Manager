@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,24 +11,26 @@ namespace Business_layer
 {
     public class BsStats
     {
-        public int GetIncome(int idRestaurant)
+        public DataTable RestaurantsIncome(int month) //Metodo che restituisce l'incasso (in ordine) di tutti i ristoranti
         {
             DsStats statsData = new DsStats();
-            int totalIncome = 0;
+            DataTable dt = new DataTable();
 
-            totalIncome = statsData.GetIncome(idRestaurant);
+            dt = statsData.RestaurantsIncome(month);
+
+            return dt;
+
+        }
+
+        public DataTable RestaurantsCustomers(int month)
+        {
+            DsStats statsData = new DsStats();
+            DataTable dt = new DataTable();
+
+            dt = statsData.RestaurantsCustomers(month);
             
-            return totalIncome;
+            return dt;
         }
 
-        public DataTable GetPrenotationRank()
-        {
-            DataTable dtRestaurant = new DataTable();
-            DsStats statsData = new DsStats();
-
-            dtRestaurant = statsData.GetPrenotationRank();
-
-            return dtRestaurant;
-        }
     }
 }

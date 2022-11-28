@@ -66,7 +66,7 @@ namespace Business_layer
             }
                 
 
-            if (reservationData.CountSeats(reservation.IdRestaurant, reservation.ReservationDate, reservation.NumCustomers) < 0 && !edit) //Verifica che ci sia ancora posto
+            if (reservationData.CountActualSeats(reservation.IdRestaurant, reservation.ReservationDate, reservation.NumCustomers) < 0 && !edit) //Verifica che ci sia ancora posto
             {
                 message = "Spiacenti, ma siamo al completo. Prova a prenotare per un altro giorno";
                 return false;

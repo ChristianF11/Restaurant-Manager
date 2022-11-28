@@ -51,5 +51,11 @@ namespace Restaurant_Manager
             FrmReservation reservationForm = new FrmReservation();
             reservationForm.ShowDialog();
         }
+
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+            FrmStats statsForm = new FrmStats();
+            statsForm.ShowDialog();
+        }
     }
 }

@@ -56,6 +56,9 @@ namespace Data_layer
             genericOperation.Delete(query);
         }
 
+        /// <summary>
+        /// Verifica che l’username inserito esista
+        /// </summary>
         public int CheckUsername(string username)
         {
             DbData genericOperation = new DbData();
@@ -63,6 +66,9 @@ namespace Data_layer
             return genericOperation.Execute(query);
         }
 
+        /// <summary>
+        /// Verifica che il ristorante selezionato esista
+        /// </summary>
         public int CheckRestaurant(int id)
         {
             DbData genericOperation = new DbData();
@@ -70,7 +76,10 @@ namespace Data_layer
             return genericOperation.Execute(query);
         }
 
-        public int CountSeats(int idRestaurant, DateTime reservationDate, int numCustomers) //Restituisce quanti posti rimarrebbero con i nuovi clienti
+        /// <summary>
+        /// Restituisce il valore di quanti posti rimarrebbero contando anche i clienti che stanno prenotando
+        /// </summary>
+        public int CountActualSeats(int idRestaurant, DateTime reservationDate, int numCustomers)
         {
             DbData genericOperation = new DbData();
             int seatsTaken = 0;
@@ -90,7 +99,10 @@ namespace Data_layer
             return seatsTaken;
         }
 
-        public int CountSeats(int idRestaurant, DateTime reservationDate) //Conta i posti occupati attualmente (SENZA nuovi clienti)
+        /// <summary>
+        /// Restituisce il valore dei posti occupati senza contare il numero di clienti che stanno prenotando
+        /// </summary>
+        public int CountSeats(int idRestaurant, DateTime reservationDate)
         {
             DbData genericOperation = new DbData();
             int seatsTaken = 0;
@@ -109,7 +121,12 @@ namespace Data_layer
             return seatsTaken;
         }
 
-        public int GetEmptySeats(int seatsTaken, int idRestaurant)
+        /// <summary>
+        /// Metodo che ritorna il valore di quanti posti rimarrebbero senza contare i clienti che stanno prenotando. 
+        /// Questo metodo viene utilizzato anche durante la modifica di un’ordinazione (per capire quanti posti sarebbero rimasti 
+        /// senza quella prenotazione che si sta editando)
+        /// </summary>
+        public int GetEmptySeats(int seatsTaken, int idRestaurant) //Restituisce quanti posti rimarrebbero SENZA contare i clienti che stanno prenotando
         {
             DbData genericOperation = new DbData();
             int emptySeats = 0;
@@ -128,6 +145,9 @@ namespace Data_layer
             return emptySeats;
         }
 
+        /// <summary>
+        /// Restituisce il valore del prezzo della prenotazione attuale
+        /// </summary>
         public int GetPrice(int numCustomers, int idRestaurant)
         {
             DbData genericOperation = new DbData();
@@ -136,6 +156,9 @@ namespace Data_layer
             return genericOperation.Execute(query);
         }
 
+        /// <summary>
+        /// Restituisce il numero di clienti di una specifica prenotazione
+        /// </summary>
         public int GetNumCustomers(int idReservation) //Ritorna il numero di clienti presenti in una prenotazione (utile per la funzione "Modifica")
         {
             DbData genericOperation = new DbData();
