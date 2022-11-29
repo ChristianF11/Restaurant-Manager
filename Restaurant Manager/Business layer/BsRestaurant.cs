@@ -78,7 +78,7 @@ namespace Business_layer
 
         }
 
-        public DataTable Read(string name,string city,int type)
+        public DataTable Read(string name,string city,int type, string selectedOrder)
         {
             DataTable dtRestaurant = new DataTable();
             DsRestaurant restaurantData = new DsRestaurant();
@@ -89,8 +89,11 @@ namespace Business_layer
 
             else
                 restType = Convert.ToString(type);
+
+            if (selectedOrder == "**Nessun Filtro**")
+                selectedOrder = "ID";
                 
-            dtRestaurant = restaurantData.Read(name,city,restType);
+            dtRestaurant = restaurantData.Read(name,city,restType,selectedOrder);
 
             return dtRestaurant;
 

@@ -22,15 +22,14 @@ namespace Restaurant_Manager
         private void FrmRestaurant_Load(object sender, EventArgs e)
         {
             BsRestaurant bsRestaurant= new BsRestaurant();
-            dgvRestaurant.DataSource = bsRestaurant.Read("","",0); //Caricamento della lista completa
+            dgvRestaurant.DataSource = bsRestaurant.Read("","",0,"ID"); //Caricamento della lista completa
 
             //La tabella viene settata di default "ReadOnly" e viene nascosta la prima colonnna dedicata all'ID
             dgvRestaurant.ReadOnly = true;
             dgvRestaurant.Columns[0].Visible = false;
 
             //Viene negata la scrittura all'interno della ComboBox e inizializzata con l'elemento "Tutti i tipi"
-            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbType.SelectedIndex = 0;
+            SetComboBox();
 
         }
 
@@ -47,9 +46,7 @@ namespace Restaurant_Manager
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            BsRestaurant bsRestaurant = new BsRestaurant();
-            CheckFilterFields();
-            dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text, txtCity.Text, cmbType.SelectedIndex);           
+            UpdateList();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -70,6 +67,13 @@ namespace Restaurant_Manager
                 UpdateElement();
         }
 
+        private void cmbOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            CheckFilterFields();
+            dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text, txtCity.Text, cmbType.SelectedIndex, cmbOrder.Text);
+        }
+
         private void DeleteElement()
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
@@ -81,7 +85,7 @@ namespace Restaurant_Manager
                 bsRestaurant.Delete(idSelected, ref message);
                 OperationMessage.GetCustomWarning(message, "Eliminazione Ristorante");
                 CheckFilterFields();
-                dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text,txtCity.Text,cmbType.SelectedIndex);
+                dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text,txtCity.Text,cmbType.SelectedIndex,cmbOrder.Text);
             }
         }
         private void UpdateElement()
@@ -102,6 +106,19 @@ namespace Restaurant_Manager
 
             if (txtCity == null)
                 txtCity.Text = "";
+        }
+        private void SetComboBox()
+        {
+            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbType.SelectedIndex = 0;
+            cmbOrder.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOrder.SelectedIndex = 0;
+        }
+        private void UpdateList()
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            CheckFilterFields();
+            dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text, txtCity.Text, cmbType.SelectedIndex, cmbOrder.Text);
         }
 
     }
