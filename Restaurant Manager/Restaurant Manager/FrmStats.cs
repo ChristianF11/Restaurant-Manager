@@ -9,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Markup;
 using System.Xml.Schema;
 
 namespace Restaurant_Manager
 {
     public partial class FrmStats : Form
     {
-        bool clear = false;
+        bool clear = false; //Variabile che ripulisce le serie dei grafici e le liste di dati prima di disegnare il nuovo grafico
+        bool threeDEnabled = false;
         public FrmStats()
         {
             InitializeComponent();
@@ -36,43 +38,81 @@ namespace Restaurant_Manager
             //Pagina 2
             PrepareComboBox(cmbMonth2);
             AssignTitle(chartTypeIncome,chartTypeCustomers);
-            //Metodo Fill()
+            FillTypesCharts();
 
             //Pagina 3
             PrepareComboBox(cmbMonth3);
             AssignTitle(chartCityIncome,chartCityCustomers);
-            //Metodo Fill()
+            FillCitiesCharts();
 
         }
 
-        private void FillSingleChart(ref bool clear, DataTable dt, Chart chartRestaurant)
+        private void FillSinglePieChart(ref bool clear, DataTable dt, Chart chartName, string title)
         {
             List<string> names = new List<string>();
             List<int> values = new List<int>();
-            Series seriesRestaurant = new Series();
+            Series series = new Series(title);
 
-            if(clear)
+            if (clear)
             {
                 names.Clear();
                 values.Clear();
-                chartRestIncome.Series.Clear();
-                chartRestCustomers.Series.Clear();
+                chartName.Series.Clear();
             }
-            
-            for(int i = 0; i < dt.Rows.Count; i++)
+
+            chartName.Series.Add(series);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 names.Add(dt.Rows[i][0].ToString());
                 values.Add(Convert.ToInt32(dt.Rows[i][1]));
             }
 
-            for(int i = 0; i < dt.Rows.Count; i++) 
+            if (threeDEnabled)
+                chartName.ChartAreas[0].Area3DStyle.Enable3D = true;
+
+            else
+                chartName.ChartAreas[0].Area3DStyle.Enable3D = false;
+
+            chartName.Series[0].ChartType = SeriesChartType.Pie;
+            chartName.Series[0].Points.DataBindXY(names, values);
+            chartName.Legends[0].Enabled = true;
+            
+        }
+
+        private void FillSingleBarChart(ref bool clear, DataTable dt, Chart chartName, string title)
+        {
+            List<string> names = new List<string>();
+            List<int> values = new List<int>();
+            Series series = new Series();
+
+            if (clear)
             {
-                string businessName = names[i];
+                names.Clear();
+                values.Clear();
+                chartName.Series.Clear();
+            }
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                names.Add(dt.Rows[i][0].ToString());
+                values.Add(Convert.ToInt32(dt.Rows[i][1]));
+            }
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string xAxisValue = names[i];
                 int yAxisValue = values[i];
-                seriesRestaurant = new Series(businessName, yAxisValue);
-                
-                chartRestaurant.Series.Add(seriesRestaurant);
-                chartRestaurant.Series[businessName].Points.AddXY("Ristoranti",yAxisValue);
+                series = new Series(xAxisValue, yAxisValue);
+
+                if (threeDEnabled)
+                    chartName.ChartAreas[0].Area3DStyle.Enable3D = true;
+
+                else
+                    chartName.ChartAreas[0].Area3DStyle.Enable3D = false;
+
+                chartName.Series.Add(series);
+                chartName.Series[xAxisValue].Points.AddXY(title, yAxisValue);
             }
 
             clear = false;
@@ -83,11 +123,47 @@ namespace Restaurant_Manager
             BsStats bsStats = new BsStats();
             DataTable dt = new DataTable();
 
-            dt = bsStats.RestaurantsIncome(cmbMonth.SelectedIndex + 1);
-            FillSingleChart(ref clear, dt, chartRestIncome);
+            clear = true;
 
-            dt = bsStats.RestaurantsCustomers(cmbMonth.SelectedIndex + 1);
-            FillSingleChart(ref clear, dt, chartRestCustomers);
+            dt = bsStats.GetRestaurantsIncome(cmbMonth.SelectedIndex + 1);
+            FillSingleBarChart(ref clear, dt, chartRestIncome, "Ristoranti");
+
+            clear = true;
+
+            dt = bsStats.GetRestaurantsCustomers(cmbMonth.SelectedIndex + 1);
+            FillSingleBarChart(ref clear, dt, chartRestCustomers, "Ristoranti");
+        }
+
+        private void FillTypesCharts()
+        {
+            BsStats bsStats = new BsStats();
+            DataTable dt = new DataTable();
+
+            clear = true;
+
+            dt = bsStats.GetTypesIncome(cmbMonth2.SelectedIndex + 1);
+            FillSinglePieChart(ref clear, dt, chartTypeIncome, "Tipo Ristorante");
+
+            clear = true;
+
+            dt = bsStats.GetTypesCustomers(cmbMonth2.SelectedIndex + 1);
+            FillSinglePieChart(ref clear, dt, chartTypeCustomers, "Tipo Ristorante");
+        }
+
+        private void FillCitiesCharts()
+        {
+            BsStats bsStats = new BsStats();
+            DataTable dt = new DataTable();
+
+            clear = true;
+
+            dt = bsStats.GetCitiesIncome(cmbMonth3.SelectedIndex + 1);
+            FillSingleBarChart(ref clear, dt, chartCityIncome, "Città");
+            
+            clear = true;
+            
+            dt = bsStats.GetCitiesCustomers(cmbMonth3.SelectedIndex + 1);
+            FillSingleBarChart(ref clear, dt, chartCityCustomers, "Città");
         }
 
         private void cmbMonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,5 +184,34 @@ namespace Restaurant_Manager
             comboBox.SelectedIndex = 0;
         }
 
+        private void cmbMonth3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clear = true;
+            FillCitiesCharts();
+        }
+
+        private void EnableDisable3D()
+        {
+            if (threeDEnabled)
+                threeDEnabled = false;
+
+            else
+                threeDEnabled = true;
+
+            FillRestaurantCharts();
+            FillTypesCharts();
+            FillCitiesCharts();
+        }
+
+        private void btn2D3D_Click(object sender, EventArgs e)
+        {
+            EnableDisable3D();
+        }
+
+        private void cmbMonth2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clear = true;
+            FillTypesCharts();
+        }
     }
 }

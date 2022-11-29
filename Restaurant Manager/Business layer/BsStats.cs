@@ -11,24 +11,64 @@ namespace Business_layer
 {
     public class BsStats
     {
-        public DataTable RestaurantsIncome(int month) //Metodo che restituisce l'incasso (in ordine) di tutti i ristoranti
+        public DataTable GetRestaurantsIncome(int month) //Metodo che restituisce l'incasso (in ordine) di tutti i ristoranti
         {
             DsStats statsData = new DsStats();
             DataTable dt = new DataTable();
 
-            dt = statsData.RestaurantsIncome(month);
+            dt = statsData.GetRestaurantsIncome(month);
 
             return dt;
 
         }
 
-        public DataTable RestaurantsCustomers(int month)
+        public DataTable GetRestaurantsCustomers(int month)
         {
             DsStats statsData = new DsStats();
             DataTable dt = new DataTable();
 
-            dt = statsData.RestaurantsCustomers(month);
+            dt = statsData.GetRestaurantsCustomers(month);
             
+            return dt;
+        }
+
+        public DataTable GetTypesIncome(int month)
+        {
+            DsStats statsData = new DsStats();
+            DataTable dt = new DataTable();
+
+            dt = statsData.GetTypesIncome(month);
+
+            return dt;
+        }
+
+        public DataTable GetTypesCustomers(int month)
+        {
+            DsStats statsData = new DsStats();
+            DataTable dt = new DataTable();
+
+            dt = statsData.GetTypesCustomers(month);
+
+            return dt;
+        }
+
+        public DataTable GetCitiesIncome(int month)
+        {
+            DsStats statsData = new DsStats();
+            DataTable dt = new DataTable();
+
+            dt = statsData.GetCitiesIncome(month);
+
+            return dt;
+        }
+
+        public DataTable GetCitiesCustomers(int month)
+        {
+            DsStats statsData = new DsStats();
+            DataTable dt = new DataTable();
+
+            dt = statsData.GetCitiesCustomers(month);
+
             return dt;
         }
 
