@@ -116,9 +116,8 @@ namespace Business_layer
                 message = "Prenotazione cancellata";
         }
 
-        public void ClearFields(ref TextBox txtUsername, ref NumericUpDown valueCustomers)
+        public void ClearFields(ref NumericUpDown valueCustomers)
         {
-            txtUsername.Text = string.Empty;
             valueCustomers.Text = "0";
         }
 

@@ -51,7 +51,7 @@ namespace Restaurant_Manager
         {
             List<string> names = new List<string>();
             List<int> values = new List<int>();
-            Series series = new Series(title);
+            Series series = new Series();
 
             if (clear)
             {
@@ -60,12 +60,14 @@ namespace Restaurant_Manager
                 chartName.Series.Clear();
             }
 
+            series = new Series(title);
             chartName.Series.Add(series);
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 names.Add(dt.Rows[i][0].ToString());
                 values.Add(Convert.ToInt32(dt.Rows[i][1]));
+
             }
 
             if (threeDEnabled)
@@ -99,6 +101,8 @@ namespace Restaurant_Manager
                 values.Add(Convert.ToInt32(dt.Rows[i][1]));
             }
 
+            chartName.ChartAreas[0].AxisY.Interval = 10;
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 string xAxisValue = names[i];
@@ -113,6 +117,7 @@ namespace Restaurant_Manager
 
                 chartName.Series.Add(series);
                 chartName.Series[xAxisValue].Points.AddXY(title, yAxisValue);
+                chartName.Series[xAxisValue].Label = yAxisValue.ToString();
             }
 
             clear = false;

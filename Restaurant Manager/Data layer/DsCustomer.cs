@@ -34,6 +34,18 @@ namespace Data_layer
 
         }
 
+        public DataTable ReadUsername()
+        {
+            DbData genericOperation = new DbData();
+            DataTable usernameTable = new DataTable();
+            string query = "select Username from Customer";
+
+            usernameTable = genericOperation.Read(query);
+
+            return usernameTable;
+           
+        }
+
         public void Update(Customer customer)
         {
             DbData genericOperation = new DbData();

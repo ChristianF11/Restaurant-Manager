@@ -36,16 +36,19 @@ namespace Restaurant_Manager
         private void btnCancel_Click(object sender, EventArgs e)
         {
             BsReservation bsReservation = new BsReservation();
-            bsReservation.ClearFields(ref txtUsername, ref valueCustomers);
+            bsReservation.ClearFields(ref valueCustomers);
 
         }
 
         private void FrmManageReser_Load(object sender, EventArgs e)
         {
+            //Raggruppare in metodo
             BsRestaurant bsRestaurant = new BsRestaurant();
 
             dgvRestaurants.DataSource = bsRestaurant.ReadName();
             dgvRestaurants.Columns[0].Visible = false; //Viene nascosta la colonna degli ID
+            lbxCustomer.DataSource  = GetUsernames();
+            lbxRestaurants.DataSource = GetRestaurants();
             txtRestaurant.Text = dgvRestaurants.SelectedRows[0].Cells[1].Value.ToString(); //L'etichetta con il nome del ristorante selezioanto partirà di default con il primo elemento
             txtSeats.Text = GetEmptySeats(); //Vengono mostrati i posti disponibili
             txtPrice.Text = GetPrice().ToString() + "€";
@@ -77,13 +80,13 @@ namespace Restaurant_Manager
             if(dgvRestaurants.CurrentCell != null)
             {
                 price = bsReservation.GetPrice((int)valueCustomers.Value, (int)dgvRestaurants.CurrentRow.Cells[0].Value);
-                entity = bsReservation.CreateEntity((int)dgvRestaurants.CurrentRow.Cells[0].Value, txtUsername.Text, requestDate, reservationDate, (int)valueCustomers.Value, price);
+                entity = bsReservation.CreateEntity((int)dgvRestaurants.CurrentRow.Cells[0].Value, lbxCustomer.SelectedItem.ToString(), requestDate, reservationDate, (int)valueCustomers.Value, price);
             }
 
             else
             {
                 price = bsReservation.GetPrice((int)valueCustomers.Value, (int)dgvRestaurants.SelectedRows[0].Cells[0].Value);
-                entity = bsReservation.CreateEntity((int)dgvRestaurants.SelectedRows[0].Cells[0].Value, txtUsername.Text, requestDate, reservationDate, (int)valueCustomers.Value,price);
+                entity = bsReservation.CreateEntity((int)dgvRestaurants.SelectedRows[0].Cells[0].Value, lbxCustomer.SelectedItem.ToString(), requestDate, reservationDate, (int)valueCustomers.Value,price);
             }
 
             if (!bsReservation.IsValid(entity, ref message, ref title, edit, idSelected))
@@ -103,7 +106,7 @@ namespace Restaurant_Manager
                 }
 
                 OperationMessage.GetGenericMessage();
-                bsReservation.ClearFields(ref txtUsername, ref valueCustomers);
+                bsReservation.ClearFields(ref valueCustomers);
 
             }
         }
@@ -173,6 +176,46 @@ namespace Restaurant_Manager
         private void valueCustomers_ValueChanged(object sender, EventArgs e)
         {
             txtPrice.Text = GetPrice().ToString() + "€";
+        }
+
+        private List<string> GetUsernames()
+        {
+            BsCustomer bsCustomer = new BsCustomer();
+            List<string> usernames = new List<string>();
+            DataTable dt = new DataTable();
+
+            dt = bsCustomer.ReadUsername();
+
+            for(int i = 0; i< dt.Rows.Count; i++)
+            {
+                usernames.Add(dt.Rows[i][0].ToString());
+            }
+
+            return usernames;
+            
+        }
+
+        private List<string> GetRestaurants()
+        {
+            //Associare l'ID a goni elemento della listBox con i ristoranti
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            List<string> restaurantNames = new List<string>();
+            DataTable dt = new DataTable();
+
+            dt = bsRestaurant.ReadName();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                restaurantNames.Add(dt.Rows[i][1].ToString());
+            }
+
+            return restaurantNames;
+        }
+
+        private void lbxRestaurants_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label1.Text = lbxRestaurants.Text;
+            label2.Text = lbxRestaurants.ValueMember;
         }
     }
 }

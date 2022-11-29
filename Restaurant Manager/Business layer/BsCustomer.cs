@@ -17,7 +17,7 @@ namespace Business_layer
             DsCustomer customerData = new DsCustomer();
             title = "Gestione Cliente";
 
-            if (customer.Username.Length == 0 || customer.Password.Length == 0 || customer.Info.Length == 0 || customer.Email.Length == 0 || customer.City.Length == 0)
+            if (customer.Username.Length == 0 || customer.Password.Length == 0 || customer.Email.Length == 0 || customer.City.Length == 0)
             {
                 message = "Compilare tutti i campi di input";
                 return false;
@@ -59,6 +59,16 @@ namespace Business_layer
             dtCustomer = customerData.Read(username,city,email,isAdmin);
 
             return dtCustomer;
+        }
+
+        public DataTable ReadUsername()
+        {
+            DsCustomer customerData = new DsCustomer();
+            DataTable usernameTable = new DataTable();
+
+            usernameTable = customerData.ReadUsername();
+
+            return usernameTable;
         }
 
         public void Update(Customer customer)
