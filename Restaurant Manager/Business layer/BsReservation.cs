@@ -46,14 +46,14 @@ namespace Business_layer
             }
                 
 
-            if (reservation.RequestDate > DateTime.Now) //Verifica che la richiesta non avvenga nel futuro
+            if (reservation.RequestDate > DateTime.Today) //Verifica che la richiesta non avvenga nel futuro
             {
                 message = "La richiesta non può avvenire nel futuro";
                 return false;
             }
                 
 
-            if (reservation.ReservationDate < DateTime.Now) //Verifica che la prenotazione non venga effettuata nel passato
+            if (reservation.ReservationDate < DateTime.Today) //Verifica che la prenotazione non venga effettuata nel passato
             {
                 message = "Spiacenti ma la macchina del tempo non esiste ancora. Scegli un giorno da oggi in avanti";
                 return false;
@@ -94,11 +94,15 @@ namespace Business_layer
             reservationData.Create(reservation);
         }
 
-        public DataTable Read(string customerName, string city)
+        public DataTable Read(string customerName, string city, string selectedOrder, bool futureReservations)
         {
             DataTable dtReservation = new DataTable();
             DsReservation reservationData = new DsReservation();
-            dtReservation = reservationData.Read(customerName,city);
+
+            if (selectedOrder == "**Nessun Filtro**")
+                selectedOrder = "ID";
+
+            dtReservation = reservationData.Read(customerName,city,selectedOrder,futureReservations);
 
             return dtReservation;
         }
@@ -116,9 +120,11 @@ namespace Business_layer
                 message = "Prenotazione cancellata";
         }
 
-        public void ClearFields(ref NumericUpDown valueCustomers)
+        public void ClearFields(ref NumericUpDown valueCustomers, ref ListBox lbxCustomers, ref DataGridView dgvRestaurants)
         {
             valueCustomers.Text = "0";
+            lbxCustomers.SelectedIndex = 0;
+            dgvRestaurants.Rows[0].Cells[1].Selected = true;
         }
 
         public int GetEmptySeats(int idRestaurant, DateTime reservationDate) //Restituisce il valore dei posti rimanenti

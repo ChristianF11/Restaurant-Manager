@@ -16,6 +16,7 @@ namespace Restaurant_Manager
     {
         private int idSelected;
         private bool edit;
+
         public FrmManageReser()
         {
             InitializeComponent();
@@ -36,22 +37,14 @@ namespace Restaurant_Manager
         private void btnCancel_Click(object sender, EventArgs e)
         {
             BsReservation bsReservation = new BsReservation();
-            bsReservation.ClearFields(ref valueCustomers);
+            bsReservation.ClearFields(ref valueCustomers, ref lbxCustomer, ref dgvRestaurants);
+            txtRestaurant.Text = dgvRestaurants.SelectedRows[0].Cells[1].Value.ToString();
 
         }
 
         private void FrmManageReser_Load(object sender, EventArgs e)
         {
-            //Raggruppare in metodo
-            BsRestaurant bsRestaurant = new BsRestaurant();
-
-            dgvRestaurants.DataSource = bsRestaurant.ReadName();
-            dgvRestaurants.Columns[0].Visible = false; //Viene nascosta la colonna degli ID
-            lbxCustomer.DataSource  = GetUsernames();
-            lbxRestaurants.DataSource = GetRestaurants();
-            txtRestaurant.Text = dgvRestaurants.SelectedRows[0].Cells[1].Value.ToString(); //L'etichetta con il nome del ristorante selezioanto partirà di default con il primo elemento
-            txtSeats.Text = GetEmptySeats(); //Vengono mostrati i posti disponibili
-            txtPrice.Text = GetPrice().ToString() + "€";
+            ExecuteLoadProcedures();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -66,11 +59,27 @@ namespace Restaurant_Manager
             txtPrice.Text = GetPrice().ToString() + "€";
         }
 
+        private void dtpReservation_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            //Metodo che conta i posti liberi in un determinato ristorante in un determinato giorno
+            if (CountRows() == 0)
+                OperationMessage.GetCustomError("Nessun ristorante presente in lista", "Operazione non riuscita");
+            else
+            {
+                txtSeats.Text = GetEmptySeats();
+                txtPrice.Text = GetPrice().ToString() + "€";
+            }
+        }
+
+        private void valueCustomers_ValueChanged(object sender, EventArgs e)
+        {
+            txtPrice.Text = GetPrice().ToString() + "€";
+        }
 
         private void SaveElement()
         {
             BsReservation bsReservation = new BsReservation();
-            DateTime requestDate = DateTime.Now;
+            DateTime requestDate = DateTime.Today;
             DateTime reservationDate = GetSelectedDate();
             string title = "";
             string message = "";
@@ -106,7 +115,7 @@ namespace Restaurant_Manager
                 }
 
                 OperationMessage.GetGenericMessage();
-                bsReservation.ClearFields(ref valueCustomers);
+                bsReservation.ClearFields(ref valueCustomers, ref lbxCustomer, ref dgvRestaurants);
 
             }
         }
@@ -161,22 +170,17 @@ namespace Restaurant_Manager
             return avgPrice;
         }
 
-        private void dtpReservation_DateChanged(object sender, DateRangeEventArgs e)
+        private void ExecuteLoadProcedures()
         {
-            //Metodo che conta i posti liberi in un determinato ristorante in un determinato giorno
-            if (CountRows() == 0)
-                OperationMessage.GetCustomError("Nessun ristorante presente in lista", "Operazione non riuscita");
-            else
-            {
-                txtSeats.Text = GetEmptySeats();
-                txtPrice.Text = GetPrice().ToString() + "€";
-            }
-        }
+            BsRestaurant bsRestaurant = new BsRestaurant();
 
-        private void valueCustomers_ValueChanged(object sender, EventArgs e)
-        {
+            dgvRestaurants.DataSource = bsRestaurant.ReadName();
+            dgvRestaurants.Columns[0].Visible = false; //Viene nascosta la colonna degli ID
+            lbxCustomer.DataSource = GetUsernames();
+            txtRestaurant.Text = dgvRestaurants.SelectedRows[0].Cells[1].Value.ToString(); //L'etichetta con il nome del ristorante selezioanto partirà di default con il primo elemento
+            txtSeats.Text = GetEmptySeats(); //Vengono mostrati i posti disponibili
             txtPrice.Text = GetPrice().ToString() + "€";
-        }
+        } 
 
         private List<string> GetUsernames()
         {
@@ -195,27 +199,5 @@ namespace Restaurant_Manager
             
         }
 
-        private List<string> GetRestaurants()
-        {
-            //Associare l'ID a goni elemento della listBox con i ristoranti
-            BsRestaurant bsRestaurant = new BsRestaurant();
-            List<string> restaurantNames = new List<string>();
-            DataTable dt = new DataTable();
-
-            dt = bsRestaurant.ReadName();
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                restaurantNames.Add(dt.Rows[i][1].ToString());
-            }
-
-            return restaurantNames;
-        }
-
-        private void lbxRestaurants_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            label1.Text = lbxRestaurants.Text;
-            label2.Text = lbxRestaurants.ValueMember;
-        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReservation));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.btnBack = new System.Windows.Forms.ToolStripButton();
             this.separator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -43,6 +43,9 @@
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblFilter = new System.Windows.Forms.Label();
+            this.lblOrder = new System.Windows.Forms.Label();
+            this.cmbOrder = new System.Windows.Forms.ComboBox();
+            this.cbxFutureReser = new System.Windows.Forms.CheckBox();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +65,7 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip.Size = new System.Drawing.Size(1349, 27);
+            this.toolStrip.Size = new System.Drawing.Size(1012, 27);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "Azioni";
             // 
@@ -74,14 +77,14 @@
             this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
             this.btnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(85, 24);
+            this.btnBack.Size = new System.Drawing.Size(72, 24);
             this.btnBack.Text = "Indietro";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // separator1
             // 
             this.separator1.Name = "separator1";
-            this.separator1.Size = new System.Drawing.Size(6, 31);
+            this.separator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnNew
             // 
@@ -90,7 +93,7 @@
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(63, 28);
+            this.btnNew.Size = new System.Drawing.Size(55, 24);
             this.btnNew.Text = "Crea";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -100,7 +103,7 @@
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 28);
+            this.btnDelete.Size = new System.Drawing.Size(75, 24);
             this.btnDelete.Text = "Rimuovi";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -110,7 +113,7 @@
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(92, 28);
+            this.btnEdit.Size = new System.Drawing.Size(78, 24);
             this.btnEdit.Text = "Modifica";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -120,7 +123,7 @@
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(95, 28);
+            this.btnUpdate.Size = new System.Drawing.Size(80, 24);
             this.btnUpdate.Text = "Aggiorna";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -134,24 +137,23 @@
             this.dgvReservation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReservation.BackgroundColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvReservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReservation.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReservation.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReservation.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvReservation.Location = new System.Drawing.Point(45, 144);
-            this.dgvReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dgvReservation.MinimumSize = new System.Drawing.Size(1257, 538);
+            this.dgvReservation.Location = new System.Drawing.Point(34, 117);
+            this.dgvReservation.MinimumSize = new System.Drawing.Size(943, 437);
             this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
             this.dgvReservation.ReadOnly = true;
             this.dgvReservation.RowHeadersWidth = 51;
             this.dgvReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReservation.Size = new System.Drawing.Size(1257, 538);
+            this.dgvReservation.Size = new System.Drawing.Size(943, 437);
             this.dgvReservation.TabIndex = 3;
             // 
             // lblCity
@@ -160,20 +162,18 @@
             this.lblCity.BackColor = System.Drawing.Color.Transparent;
             this.lblCity.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCity.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCity.Location = new System.Drawing.Point(507, 52);
-            this.lblCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCity.Location = new System.Drawing.Point(380, 42);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(55, 27);
+            this.lblCity.Size = new System.Drawing.Size(43, 22);
             this.lblCity.TabIndex = 19;
             this.lblCity.Text = "Città";
             // 
             // txtCity
             // 
             this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(512, 82);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCity.Location = new System.Drawing.Point(384, 67);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(195, 26);
+            this.txtCity.Size = new System.Drawing.Size(147, 22);
             this.txtCity.TabIndex = 18;
             // 
             // lblName
@@ -182,20 +182,18 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblName.Location = new System.Drawing.Point(225, 52);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(169, 42);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(138, 27);
+            this.lblName.Size = new System.Drawing.Size(103, 22);
             this.lblName.TabIndex = 17;
             this.lblName.Text = "Nome Cliente";
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(231, 82);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtName.Location = new System.Drawing.Point(173, 67);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(195, 26);
+            this.txtName.Size = new System.Drawing.Size(147, 22);
             this.txtName.TabIndex = 16;
             // 
             // lblFilter
@@ -204,21 +202,67 @@
             this.lblFilter.BackColor = System.Drawing.Color.Transparent;
             this.lblFilter.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFilter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblFilter.Location = new System.Drawing.Point(39, 75);
-            this.lblFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFilter.Location = new System.Drawing.Point(29, 61);
             this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(115, 32);
+            this.lblFilter.Size = new System.Drawing.Size(92, 26);
             this.lblFilter.TabIndex = 22;
             this.lblFilter.Text = "Filtra per:";
             // 
+            // lblOrder
+            // 
+            this.lblOrder.AutoSize = true;
+            this.lblOrder.BackColor = System.Drawing.Color.Transparent;
+            this.lblOrder.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrder.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblOrder.Location = new System.Drawing.Point(569, 63);
+            this.lblOrder.Name = "lblOrder";
+            this.lblOrder.Size = new System.Drawing.Size(106, 26);
+            this.lblOrder.TabIndex = 23;
+            this.lblOrder.Text = "Ordina per:";
+            // 
+            // cmbOrder
+            // 
+            this.cmbOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbOrder.FormattingEnabled = true;
+            this.cmbOrder.Items.AddRange(new object[] {
+            "**Nessun Filtro**",
+            "Username",
+            "Giorno Prenotato",
+            "Posti Prenotati",
+            "Prezzo"});
+            this.cmbOrder.Location = new System.Drawing.Point(681, 67);
+            this.cmbOrder.Name = "cmbOrder";
+            this.cmbOrder.Size = new System.Drawing.Size(141, 24);
+            this.cmbOrder.TabIndex = 24;
+            this.cmbOrder.SelectedIndexChanged += new System.EventHandler(this.cmbOrder_SelectedIndexChanged);
+            // 
+            // cbxFutureReser
+            // 
+            this.cbxFutureReser.AutoSize = true;
+            this.cbxFutureReser.BackColor = System.Drawing.Color.Transparent;
+            this.cbxFutureReser.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cbxFutureReser.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFutureReser.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbxFutureReser.Location = new System.Drawing.Point(856, 51);
+            this.cbxFutureReser.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxFutureReser.Name = "cbxFutureReser";
+            this.cbxFutureReser.Size = new System.Drawing.Size(137, 40);
+            this.cbxFutureReser.TabIndex = 25;
+            this.cbxFutureReser.Text = "Mostra solo future";
+            this.cbxFutureReser.UseVisualStyleBackColor = false;
+            this.cbxFutureReser.CheckedChanged += new System.EventHandler(this.cbxFutureReser_CheckedChanged);
+            // 
             // FrmReservation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Anagrafica;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1349, 697);
+            this.ClientSize = new System.Drawing.Size(1012, 566);
+            this.Controls.Add(this.cbxFutureReser);
+            this.Controls.Add(this.cmbOrder);
+            this.Controls.Add(this.lblOrder);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.lblCity);
             this.Controls.Add(this.txtCity);
@@ -228,7 +272,7 @@
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmReservation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Elenco Prenotazioni";
@@ -256,5 +300,8 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.Label lblOrder;
+        private System.Windows.Forms.ComboBox cmbOrder;
+        private System.Windows.Forms.CheckBox cbxFutureReser;
     }
 }

@@ -101,5 +101,10 @@ namespace Restaurant_Manager
             if (txtMail.Text == null)
                 txtMail.Text = "";
         }
+
+        private void cbxAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

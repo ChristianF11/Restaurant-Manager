@@ -20,9 +20,7 @@ namespace Restaurant_Manager
 
         private void FrmReservation_Load(object sender, EventArgs e)
         {
-            BsReservation bsReservation = new BsReservation();
-            dgvReservation.DataSource = bsReservation.Read("","");
-            dgvReservation.Columns[0].Visible= false;
+            ExecuteLoadProcedures();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -30,7 +28,7 @@ namespace Restaurant_Manager
             CheckFilterFields();
 
             BsReservation bsReservation = new BsReservation();
-            dgvReservation.DataSource = bsReservation.Read(txtName.Text, txtCity.Text);
+            dgvReservation.DataSource = bsReservation.Read(txtName.Text, txtCity.Text,cmbOrder.Text,cbxFutureReser.Checked);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -62,6 +60,16 @@ namespace Restaurant_Manager
                 UpdateElement();
         }
 
+        private void cmbOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowList();
+        }
+
+        private void cbxFutureReser_CheckedChanged(object sender, EventArgs e)
+        {
+            ShowList();
+        }
+
         private void DeleteElement()
         {
             int idSelected = 0;
@@ -75,7 +83,7 @@ namespace Restaurant_Manager
                 bsReservation.Delete(idSelected, ref message);
                 OperationMessage.GetCustomMessage(message, "Eliminazione Prenotazione");
                 CheckFilterFields();
-                dgvReservation.DataSource = bsReservation.Read(txtName.Text,txtCity.Text);
+                dgvReservation.DataSource = bsReservation.Read(txtName.Text,txtCity.Text,cmbOrder.Text,cbxFutureReser.Checked);
             }
         }
         private void UpdateElement()
@@ -97,5 +105,20 @@ namespace Restaurant_Manager
             if (txtCity.Text == null)
                 txtCity.Text = "";
         }
+        private void ExecuteLoadProcedures()
+        {
+            BsReservation bsReservation = new BsReservation();
+            dgvReservation.DataSource = bsReservation.Read("", "", "ID", false);
+            dgvReservation.Columns[0].Visible = false;
+            cmbOrder.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOrder.SelectedIndex = 0;
+        }
+        private void ShowList()
+        {
+            BsReservation bsReservation = new BsReservation();
+            CheckFilterFields();
+            dgvReservation.DataSource = bsReservation.Read(txtName.Text, txtCity.Text, cmbOrder.Text, cbxFutureReser.Checked);
+        }
+
     }
 }

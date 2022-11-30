@@ -24,13 +24,19 @@ namespace Data_layer
 
         }
 
-        public DataTable Read(string customerName, string city)
+        public DataTable Read(string customerName, string city, string order, bool futureReservations)
         {
             DbData genericOperation = new DbData();
             DataTable reservationTable = new DataTable();
-            string query = "select IdReservation as 'ID', BusinessName as 'Ristorante',Username,RequestDate as 'Giorno prenotazione',ReservationDate as 'Giorno prenotato'," +
-                "NumberCustomers as 'Posti prenotati',Price from Restaurant r inner join Reservation rv on r.IdRestaurant = rv.IdRestaurant " +
+            string query = "select IdReservation as 'ID', BusinessName as 'Ristorante',Username,RequestDate as 'Data prenotazione',ReservationDate as 'Giorno Prenotato'," +
+                "NumberCustomers as 'Posti Prenotati',Price as 'Prezzo' from Restaurant r inner join Reservation rv on r.IdRestaurant = rv.IdRestaurant " +
                 $"where Username like '{customerName}%' and r.City like '{city}%' ";
+
+            if (futureReservations)
+                query += $"and ReservationDate > CAST(GETDATE() as datetime2) order by '{order}'";
+
+            else
+                query += $"order by '{order}'";
 
             reservationTable = genericOperation.Read(query);
 
