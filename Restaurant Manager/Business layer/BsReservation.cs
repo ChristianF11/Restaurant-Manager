@@ -120,10 +120,10 @@ namespace Business_layer
                 message = "Prenotazione cancellata";
         }
 
-        public void ClearFields(ref NumericUpDown valueCustomers, ref ListBox lbxCustomers, ref DataGridView dgvRestaurants)
+        public void ClearFields(ref NumericUpDown valueCustomers, ref ComboBox cmbCustomers, ref DataGridView dgvRestaurants)
         {
             valueCustomers.Text = "0";
-            lbxCustomers.SelectedIndex = 0;
+            cmbCustomers.SelectedIndex = 0;
             dgvRestaurants.Rows[0].Cells[1].Selected = true;
         }
 

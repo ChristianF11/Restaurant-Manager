@@ -77,6 +77,7 @@ namespace Restaurant_Manager
                 chartName.ChartAreas[0].Area3DStyle.Enable3D = false;
 
             chartName.Series[0].ChartType = SeriesChartType.Pie;
+            chartName.Series[0].IsValueShownAsLabel= true;
             chartName.Series[0].Points.DataBindXY(names, values);
             chartName.Legends[0].Enabled = true;
             

@@ -93,10 +93,10 @@ namespace Data_layer
             try
             {
                 //Numero di posti occupati
-                string query = $"select Seats - sum(NumberCustomers) - {numCustomers} from Reservation rs left join Restaurant r on rs.IdRestaurant = r.IdRestaurant" +
+                string query = $"select Seats - sum(NumberCustomers) from Reservation rs left join Restaurant r on rs.IdRestaurant = r.IdRestaurant" +
                     $" where r.IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime2,'{reservationDate}',103) group by Seats";
 
-                seatsTaken = genericOperation.Execute(query);
+                seatsTaken = genericOperation.Execute(query) - numCustomers;
             }
             catch
             {
