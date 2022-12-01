@@ -13,9 +13,19 @@ namespace Restaurant_Manager
 {
     public partial class FrmReservation : Form
     {
+        private int idRestSelected;
+        private bool specificRestaurant;
         public FrmReservation()
         {
             InitializeComponent();
+            specificRestaurant = false;
+        }
+
+        public FrmReservation(int idRestSelected)
+        {
+            InitializeComponent();
+            this.idRestSelected = idRestSelected;
+            specificRestaurant = true;
         }
 
         private void FrmReservation_Load(object sender, EventArgs e)
@@ -108,8 +118,24 @@ namespace Restaurant_Manager
         private void ExecuteLoadProcedures()
         {
             BsReservation bsReservation = new BsReservation();
-            dgvReservation.DataSource = bsReservation.Read("", "", "ID", false);
+
+            HideButtons();
+
+            if (!specificRestaurant)
+                dgvReservation.DataSource = bsReservation.Read("", "", "ID", false);
+
+            else
+                dgvReservation.DataSource = bsReservation.Read(idRestSelected, "", "", "ID", false);
+
             dgvReservation.Columns[0].Visible = false;
+
+            foreach (DataGridViewColumn column in dgvReservation.Columns) //Viene negato il sort cliccando sulla header della colonna
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            dgvReservation.Columns["Prezzo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvReservation.Columns["Posti Prenotati"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             cmbOrder.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbOrder.SelectedIndex = 0;
         }
@@ -117,8 +143,28 @@ namespace Restaurant_Manager
         {
             BsReservation bsReservation = new BsReservation();
             CheckFilterFields();
-            dgvReservation.DataSource = bsReservation.Read(txtName.Text, txtCity.Text, cmbOrder.Text, cbxFutureReser.Checked);
-        }
+            if (!specificRestaurant)
+                dgvReservation.DataSource = bsReservation.Read(txtName.Text, txtCity.Text, cmbOrder.Text, cbxFutureReser.Checked);
 
+            else
+                dgvReservation.DataSource = bsReservation.Read(idRestSelected, txtName.Text, txtCity.Text, cmbOrder.Text, cbxFutureReser.Checked);
+        }
+        private void HideButtons()
+        {
+            if(specificRestaurant)
+            {
+                btnNew.Visible = false;
+                btnDelete.Visible = false;
+                btnEdit.Visible = false;
+                btnUpdate.Visible = false;
+
+                lblFilter.Visible = false;
+                lblName.Visible = false;
+                lblCity.Visible = false;
+
+                txtName.Visible = false;
+                txtCity.Visible = false;
+            }
+        }
     }
 }

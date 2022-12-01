@@ -18,6 +18,7 @@ namespace Restaurant_Manager
     {
         bool clear = false; //Variabile che ripulisce le serie dei grafici e le liste di dati prima di disegnare il nuovo grafico
         bool threeDEnabled = false;
+        const int INCOMESCALE = 100, CUSTOMERSCALE = 5;
         public FrmStats()
         {
             InitializeComponent();
@@ -45,6 +46,29 @@ namespace Restaurant_Manager
             AssignTitle(chartCityIncome,chartCityCustomers);
             FillCitiesCharts();
 
+        }
+
+        private void cmbMonth3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clear = true;
+            FillCitiesCharts();
+        }
+
+        private void btn2D3D_Click(object sender, EventArgs e)
+        {
+            EnableDisable3D();
+        }
+
+        private void cmbMonth2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clear = true;
+            FillTypesCharts();
+        }
+
+        private void cmbMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clear = true; //In questo modo si evita un "accavallamento" delle serie
+            FillRestaurantCharts();
         }
 
         private void FillSinglePieChart(ref bool clear, DataTable dt, Chart chartName, string title)
@@ -78,12 +102,13 @@ namespace Restaurant_Manager
 
             chartName.Series[0].ChartType = SeriesChartType.Pie;
             chartName.Series[0].IsValueShownAsLabel= true;
+            chartName.Series[0].Font = new System.Drawing.Font("Rockwell", 18);
             chartName.Series[0].Points.DataBindXY(names, values);
             chartName.Legends[0].Enabled = true;
             
         }
 
-        private void FillSingleBarChart(ref bool clear, DataTable dt, Chart chartName, string title)
+        private void FillSingleBarChart(ref bool clear, DataTable dt, Chart chartName, string title, int scale)
         {
             List<string> names = new List<string>();
             List<int> values = new List<int>();
@@ -102,7 +127,16 @@ namespace Restaurant_Manager
                 values.Add(Convert.ToInt32(dt.Rows[i][1]));
             }
 
-            chartName.ChartAreas[0].AxisY.Interval = 10;
+            
+            chartName.ChartAreas[0].AxisY.Interval = scale;
+            chartName.ChartAreas[0].AxisY.Minimum = 0;
+
+            //Controllo che verifica il valore massimo da mostrare sull'asse Y
+            if(values.Count > 0)
+                chartName.ChartAreas[0].AxisY.Maximum = values.Max() + 10;
+
+            else
+                chartName.ChartAreas[0].AxisY.Maximum = 0;
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -119,6 +153,7 @@ namespace Restaurant_Manager
                 chartName.Series.Add(series);
                 chartName.Series[xAxisValue].Points.AddXY(title, yAxisValue);
                 chartName.Series[xAxisValue].Label = yAxisValue.ToString();
+                chartName.Series[xAxisValue].Font = new System.Drawing.Font("Rockwell", 16);
             }
 
             clear = false;
@@ -132,12 +167,12 @@ namespace Restaurant_Manager
             clear = true;
 
             dt = bsStats.GetRestaurantsIncome(cmbMonth.SelectedIndex + 1);
-            FillSingleBarChart(ref clear, dt, chartRestIncome, "Ristoranti");
+            FillSingleBarChart(ref clear, dt, chartRestIncome, "Ristoranti", INCOMESCALE);
 
             clear = true;
 
             dt = bsStats.GetRestaurantsCustomers(cmbMonth.SelectedIndex + 1);
-            FillSingleBarChart(ref clear, dt, chartRestCustomers, "Ristoranti");
+            FillSingleBarChart(ref clear, dt, chartRestCustomers, "Ristoranti", CUSTOMERSCALE);
         }
 
         private void FillTypesCharts()
@@ -164,36 +199,34 @@ namespace Restaurant_Manager
             clear = true;
 
             dt = bsStats.GetCitiesIncome(cmbMonth3.SelectedIndex + 1);
-            FillSingleBarChart(ref clear, dt, chartCityIncome, "Città");
+            FillSingleBarChart(ref clear, dt, chartCityIncome, "Città", INCOMESCALE);
             
             clear = true;
             
             dt = bsStats.GetCitiesCustomers(cmbMonth3.SelectedIndex + 1);
-            FillSingleBarChart(ref clear, dt, chartCityCustomers, "Città");
-        }
-
-        private void cmbMonth_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clear = true; //In questo modo si evita un "accavallamento" delle serie
-            FillRestaurantCharts();
+            FillSingleBarChart(ref clear, dt, chartCityCustomers, "Città", CUSTOMERSCALE);
         }
 
         private void AssignTitle(Chart chartIncome, Chart chartCustomers) //Inserisce i titoli all'interno dei grafici
         {
-            chartIncome.Titles.Add("Incasso (€)");
-            chartCustomers.Titles.Add("Numero clienti");
+
+            chartIncome.Titles.Add(EditTitle("Incasso (€)"));
+            chartCustomers.Titles.Add(EditTitle("Numero Clienti"));
+        }
+
+        private Title EditTitle(string title)
+        {
+            Title chartTitle = new Title();
+            chartTitle.Font = new Font("Rockwell", 18, FontStyle.Underline);
+            chartTitle.Text = title;
+
+            return chartTitle;
         }
 
         private void PrepareComboBox(ComboBox comboBox) //Impedisce la scrittura all'interno e setta di default il primo valore
         {
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox.SelectedIndex = 0;
-        }
-
-        private void cmbMonth3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clear = true;
-            FillCitiesCharts();
         }
 
         private void EnableDisable3D()
@@ -209,15 +242,6 @@ namespace Restaurant_Manager
             FillCitiesCharts();
         }
 
-        private void btn2D3D_Click(object sender, EventArgs e)
-        {
-            EnableDisable3D();
-        }
 
-        private void cmbMonth2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clear = true;
-            FillTypesCharts();
-        }
     }
 }

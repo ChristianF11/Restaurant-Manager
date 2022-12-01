@@ -14,23 +14,16 @@ namespace Restaurant_Manager
 {
     public partial class FrmRestaurant : Form
     {
+        private bool firstLoad;
         public FrmRestaurant()
         {
             InitializeComponent();
+            firstLoad = true;
         }
 
         private void FrmRestaurant_Load(object sender, EventArgs e)
         {
-            BsRestaurant bsRestaurant= new BsRestaurant();
-            dgvRestaurant.DataSource = bsRestaurant.Read("","",0,"ID"); //Caricamento della lista completa
-
-            //La tabella viene settata di default "ReadOnly" e viene nascosta la prima colonnna dedicata all'ID
-            dgvRestaurant.ReadOnly = true;
-            dgvRestaurant.Columns[0].Visible = false;
-
-            //Viene negata la scrittura all'interno della ComboBox e inizializzata con l'elemento "Tutti i tipi"
-            SetComboBox();
-
+            ExecuteLoadProcedures();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -67,11 +60,19 @@ namespace Restaurant_Manager
                 UpdateElement();
         }
 
+        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!firstLoad) //Se si tratta del primo caricamento non viene chiamato subito il metodo che aggiorna la lista (siccome si deve settare ancora "cmbOrder")
+                UpdateList();
+
+            else
+                firstLoad = false;
+        }
+
         private void cmbOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
-            CheckFilterFields();
-            dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text, txtCity.Text, cmbType.SelectedIndex, cmbOrder.Text);
+            UpdateList();
         }
 
         private void DeleteElement()
@@ -119,6 +120,29 @@ namespace Restaurant_Manager
             BsRestaurant bsRestaurant = new BsRestaurant();
             CheckFilterFields();
             dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text, txtCity.Text, cmbType.SelectedIndex, cmbOrder.Text);
+        }
+        private void ExecuteLoadProcedures()
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            dgvRestaurant.DataSource = bsRestaurant.Read("", "", 0, "ID"); //Caricamento della lista completa
+
+            foreach (DataGridViewColumn column in dgvRestaurant.Columns) //Viene negato il sort cliccando sulla header della colonna
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            dgvRestaurant.Columns[0].Visible = false;
+            dgvRestaurant.Columns["Posti Totali"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvRestaurant.Columns["Prezzo Medio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //Viene negata la scrittura all'interno della ComboBox e inizializzata con l'elemento "Tutti i tipi"
+            SetComboBox();
+        }
+        private void dgvRestaurant_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
+            FrmReservation reservationForm = new FrmReservation(idSelected);
+            reservationForm.ShowDialog();
         }
 
     }

@@ -20,8 +20,7 @@ namespace Restaurant_Manager
 
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
-            BsCustomer bsCustomer = new BsCustomer();
-            dgvCustomer.DataSource = bsCustomer.Read("","","",false);
+            ExecuteLoadProcedures();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -60,6 +59,11 @@ namespace Restaurant_Manager
 
             else
                 DeleteElement();
+        }
+
+        private void cbxAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateElement();
         }
 
         private void DeleteElement()
@@ -101,10 +105,15 @@ namespace Restaurant_Manager
             if (txtMail.Text == null)
                 txtMail.Text = "";
         }
-
-        private void cbxAdmin_CheckedChanged(object sender, EventArgs e)
+        private void ExecuteLoadProcedures()
         {
+            BsCustomer bsCustomer = new BsCustomer();
+            dgvCustomer.DataSource = bsCustomer.Read("", "", "", false);
 
+            foreach (DataGridViewColumn column in dgvCustomer.Columns) //Viene negato il sort cliccando sulla header della colonna
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
     }
 }

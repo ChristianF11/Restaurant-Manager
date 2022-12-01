@@ -94,15 +94,40 @@ namespace Business_layer
             reservationData.Create(reservation);
         }
 
-        public DataTable Read(string customerName, string city, string selectedOrder, bool futureReservations)
+        public DataTable Read(string customerName, string city, string selectedOrder, bool futureReservations) //Metodo Read generale di tutti i ristoranti
         {
             DataTable dtReservation = new DataTable();
             DsReservation reservationData = new DsReservation();
 
             if (selectedOrder == "**Nessun Filtro**")
-                selectedOrder = "ID";
+                selectedOrder = "'ID'";
+
+            else if (selectedOrder == "Prezzo")
+                selectedOrder = "Price";
+
+            else
+                selectedOrder = $"'{selectedOrder}'";
 
             dtReservation = reservationData.Read(customerName,city,selectedOrder,futureReservations);
+
+            return dtReservation;
+        }
+
+        public DataTable Read(int idRestaurant, string customerName, string city, string selectedOrder, bool futureReservations) //Overload del metodo Read, specifico per un ristorante
+        {
+            DataTable dtReservation = new DataTable();
+            DsReservation reservationData = new DsReservation();
+
+            if (selectedOrder == "**Nessun Filtro**")
+                selectedOrder = "'ID'";
+
+            else if (selectedOrder == "Prezzo")
+                selectedOrder = "Price";
+
+            else
+                selectedOrder = $"'{selectedOrder}'";
+
+            dtReservation = reservationData.Read(idRestaurant,customerName, city, selectedOrder, futureReservations);
 
             return dtReservation;
         }

@@ -1,4 +1,5 @@
-﻿using Data_layer;
+﻿
+using Data_layer;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -91,8 +92,14 @@ namespace Business_layer
                 restType = Convert.ToString(type);
 
             if (selectedOrder == "**Nessun Filtro**")
-                selectedOrder = "ID";
-                
+                selectedOrder = "'ID'";
+
+            else if (selectedOrder == "Prezzo Medio")
+                selectedOrder = "AveragePrice";
+
+            else
+                selectedOrder = $"'{selectedOrder}'";
+
             dtRestaurant = restaurantData.Read(name,city,restType,selectedOrder);
 
             return dtRestaurant;

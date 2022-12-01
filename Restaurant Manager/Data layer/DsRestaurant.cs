@@ -27,8 +27,8 @@ namespace Data_layer
             DbData genericOperation = new DbData();
             DataTable restaurantTable = new DataTable();
             string query = "select IdRestaurant as 'ID', BusinessName as 'Nome Ristorante', pIva as 'IVA',Street as 'Via/Piazza',City as 'Città', PhoneNumber as 'Telefono', t.Descrizione as 'Tipo cucina', " +
-                "Seats as 'Posti Totali', AveragePrice as 'Prezzo Medio' from Restaurant r inner join RestaurantType t on t.Type = r.Type " +
-                $"where t.Type = r.Type and BusinessName like '{name}%' and City like '{city}%' and r.Type like '%[{type}]%' order by '{order}'";
+                "Seats as 'Posti Totali', concat(cast(AveragePrice as decimal(10,2)),'€') as 'Prezzo Medio' from Restaurant r inner join RestaurantType t on t.Type = r.Type " +
+                $"where t.Type = r.Type and BusinessName like '{name}%' and City like '{city}%' and r.Type like '%[{type}]%' order by {order}";
 
             restaurantTable = genericOperation.Read(query);
 

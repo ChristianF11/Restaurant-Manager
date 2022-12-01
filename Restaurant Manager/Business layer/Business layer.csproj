@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BsCustomer.cs" />
+    <Compile Include="BsLogTable.cs" />
     <Compile Include="BsReservation.cs" />
     <Compile Include="BsRestaurant.cs" />
     <Compile Include="BsStats.cs" />

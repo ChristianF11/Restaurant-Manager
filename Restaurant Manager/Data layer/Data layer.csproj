@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DbData.cs" />
     <Compile Include="DsCustomer.cs" />
+    <Compile Include="DsLogTable.cs" />
     <Compile Include="DsReservation.cs" />
     <Compile Include="DsRestaurant.cs" />
     <Compile Include="DsStats.cs" />
