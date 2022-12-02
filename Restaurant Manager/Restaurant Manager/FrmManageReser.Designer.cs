@@ -85,7 +85,7 @@
             // separator1
             // 
             this.separator1.Name = "separator1";
-            this.separator1.Size = new System.Drawing.Size(6, 39);
+            this.separator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnSave
             // 
@@ -93,7 +93,7 @@
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(68, 36);
+            this.btnSave.Size = new System.Drawing.Size(68, 24);
             this.btnSave.Text = "Salva";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -103,7 +103,7 @@
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(83, 36);
+            this.btnCancel.Size = new System.Drawing.Size(83, 24);
             this.btnCancel.Text = "Annulla";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -126,7 +126,7 @@
             this.lblCustomers.BackColor = System.Drawing.Color.Transparent;
             this.lblCustomers.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomers.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCustomers.Location = new System.Drawing.Point(554, 228);
+            this.lblCustomers.Location = new System.Drawing.Point(554, 243);
             this.lblCustomers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomers.Name = "lblCustomers";
             this.lblCustomers.Size = new System.Drawing.Size(133, 32);

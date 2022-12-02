@@ -9,7 +9,7 @@ namespace Entities
     public class LogTable
     {
         private int idLog, idReservation, idRestaurant, operationType;
-        private string username;
+        private string username, operationDescription;
         private DateTime operationDate;
 
         public int IdLog
@@ -43,6 +43,12 @@ namespace Entities
             set { username = value; }
         }
 
+        public string OperationDescription
+        {
+            get { return operationDescription; }
+            set { operationDescription = value; }
+        }
+
         public DateTime OperationDate
         {
             get { return operationDate; }
@@ -58,14 +64,24 @@ namespace Entities
             Username = string.Empty;
             OperationDate = DateTime.Now;
         }
+        public LogTable(int idReservation, int idRestaurant,int operationType,string username, string operationDescription, DateTime operationDate)
+        {
+            IdReservation = idReservation;
+            IdRestaurant = idRestaurant;
+            OperationType = operationType;
+            Username = username;
+            OperationDescription = operationDescription;
+            OperationDate = operationDate;
+        }
 
-        public LogTable(int idLog, int idReservation, int idRestaurant, int operationType, string username, DateTime operationDate)
+        public LogTable(int idLog, int idReservation, int idRestaurant,int operationType, string username, string operationDescription, DateTime operationDate)
         {
             IdLog = idLog;
             IdReservation = idReservation;
             IdRestaurant = idRestaurant;
             OperationType = operationType;
             Username = username;
+            OperationDescription = operationDescription;
             OperationDate = operationDate;
         }
     }

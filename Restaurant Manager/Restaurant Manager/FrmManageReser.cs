@@ -14,8 +14,10 @@ namespace Restaurant_Manager
 {
     public partial class FrmManageReser : Form
     {
-        private int idSelected;
+        private int idSelected,idReservation, numCustomers;
         private bool edit;
+        private string restaurantName, username;
+        private DateTime reservDate;
 
         public FrmManageReser()
         {
@@ -23,10 +25,14 @@ namespace Restaurant_Manager
             edit = false;
         }
 
-        public FrmManageReser(int idSelected)
+        public FrmManageReser(int idReservation, string restaurantName, string username, DateTime reservDate, int numCustomers)
         {
             InitializeComponent();
-            this.idSelected = idSelected;
+            this.idSelected = idReservation; //ID della prenotazione selezionata
+            this.restaurantName = restaurantName;
+            this.username = username;
+            this.reservDate = reservDate;
+            this.numCustomers = numCustomers;
             edit = true;
         }
 
@@ -75,6 +81,11 @@ namespace Restaurant_Manager
             }
         }
 
+        private void cmbCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtUsername.Text = cmbCustomers.SelectedValue.ToString();
+        }
+
         private void valueCustomers_ValueChanged(object sender, EventArgs e)
         {
             txtPrice.Text = GetPrice().ToString() + "€";
@@ -83,12 +94,14 @@ namespace Restaurant_Manager
         private void SaveElement()
         {
             BsReservation bsReservation = new BsReservation();
+            BsLogTable bsLogTable = new BsLogTable();
             DateTime requestDate = DateTime.Today;
             DateTime reservationDate = GetSelectedDate();
             string title = "";
             string message = "";
             int price = 0;
             Reservation entity;
+            LogTable logEntity;
 
             if(dgvRestaurants.CurrentCell != null)
             {
@@ -111,24 +124,24 @@ namespace Restaurant_Manager
             {
                 if (edit)
                 {
-                    bsReservation.Update(entity, idSelected);
+                    logEntity = bsLogTable.CreateEntity(idSelected, entity.IdRestaurant,0,entity.Username, DateTime.Now);
+                    bsReservation.Update(logEntity,entity, idSelected, ref message);
+                    OperationMessage.GetCustomMessage(message, "Modifica prenotazione");
                 }
                 else
                 {
                     bsReservation.Create(entity);
+                    OperationMessage.GetGenericMessage();
                 }
-
-                OperationMessage.GetGenericMessage();
+              
                 bsReservation.ClearFields(ref valueCustomers, ref cmbCustomers, ref dgvRestaurants);
 
             }
         }
-
         private int CountRows()
         {
             return dgvRestaurants.Rows.Count;
         }
-
         private string GetEmptySeats()
         {
 
@@ -152,7 +165,6 @@ namespace Restaurant_Manager
 
             return bsReservation.GetRestoredSeats(restaurantSelected, date, idSelected).ToString();
         }
-
         private DateTime GetSelectedDate() //Restituisce la data selezionata sul calendario
         {
             string selectedDate = monthCalendar.SelectionStart.ToShortDateString();
@@ -160,7 +172,6 @@ namespace Restaurant_Manager
 
             return date;
         }
-
         private int GetPrice()
         {
             BsReservation bsReservation = new BsReservation();
@@ -173,20 +184,40 @@ namespace Restaurant_Manager
             
             return avgPrice;
         }
-
         private void ExecuteLoadProcedures()
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
 
             dgvRestaurants.DataSource = bsRestaurant.ReadName();
             dgvRestaurants.Columns[0].Visible = false; //Viene nascosta la colonna degli ID
+            
             cmbCustomers.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCustomers.DataSource = GetUsernames();
-            txtRestaurant.Text = dgvRestaurants.SelectedRows[0].Cells[1].Value.ToString(); //L'etichetta con il nome del ristorante selezioanto partirà di default con il primo elemento
+
+            txtRestaurant.Text = dgvRestaurants.SelectedRows[0].Cells[1].Value.ToString();
             txtSeats.Text = GetEmptySeats(); //Vengono mostrati i posti disponibili
             txtPrice.Text = GetPrice().ToString() + "€";
-        } 
 
+            //Procedura alternativa in caso di modifica (vengono mostrati i valori già registrati) 
+            if(edit)
+            {
+                //Vengono settati i dati precedentemente inseriti dall'utente
+                foreach (DataGridViewRow row in dgvRestaurants.Rows)
+                {
+                    if (row.Cells[1].Value.ToString().Equals(restaurantName))
+                    {
+                        row.Selected = true;
+                        txtRestaurant.Text =  row.Cells[1].Value.ToString();
+                    }
+                }
+
+                cmbCustomers.SelectedItem = username;
+                monthCalendar.SetDate(reservDate);
+                valueCustomers.Value = numCustomers;
+   
+            }
+
+        } 
         private List<string> GetUsernames()
         {
             BsCustomer bsCustomer = new BsCustomer();
@@ -204,9 +235,5 @@ namespace Restaurant_Manager
             
         }
 
-        private void cmbCustomers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtUsername.Text = cmbCustomers.SelectedValue.ToString();
-        }
     }
 }

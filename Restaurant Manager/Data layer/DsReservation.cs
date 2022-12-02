@@ -24,6 +24,9 @@ namespace Data_layer
 
         }
 
+        /// <summary>
+        /// Metodo di lettura generale. Restituisce la lista di tutti i ristoranti
+        /// </summary>
         public DataTable Read(string customerName, string city, string order, bool futureReservations)
         {
             DbData genericOperation = new DbData();
@@ -44,6 +47,9 @@ namespace Data_layer
 
         }
 
+        /// <summary>
+        /// Metodo di lettura specifico. Restituisce tutte le prenotazioni del ristorante selezionato
+        /// </summary>
         public DataTable Read(int idRestaurant,string customerName, string city, string order, bool futureReservations)
         {
             DbData genericOperation = new DbData();
@@ -64,13 +70,12 @@ namespace Data_layer
 
         }
 
-        public void Update(Reservation reservation, int id)
+        public void Update(Reservation reservation, int id, DbData dbData)
         {
-            DbData genericOperation = new DbData();
             string query = $"update Reservation set IdRestaurant = {reservation.IdRestaurant},Username = '{reservation.Username}',RequestDate = convert(datetime2,'{reservation.RequestDate}',103)," +
                 $"ReservationDate = convert(datetime2,'{reservation.ReservationDate}',103),NumberCustomers = {reservation.NumCustomers},Price = {reservation.Price} where IdReservation = {id}";
 
-            genericOperation.Update(query);
+            dbData.UpdateTrans(query);
 
         }
 

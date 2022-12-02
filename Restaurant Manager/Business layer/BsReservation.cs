@@ -88,6 +88,13 @@ namespace Business_layer
             return reservation;
         }
 
+        public Reservation CreateEntity(int idReservation,int idRestaurant, string username, DateTime requestDate, DateTime reservationDate, int numCustomers, int price)
+        {
+            Reservation reservation = new Reservation(idReservation,idRestaurant, username, numCustomers, requestDate, reservationDate, price);
+
+            return reservation;
+        }
+
         public void Create(Reservation reservation)
         {
             DsReservation reservationData = new DsReservation();
@@ -132,10 +139,28 @@ namespace Business_layer
             return dtReservation;
         }
 
-        public void Update(Reservation reservation, int id)
+        public void Update(LogTable log, Reservation reservation, int id, ref string message)
         {
+            //Creare dbData con metodo di BeginTransaction
+            DbData dbData = new DbData();
             DsReservation reservationData = new DsReservation();
-            reservationData.Update(reservation, id);
+            DsLogTable logTable = new DsLogTable();
+
+            dbData.Open();
+            dbData.BeginTrans();
+            try
+            {
+                reservationData.Update(reservation,id,dbData);
+                logTable.Update(log, dbData);
+                dbData.CommitTrans();
+                message = "Operazione andata a buon fine";
+            }
+            catch(Exception ex)
+            {
+                dbData.RollbackTrans();
+                message = "Errore! Ripsristino dei dati";
+            }
+            dbData.Close();
         }
 
         public void Delete(int idReservation, ref string message)

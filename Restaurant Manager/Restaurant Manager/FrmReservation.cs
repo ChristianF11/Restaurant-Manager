@@ -1,4 +1,5 @@
 ﻿using Business_layer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -99,7 +100,12 @@ namespace Restaurant_Manager
         private void UpdateElement()
         {
             int idSelected = (int)dgvReservation.CurrentRow.Cells[0].Value;
-            FrmManageReser frmManageReser = new FrmManageReser(idSelected);
+            string restaurantName = dgvReservation.CurrentRow.Cells[1].Value.ToString();
+            string username = dgvReservation.CurrentRow.Cells[2].Value.ToString();
+            DateTime reservationDate = (DateTime)dgvReservation.CurrentRow.Cells[4].Value;
+            int numCustomers = (int)dgvReservation.CurrentRow.Cells[5].Value;
+            
+            FrmManageReser frmManageReser = new FrmManageReser(idSelected,restaurantName,username,reservationDate,numCustomers);
 
             frmManageReser.ShowDialog();
         }

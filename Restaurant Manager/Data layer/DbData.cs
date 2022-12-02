@@ -5,11 +5,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Data_layer
 {
     public class DbData
     {
+        SqlTransaction sqlTransaction;
+        SqlCommand transCommand;
         SqlConnection sqlConnection = new SqlConnection();
         const string connectionString = "Server = LAPTOP-OH2IC4QE\\SQLEXPRESS;Integrated Security = False;Database = restaurantDB;Persist Security Info=False;User ID = sa;Password = Christian11;";
 
@@ -54,20 +57,48 @@ namespace Data_layer
             return dt;
 
         }
+
         public void Update(string query)
         {
-            SqlCommand command = new SqlCommand(query, sqlConnection);
+            SqlCommand command = new SqlCommand(query,sqlConnection);
             Open();
             command.ExecuteScalar();
             Close();
-
         }
+
+        public void UpdateTrans(string query)
+        {
+            transCommand.CommandText = query;
+            transCommand.ExecuteNonQuery();
+        }
+
         public void Delete(string query)
         {     
             SqlCommand command = new SqlCommand(query, sqlConnection);
             Open();
             command.ExecuteScalar();
             Close();
+        }
+
+        public void BeginTrans()
+        {
+            //Collegamento connessione a transazione
+            transCommand = sqlConnection.CreateCommand();
+
+            sqlTransaction = sqlConnection.BeginTransaction();
+
+            transCommand.Connection = sqlConnection;
+            transCommand.Transaction = sqlTransaction;
+        }
+
+        public void CommitTrans()
+        {
+            sqlTransaction.Commit();
+        }
+
+        public void RollbackTrans()
+        {
+            sqlTransaction.Rollback();
         }
 
         public int Execute(string query)

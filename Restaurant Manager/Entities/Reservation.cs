@@ -109,5 +109,10 @@ namespace Entities
             Price = price;
         }
 
+        public Reservation(int idReservation,int idRestaurant, string username, int numCustomers, DateTime requestDate, DateTime reservationDate, int price) : this(idRestaurant, username, numCustomers, requestDate, reservationDate,price)
+        {
+            IdReservation = idReservation;
+        }
+
     }
 }
