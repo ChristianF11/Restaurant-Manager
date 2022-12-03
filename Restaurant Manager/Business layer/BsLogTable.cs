@@ -41,7 +41,12 @@ namespace Business_layer
             logTableData.Update(log,dbData);
         }
 
-        public void Delete(LogTable log) 
+        public void Create(LogTable log, DbData dbData)
+        {
+
+        }
+
+        public void Delete(LogTable log, DbData dbData) 
         { 
         
         }

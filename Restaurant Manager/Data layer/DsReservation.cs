@@ -117,10 +117,14 @@ namespace Data_layer
             
             try
             {
-                //Numero di posti occupati
-                string query = $"select Seats - sum(NumberCustomers) from Reservation rs left join Restaurant r on rs.IdRestaurant = r.IdRestaurant" +
-                    $" where r.IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime2,'{reservationDate}',103) group by Seats";
+                //Numero di posti occupati (se la query non ritorna nessun valore verrà ritornato il valore totale di posti liberi siccome non c'è nessuna prenotazione)
+                string query = $"IF NOT EXISTS(select Seats - sum(NumberCustomers) from Reservation rs left join Restaurant r on rs.IdRestaurant = r.IdRestaurant" +
+                    $" where r.IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime2, '{reservationDate}', 103) group by Seats)" +
+                    " BEGIN select Seats from Restaurant where IdRestaurant = 7 END" +
+                    $" ELSE BEGIN select Seats - sum(NumberCustomers) from Reservation rs left join Restaurant r on rs.IdRestaurant = r.IdRestaurant " +
+                    $"where r.IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime2, '{reservationDate}', 103) group by Seats END";
 
+                //Numero di posti occupati - clienti che stanno prenotando
                 seatsTaken = genericOperation.Execute(query) - numCustomers;
             }
             catch
@@ -154,8 +158,8 @@ namespace Data_layer
 
         /// <summary>
         /// Metodo che ritorna il valore di quanti posti rimarrebbero senza contare i clienti che stanno prenotando. 
-        /// Questo metodo viene utilizzato anche durante la modifica di un’ordinazione (per capire quanti posti sarebbero rimasti 
-        /// senza quella prenotazione che si sta editando)
+        /// Questo metodo funge da "ripristino posti" infatti viene utilizzato durante la modifica di un’ordinazione 
+        /// (per capire quanti posti sarebbero rimasti senza quella prenotazione che si sta editando)
         /// </summary>
         public int GetEmptySeats(int seatsTaken, int idRestaurant) //Restituisce quanti posti rimarrebbero SENZA contare i clienti che stanno prenotando
         {

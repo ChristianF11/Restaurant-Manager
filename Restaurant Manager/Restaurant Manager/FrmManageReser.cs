@@ -127,6 +127,7 @@ namespace Restaurant_Manager
                     logEntity = bsLogTable.CreateEntity(idSelected, entity.IdRestaurant,0,entity.Username, DateTime.Now);
                     bsReservation.Update(logEntity,entity, idSelected, ref message);
                     OperationMessage.GetCustomMessage(message, "Modifica prenotazione");
+                    this.Hide();
                 }
                 else
                 {
