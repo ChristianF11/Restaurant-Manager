@@ -63,9 +63,29 @@ namespace Restaurant_Manager.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Anagrafica {
+        internal static System.Drawing.Bitmap AnagraficaNew {
             get {
-                object obj = ResourceManager.GetObject("Anagrafica", resourceCulture);
+                object obj = ResourceManager.GetObject("AnagraficaNew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap back {
+            get {
+                object obj = ResourceManager.GetObject("back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EntryPoint {
+            get {
+                object obj = ResourceManager.GetObject("EntryPoint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +103,9 @@ namespace Restaurant_Manager.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FrmStats_design {
+        internal static System.Drawing.Bitmap icons8_3d_object_96 {
             get {
-                object obj = ResourceManager.GetObject("FrmStats design", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-3d-object-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,19 +113,9 @@ namespace Restaurant_Manager.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MainForm {
+        internal static System.Drawing.Bitmap PrenotazioneNew {
             get {
-                object obj = ResourceManager.GetObject("MainForm", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Prenotazione {
-            get {
-                object obj = ResourceManager.GetObject("Prenotazione", resourceCulture);
+                object obj = ResourceManager.GetObject("PrenotazioneNew", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +126,16 @@ namespace Restaurant_Manager.Properties {
         internal static System.Drawing.Bitmap Scontrino {
             get {
                 object obj = ResourceManager.GetObject("Scontrino", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatisticheNew {
+            get {
+                object obj = ResourceManager.GetObject("StatisticheNew", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

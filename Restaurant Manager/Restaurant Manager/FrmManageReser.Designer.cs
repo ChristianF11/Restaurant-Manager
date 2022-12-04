@@ -159,7 +159,7 @@
             this.dgvRestaurants.AllowUserToDeleteRows = false;
             this.dgvRestaurants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRestaurants.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvRestaurants.BackgroundColor = System.Drawing.Color.MediumSeaGreen;
+            this.dgvRestaurants.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(209)))), ((int)(((byte)(214)))));
             this.dgvRestaurants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRestaurants.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvRestaurants.Location = new System.Drawing.Point(787, 78);
@@ -341,8 +341,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.Prenotazione;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImage = global::Restaurant_Manager.Properties.Resources.PrenotazioneNew;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1151, 591);
             this.Controls.Add(this.lblTicket);
             this.Controls.Add(this.lblCustomer);

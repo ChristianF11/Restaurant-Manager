@@ -114,6 +114,11 @@
     <Compile Include="OperationMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="restaurantDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,14 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -203,22 +203,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Anagrafica.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MainForm.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Prenotazione.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\eye.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FrmStats design.png" />
+    <None Include="Resources\Scontrino.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Scontrino.png" />
+    <None Include="Resources\AnagraficaNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EntryPoint1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrenotazioneNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StatisticheNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-3d-object-96.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

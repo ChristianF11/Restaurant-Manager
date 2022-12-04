@@ -229,6 +229,11 @@ namespace Restaurant_Manager
             comboBox.SelectedIndex = 0;
         }
 
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void EnableDisable3D()
         {
             if (threeDEnabled)
