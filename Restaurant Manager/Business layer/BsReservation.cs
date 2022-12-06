@@ -213,11 +213,11 @@ namespace Business_layer
         public int GetEmptySeats(int idRestaurant, DateTime reservationDate) //Restituisce il valore dei posti rimanenti
         {
             DsReservation reservationData = new DsReservation();
-            int seatsTaken = 0;
+            int takenSeats = 0;
             int emptySeats = 0;
 
-            seatsTaken = reservationData.CountSeats(idRestaurant, reservationDate);
-            emptySeats = reservationData.GetEmptySeats(seatsTaken, idRestaurant);
+            takenSeats = reservationData.CountTakenSeats(idRestaurant, reservationDate);
+            emptySeats = reservationData.GetEmptySeats(takenSeats, idRestaurant);
 
             return emptySeats;
         }
@@ -241,7 +241,10 @@ namespace Business_layer
             return numCustomers;
         }
 
-        public int GetRestoredSeats(int idRestaurant, DateTime reservationDate, int idReservation) //Numero di posti senza contare i clienti della prenotazione che si sta modificando
+        /// <summary>
+        /// Ripristina i posti a prima della prenotazione che si sta modificando
+        /// </summary>
+        public int GetRestoredSeats(int idRestaurant, DateTime reservationDate, int idReservation) 
         {
             int restoredSeats = GetEmptySeats(idRestaurant, reservationDate) + GetNumCustomers(idReservation);
 

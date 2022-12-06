@@ -226,7 +226,7 @@ namespace Restaurant_Manager
         private void PrepareComboBox(ComboBox comboBox) //Impedisce la scrittura all'interno e setta di default il primo valore
         {
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox.SelectedIndex = 0;
+            comboBox.SelectedIndex = DateTime.Now.Month - 1;
         }
 
         private void btnBack_Click_1(object sender, EventArgs e)

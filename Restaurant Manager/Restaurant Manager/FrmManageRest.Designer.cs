@@ -1,4 +1,6 @@
-﻿namespace Restaurant_Manager
+﻿using System.Windows.Forms;
+
+namespace Restaurant_Manager
 {
     partial class FrmManageRest
     {

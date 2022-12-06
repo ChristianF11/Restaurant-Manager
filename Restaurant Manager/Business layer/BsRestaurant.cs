@@ -14,7 +14,8 @@ namespace Business_layer
 {
     public class BsRestaurant
     {
-        public bool IsValid(Restaurant restaurant, ref string message, ref string title, bool edit) //La variabile "edit" viene definita a seconda dell'azione (il suo valore sarà "true" se è stato cliccato il bottone "Modifica")
+        //La variabile "edit" viene definita a seconda dell'azione (il suo valore sarà "true" se è stato cliccato il bottone "Modifica")
+        public bool IsValid(Restaurant restaurant, ref string message, ref string title, bool edit) 
         {
             DsRestaurant restaurantData = new DsRestaurant();
             title = "Gestione Ristorante";
@@ -59,6 +60,12 @@ namespace Business_layer
             {
                 message = "Inserire un prezzo medio valido";
                 return false;
+            }
+
+            if(edit && restaurant.Seats < restaurantData.GetSeats(restaurant.IdRestaurant))
+            {
+                message = "Sembra che tu abbia ridotto il numero di posti. Ti consiglio di ricontrollare le prenotazioni di questo ristorante per evitare di sforare con i clienti";
+                return true;
             }
 
             return true;
@@ -186,14 +193,5 @@ namespace Business_layer
             valueAvgPrice.Text = "0";
         }
 
-        public bool CheckID(int id)
-        {
-            DsRestaurant restaurantData = new DsRestaurant();
-            
-            if(restaurantData.CheckID(id) == 1)
-                return true;
-
-            return false;
-        }
     }
 }

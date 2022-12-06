@@ -123,7 +123,7 @@ namespace Data_layer
         public int CountActualSeats(int idRestaurant, DateTime reservationDate, int newCustomers)
         {
             DbData genericOperation = new DbData();
-            int seatsTaken = 0;
+            int takenSeats = 0;
             
             genericOperation.Open();
             try
@@ -136,24 +136,24 @@ namespace Data_layer
                     $"where r.IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime2, '{reservationDate}', 103) group by Seats END";
 
                 //Numero di posti occupati - clienti che stanno prenotando
-                seatsTaken = genericOperation.Execute(query) - newCustomers;
+                takenSeats = genericOperation.Execute(query) - newCustomers;
             }
             catch
             {
-                seatsTaken = 0;
+                takenSeats = 0;
             }
             genericOperation.Close();
 
-            return seatsTaken;
+            return takenSeats;
         }
 
         /// <summary>
         /// Restituisce il valore dei posti occupati senza contare il numero di clienti che stanno prenotando
         /// </summary>
-        public int CountSeats(int idRestaurant, DateTime reservationDate)
+        public int CountTakenSeats(int idRestaurant, DateTime reservationDate)
         {
             DbData genericOperation = new DbData();
-            int seatsTaken = 0;
+            int takenSeats = 0;
 
             genericOperation.Open();
             try
@@ -161,23 +161,21 @@ namespace Data_layer
                 //Numero di posti occupati
                 string query = $"select sum(NumberCustomers) from Reservation where IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime2,'{reservationDate}',103)";
 
-                seatsTaken = genericOperation.Execute(query);
+                takenSeats = genericOperation.Execute(query);
             }
             catch
             {
-                seatsTaken = 0;
+                takenSeats = 0;
             }
             genericOperation.Close();
 
-            return seatsTaken;
+            return takenSeats;
         }
 
         /// <summary>
-        /// Metodo che ritorna il valore di quanti posti rimarrebbero senza contare i clienti che stanno prenotando. 
-        /// Questo metodo funge da "ripristino posti" infatti viene utilizzato durante la modifica di un’ordinazione 
-        /// (per capire quanti posti sarebbero rimasti senza quella prenotazione che si sta editando)
+        /// Metodo che ritorna il valore dei posti liberi senza contare i clienti che stanno prenotando. 
         /// </summary>
-        public int GetEmptySeats(int seatsTaken, int idRestaurant) //Restituisce quanti posti rimarrebbero SENZA contare i clienti che stanno prenotando
+        public int GetEmptySeats(int takenSeats, int idRestaurant)
         {
             DbData genericOperation = new DbData();
             int emptySeats = 0;
@@ -186,7 +184,7 @@ namespace Data_layer
             try
             {
                 //Posti liberi
-                string query = $"select Seats - {seatsTaken} from Restaurant where IdRestaurant = {idRestaurant}";
+                string query = $"select Seats - {takenSeats} from Restaurant where IdRestaurant = {idRestaurant}";
                 emptySeats = genericOperation.Execute(query);
             }
             catch

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -66,24 +67,30 @@ namespace Restaurant_Manager
             string message = "";
             string title = "";
 
-            var entity = bsRestaurant.CreateEntity(cmbType.SelectedIndex + 1, (int)valueSeats.Value, (int)valueAvgPrice.Value, txtName.Text, txtIva.Text, txtStreet.Text, txtCity.Text, txtTelephone.Text);
-            if (!bsRestaurant.IsValid(entity, ref message, ref title, edit))
+            Restaurant entityRestaurant = bsRestaurant.CreateEntity(cmbType.SelectedIndex + 1, (int)valueSeats.Value, (int)valueAvgPrice.Value, txtName.Text, txtIva.Text, txtStreet.Text, txtCity.Text, txtTelephone.Text);
+            if (edit)
+                entityRestaurant.IdRestaurant = entity.IdRestaurant;
+
+            if (!bsRestaurant.IsValid(entityRestaurant, ref message, ref title, edit))
             {
                 OperationMessage.GetCustomError(message, title);
             }
             else
             {
+                if (message.Length > 0)
+                    OperationMessage.GetCustomWarning(message, "Modifica posti");
+
                 try
                 {
                     if (edit)
                     {
-                        bsRestaurant.Update(entity, idSelected, ref message);
+                        bsRestaurant.Update(entityRestaurant, idSelected, ref message);
                         OperationMessage.GetCustomMessage(message, "Modifica ristorante");
                     }
 
                     else
                     {
-                        bsRestaurant.Create(entity, ref message);
+                        bsRestaurant.Create(entityRestaurant, ref message);
                         OperationMessage.GetCustomMessage(message, "Nuovo ristorante");
                     }
 
@@ -118,5 +125,7 @@ namespace Restaurant_Manager
             else
                 cmbType.SelectedIndex = 0;
         }
+
+
     }
 }
