@@ -137,6 +137,7 @@ namespace Restaurant_Manager
                 }
               
                 bsReservation.ClearFields(ref valueCustomers, ref cmbCustomers, ref dgvRestaurants);
+                ExecuteLoadProcedures();
 
             }
         }

@@ -40,7 +40,11 @@ namespace Restaurant_Manager
         private void btnCancel_Click(object sender, EventArgs e)
         {
             BsCustomer bsCustomer = new BsCustomer();
-            bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
+            if (!edit)
+                bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
+
+            else
+                ExecuteLoadProcedures();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

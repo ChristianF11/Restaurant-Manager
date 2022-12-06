@@ -32,6 +32,7 @@ namespace Restaurant_Manager
         private void FrmReservation_Load(object sender, EventArgs e)
         {
             ExecuteLoadProcedures();
+            cbxFutureReser.Checked = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
