@@ -226,5 +226,17 @@
   <ItemGroup>
     <None Include="Resources\icons8-3d-object-96.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

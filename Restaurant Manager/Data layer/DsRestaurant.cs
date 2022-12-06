@@ -35,11 +35,11 @@ namespace Data_layer
 
         }
 
-        public DataTable ReadName() //Metodo "speciale" che legge solo i nomi per le "listbox"
+        public DataTable ReadName(string city) //Metodo "speciale" che legge solo i nomi per le "listbox"
         {
             DbData dbData = new DbData();
             DataTable restNameTable = new DataTable();
-            string query = "select IdRestaurant as 'ID', BusinessName as 'Ristorante' from Restaurant";
+            string query = $"select IdRestaurant as 'ID', BusinessName as 'Ristorante' from Restaurant where City like '{city}%'";
 
             restNameTable = dbData.Read(query);
 
@@ -91,5 +91,6 @@ namespace Data_layer
 
             return seats;
         }
+
     }
 }

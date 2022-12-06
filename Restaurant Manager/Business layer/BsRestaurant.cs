@@ -26,19 +26,19 @@ namespace Business_layer
                 return false;
             }
 
-            if(restaurantData.CheckUniqueProperty(restaurant) != 0 && !edit) //verifica che il nuovo ristorante non abbia gli stessi dati di uno esistente
+            if(restaurantData.CheckUniqueProperty(restaurant) > 1) //verifica che il nuovo ristorante non abbia gli stessi dati di uno esistente
             {
                 message = "A quanto pare questo ristorante è già esistente o alcuni dati sono già stati utilizzati";
                 return false;
             }
 
-            if (restaurant.PIva.Length != 11 || !long.TryParse(restaurant.PIva, out long pIva))
+            if (restaurant.PIva.Length != 11 || !long.TryParse(restaurant.PIva, out long pIva) && !restaurant.PIva.Contains(" "))
             {
                 message = "Partita IVA non valida";
                 return false;
             }
 
-            if (restaurant.TelephoneNum.Length != 10 || !uint.TryParse(restaurant.TelephoneNum, out uint telephoneNum))
+            if (restaurant.TelephoneNum.Length != 10 || !uint.TryParse(restaurant.TelephoneNum, out uint telephoneNum) && !restaurant.TelephoneNum.Contains(" "))
             {
                 message = "Numero di telefono non valido";
                 return false;
@@ -132,12 +132,12 @@ namespace Business_layer
 
         }
 
-        public DataTable ReadName()
+        public DataTable ReadName(string city)
         {
             DataTable restNameTable = new DataTable();
             DsRestaurant restaurantData = new DsRestaurant();
 
-            restNameTable = restaurantData.ReadName();
+            restNameTable = restaurantData.ReadName(city);
 
             return restNameTable;
         }

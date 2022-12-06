@@ -173,6 +173,13 @@ namespace Restaurant_Manager
 
             return date;
         }
+
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            dgvRestaurants.DataSource = bsRestaurant.ReadName(txtCity.Text);
+        }
+
         private int GetPrice()
         {
             BsReservation bsReservation = new BsReservation();
@@ -189,12 +196,13 @@ namespace Restaurant_Manager
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
 
-            dgvRestaurants.DataSource = bsRestaurant.ReadName();
-            dgvRestaurants.Columns[0].Visible = false; //Viene nascosta la colonna degli ID
-            
             cmbCustomers.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCustomers.DataSource = GetUsernames();
 
+
+            dgvRestaurants.DataSource = bsRestaurant.ReadName(txtCity.Text);
+            dgvRestaurants.Columns[0].Visible = false; //Viene nascosta la colonna degli ID
+            
             txtRestaurant.Text = dgvRestaurants.SelectedRows[0].Cells[1].Value.ToString();
             txtSeats.Text = GetEmptySeats(); //Vengono mostrati i posti disponibili
             txtPrice.Text = GetPrice().ToString() + "€";
@@ -222,17 +230,17 @@ namespace Restaurant_Manager
         private List<string> GetUsernames()
         {
             BsCustomer bsCustomer = new BsCustomer();
-            List<string> usernames = new List<string>();
+            List<string> username = new List<string>();
             DataTable dt = new DataTable();
 
             dt = bsCustomer.ReadUsername();
 
-            for(int i = 0; i< dt.Rows.Count; i++)
+            for(int i = 0; i < dt.Rows.Count; i++)
             {
-                usernames.Add(dt.Rows[i][0].ToString());
+                username.Add(dt.Rows[i][0].ToString());
             }
 
-            return usernames;
+            return username;
             
         }
 

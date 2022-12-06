@@ -36,6 +36,12 @@ namespace Business_layer
                 return false;
             }
 
+            if (customer.Email.Contains(" ") || customer.Email.Split('@').Length - 1 > 1)
+            {
+                message = "Email non valida";
+                return false;
+            }
+
             return true;
         }
 
