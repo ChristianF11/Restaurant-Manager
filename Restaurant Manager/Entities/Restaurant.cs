@@ -148,5 +148,11 @@ namespace Entities
             TelephoneNum = telephoneNum;
         }
 
+        public Restaurant(int idRestaurant,int type, int seats, double avgPrice, string businessName, string pIva, string street, string city, string telephoneNum) : this(type, seats, avgPrice, businessName, pIva, street, city,telephoneNum)
+        {
+
+           IdRestaurant = idRestaurant;
+        }
+
     }
 }

@@ -46,10 +46,21 @@ namespace Business_layer
             return customer;
         }
 
-        public void Create(Customer customer)
+        public void Create(Customer customer, ref string message)
         {
+            DbData dbData = new DbData();
             DsCustomer customerData = new DsCustomer();
-            customerData.Create(customer);
+
+            dbData.Open();
+            try
+            {
+                customerData.Create(customer,dbData);
+                message = "Operazione andata a buon fine";
+            }
+            catch(Exception ex)
+            {
+                message = "Ops! Qualcosa è andato storto";
+            }
         }
 
         public DataTable Read(string username, string city,string email, bool isAdmin)
@@ -71,18 +82,33 @@ namespace Business_layer
             return usernameTable;
         }
 
-        public void Update(Customer customer)
+        public void Update(Customer customer, ref string message)
         {
+            DbData dbData = new DbData();
             DsCustomer customerData = new DsCustomer();
-            customerData.Update(customer);
+
+            dbData.Open();
+            try
+            {
+                customerData.Update(customer,dbData);
+                message = "Operazione andata a buon fine";
+            }
+            catch(Exception ex)
+            {
+                message = "Ops! Qualcosa è andato storto";
+            }
+            dbData.Close();
         }
 
         public void Delete(string username, ref string message)
         {
+            DbData dbData = new DbData();
+            DsCustomer customerData = new DsCustomer();
+
+            dbData.Open();
             try
             {
-                DsCustomer customerData = new DsCustomer();
-                customerData.Delete(username);
+                customerData.Delete(username,dbData);
                 message = "Utente rimosso";
             }
 
@@ -90,6 +116,7 @@ namespace Business_layer
             {
                 message = "Nessun utente selezionato";
             }
+            dbData.Close();
         }
 
         public void ClearFields(ref TextBox txtPassword, ref TextBox txtCity, ref TextBox txtPhoneNum, ref TextBox txtEmail, 

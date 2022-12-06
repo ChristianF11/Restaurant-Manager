@@ -12,7 +12,7 @@ namespace Data_layer
     public class DbData
     {
         SqlTransaction sqlTransaction;
-        SqlCommand transCommand;
+        SqlCommand command = null;
         SqlConnection sqlConnection = new SqlConnection();
         const string connectionString = "Server = LAPTOP-OH2IC4QE\\SQLEXPRESS;Integrated Security = False;Database = restaurantDB;Persist Security Info=False;User ID = sa;Password = Christian11;";
 
@@ -25,6 +25,9 @@ namespace Data_layer
         {
             if(sqlConnection.State == ConnectionState.Closed)
                 sqlConnection.Open();
+
+            if (command == null)
+                command = sqlConnection.CreateCommand();
         }
 
         public void Close() 
@@ -35,60 +38,44 @@ namespace Data_layer
 
         public void Create(string query)
         {
-            SqlCommand command = new SqlCommand(query, sqlConnection);
-            
-            Open();
-            command.ExecuteScalar();
-            Close();
-
+            command.CommandText = query;
+            command.ExecuteNonQuery();
         }
 
         public DataTable Read(string query)
         {
+            Open();
 
-            SqlCommand command = new SqlCommand(query, sqlConnection);
+            command.CommandText= query;
             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
 
-            Open();
             dataAdapter.Fill(dt);
             Close();
 
             return dt;
-
         }
+
 
         public void Update(string query)
         {
-            SqlCommand command = new SqlCommand(query,sqlConnection);
-            Open();
-            command.ExecuteScalar();
-            Close();
-        }
-
-        public void UpdateTrans(string query)
-        {
-            transCommand.CommandText = query;
-            transCommand.ExecuteNonQuery();
+            command.CommandText = query;
+            command.ExecuteNonQuery();
         }
 
         public void Delete(string query)
-        {     
-            SqlCommand command = new SqlCommand(query, sqlConnection);
-            Open();
-            command.ExecuteScalar();
-            Close();
+        {
+            command.CommandText = query;
+            command.ExecuteNonQuery();
         }
 
         public void BeginTrans()
         {
             //Collegamento connessione a transazione
-            transCommand = sqlConnection.CreateCommand();
-
             sqlTransaction = sqlConnection.BeginTransaction();
 
-            transCommand.Connection = sqlConnection;
-            transCommand.Transaction = sqlTransaction;
+            command.Connection = sqlConnection;
+            command.Transaction = sqlTransaction;
         }
 
         public void CommitTrans()
@@ -103,13 +90,13 @@ namespace Data_layer
 
         public int Execute(string query)
         {
-            SqlCommand command = new SqlCommand(query, sqlConnection);
-            int result = 0;
 
-            Open();
+            command.CommandText = query;
+            int result = 0;
 
             try
             {
+                //var value = command.ExecuteScalar();
                 var value = command.ExecuteScalar();
                 result = Convert.ToInt32(value);
             }
@@ -118,9 +105,6 @@ namespace Data_layer
             {
                 result = 0;
             }
-
-            Close();
-
             return result;
         }
 

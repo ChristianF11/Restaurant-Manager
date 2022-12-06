@@ -74,6 +74,15 @@ namespace Entities
             OperationDate = operationDate;
         }
 
+        public LogTable(int idRestaurant, int operationType, string username, string operationDescription, DateTime operationDate)
+        {
+            IdRestaurant = idRestaurant;
+            OperationType = operationType;
+            Username = username;
+            OperationDescription = operationDescription;
+            OperationDate = operationDate;
+        }
+
         public LogTable(int idLog, int idReservation, int idRestaurant,int operationType, string username, string operationDescription, DateTime operationDate)
         {
             IdLog = idLog;

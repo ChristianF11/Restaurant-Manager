@@ -1,4 +1,5 @@
 ﻿using Business_layer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,16 +41,12 @@ namespace Restaurant_Manager
                 OperationMessage.GetIsEmpty();
 
             else
-            {
-                string userSelected = (string)dgvCustomer.CurrentRow.Cells[0].Value;
-                FrmManageCust editCustomerFrm = new FrmManageCust(userSelected);
-                editCustomerFrm.ShowDialog();
-            }
+                UpdateElement();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            UpdateElement();
+            UpdateList();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -63,7 +60,7 @@ namespace Restaurant_Manager
 
         private void cbxAdmin_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateElement();
+            UpdateList();
         }
 
         private void DeleteElement()
@@ -83,7 +80,7 @@ namespace Restaurant_Manager
 
             }
         }
-        private void UpdateElement()
+        private void UpdateList()
         {
             CheckFilterFields();
 
@@ -114,6 +111,23 @@ namespace Restaurant_Manager
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+        }
+        private void UpdateElement()
+        {
+            BsCustomer bsCustomer = new BsCustomer();
+
+            //Raccolta dei valori della riga
+            string userSelected = dgvCustomer.CurrentRow.Cells[0].Value.ToString();
+            string password = dgvCustomer.CurrentRow.Cells[1].Value.ToString();
+            bool isAdmin = (bool)dgvCustomer.CurrentRow.Cells[2].Value;
+            string info = dgvCustomer.CurrentRow.Cells[3].Value.ToString();
+            string phoneNum = dgvCustomer.CurrentRow.Cells[4].Value.ToString();
+            string email = dgvCustomer.CurrentRow.Cells[5].Value.ToString();
+            string city = dgvCustomer.CurrentRow.Cells[6].Value.ToString();
+
+            Customer existingCustomer = bsCustomer.CreateEntity(userSelected,password,isAdmin,info,phoneNum,email,city);
+            FrmManageCust editCustomerFrm = new FrmManageCust(userSelected,existingCustomer);
+            editCustomerFrm.ShowDialog();
         }
     }
 }

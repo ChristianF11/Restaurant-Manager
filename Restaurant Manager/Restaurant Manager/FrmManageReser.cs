@@ -131,8 +131,9 @@ namespace Restaurant_Manager
                 }
                 else
                 {
-                    bsReservation.Create(entity);
-                    OperationMessage.GetGenericMessage();
+                    logEntity = bsLogTable.CreateEntity(idSelected, entity.IdRestaurant, 1, entity.Username, DateTime.Now);
+                    bsReservation.Create(logEntity,entity,ref message);
+                    OperationMessage.GetCustomMessage(message,"Nuova prenotazione");
                 }
               
                 bsReservation.ClearFields(ref valueCustomers, ref cmbCustomers, ref dgvRestaurants);
@@ -145,7 +146,6 @@ namespace Restaurant_Manager
         }
         private string GetEmptySeats()
         {
-
             BsReservation bsReservation = new BsReservation();
             int restaurantSelected = 0;
             DateTime date = GetSelectedDate();

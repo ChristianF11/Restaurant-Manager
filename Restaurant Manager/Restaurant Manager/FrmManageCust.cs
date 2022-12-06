@@ -14,18 +14,21 @@ namespace Restaurant_Manager
 {
     public partial class FrmManageCust : Form
     {
+        private Customer entity;
         private string username;
         private bool edit;
 
         public FrmManageCust()
         {
             InitializeComponent();
+            edit = false;
         }
 
-        public FrmManageCust(string username)
+        public FrmManageCust(string username, Customer entity)
         {
             InitializeComponent();
             this.username = username;
+            this.entity = entity;
             edit = true;
         }
 
@@ -42,34 +45,7 @@ namespace Restaurant_Manager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            BsCustomer bsCustomer = new BsCustomer();
-            string message = "";
-            string title = "";
-
-            var entity = bsCustomer.CreateEntity(txtUsername.Text, txtPassword.Text, cbxIsAdmin.Checked, rtxtInfo.Text, txtPhoneNum.Text, txtEmail.Text, txtCity.Text);
-
-            if (!bsCustomer.IsValid(entity, ref message, ref title,edit))
-            {
-                OperationMessage.GetCustomError(message, title);
-            }
-
-            else
-            {
-                if(edit)
-                {
-                    bsCustomer.Update(entity);
-                    bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
-                }
-
-                else
-                {
-                    bsCustomer.Create(entity);
-                    bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
-                    txtUsername.Text = "";
-                }
-                
-                OperationMessage.GetGenericMessage();
-            }
+            SaveElement();
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -83,10 +59,51 @@ namespace Restaurant_Manager
 
         private void FrmManageCust_Load(object sender, EventArgs e)
         {
-            if(edit) //In fase di editing l'username si potrà visualizzare ma non cambiare
+            ExecuteLoadProcedures();
+        }
+
+        private void SaveElement()
+        {
+            BsCustomer bsCustomer = new BsCustomer();
+            string message = "";
+            string title = "";
+
+            var entity = bsCustomer.CreateEntity(txtUsername.Text, txtPassword.Text, cbxIsAdmin.Checked, rtxtInfo.Text, txtPhoneNum.Text, txtEmail.Text, txtCity.Text);
+
+            if (!bsCustomer.IsValid(entity, ref message, ref title, edit))
+            {
+                OperationMessage.GetCustomError(message, title);
+            }
+
+            else
+            {
+                if (edit)
+                {
+                    bsCustomer.Update(entity, ref message);
+                    OperationMessage.GetCustomMessage(message, "Modifica cliente");
+                }
+
+                else
+                {
+                    bsCustomer.Create(entity, ref message);
+                    bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
+                    txtUsername.Text = "";
+                    OperationMessage.GetCustomMessage(message, "Nuovo cliente");
+                }
+            }
+        }
+        private void ExecuteLoadProcedures()
+        {
+            if (edit) //In fase di editing l'username si potrà visualizzare ma non cambiare
             {
                 txtUsername.ReadOnly = true;
                 txtUsername.Text = username;
+                txtPassword.Text = entity.Password;
+                txtPhoneNum.Text = entity.PhoneNum;
+                txtEmail.Text = entity.Email;
+                txtCity.Text = entity.City;
+                rtxtInfo.Text = entity.Info;
+                cbxIsAdmin.Checked = entity.IsAdmin;
             }
         }
     }

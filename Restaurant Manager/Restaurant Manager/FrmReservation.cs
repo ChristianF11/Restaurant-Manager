@@ -85,13 +85,15 @@ namespace Restaurant_Manager
         {
             int idSelected = 0;
             BsReservation bsReservation = new BsReservation();
+            LogTable log = new LogTable();
             string message = "";
 
             idSelected = (int)dgvReservation.CurrentRow.Cells[0].Value;
 
             if (DialogResult.Yes == OperationMessage.GetGenericQuestion())
             {
-                bsReservation.Delete(idSelected, ref message);
+                log = GetLogEntity();
+                bsReservation.Delete(log,idSelected, ref message);
                 OperationMessage.GetCustomMessage(message, "Eliminazione Prenotazione");
                 CheckFilterFields();
                 dgvReservation.DataSource = bsReservation.Read(txtName.Text,txtCity.Text,cmbOrder.Text,cbxFutureReser.Checked);
@@ -171,6 +173,18 @@ namespace Restaurant_Manager
                 txtName.Visible = false;
                 txtCity.Visible = false;
             }
+        }
+        private LogTable GetLogEntity()
+        {
+            BsLogTable bsLog = new BsLogTable();
+            BsReservation bsReservation = new BsReservation();
+
+            int idReservation = (int)dgvReservation.CurrentRow.Cells[0].Value;
+            int idRestaurant = bsReservation.GetRestaurantId(idReservation);
+            string username = dgvReservation.CurrentRow.Cells[2].Value.ToString();
+
+            return bsLog.CreateEntity(idReservation,idRestaurant,2,username,DateTime.Now);
+             
         }
 
     }

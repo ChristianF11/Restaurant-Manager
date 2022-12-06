@@ -1,4 +1,5 @@
 ﻿using Business_layer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,6 +76,13 @@ namespace Restaurant_Manager
             UpdateList();
         }
 
+        private void dgvRestaurant_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
+            FrmReservation reservationForm = new FrmReservation(idSelected);
+            reservationForm.ShowDialog();
+        }
+
         private void DeleteElement()
         {
             BsRestaurant bsRestaurant = new BsRestaurant();
@@ -91,8 +99,47 @@ namespace Restaurant_Manager
         }
         private void UpdateElement()
         {
+            //0: ID - 1:Nome - 2:IVA - 3:Via - 4:Città - 5:Telefono - 6:Tipo - 7:Posti totali - 8:Prezzo medio
+            BsRestaurant bsRestaurant = new BsRestaurant();
+
+            int type = 0;
+
             int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
-            FrmManageRest editForm = new FrmManageRest(idSelected);
+            string name = dgvRestaurant.CurrentRow.Cells[1].Value.ToString();
+            string pIva = dgvRestaurant.CurrentRow.Cells[2].Value.ToString();
+            string street = dgvRestaurant.CurrentRow.Cells[3].Value.ToString();
+            string city = dgvRestaurant.CurrentRow.Cells[4].Value.ToString();
+            string phoneNum = dgvRestaurant.CurrentRow.Cells[5].Value.ToString();
+            string stringType = dgvRestaurant.CurrentRow.Cells[6].Value.ToString();
+            int seats = (int)dgvRestaurant.CurrentRow.Cells[7].Value;
+
+            //Per salvare il valore del prezzo medio è necessario rimuovere '€' e sostituire il '.' con la ','
+            string stringAvgPrice = dgvRestaurant.CurrentRow.Cells[8].Value.ToString(); 
+            stringAvgPrice = stringAvgPrice.Trim('€');
+            stringAvgPrice = stringAvgPrice.Replace('.', ',');
+            double avgPrice = Convert.ToDouble(stringAvgPrice);
+
+            //Set della ComboBox
+            switch(stringType)
+            {
+                case "Pizzeria": type = 1;
+                    break;
+
+                case "Pesce": type = 2;
+                    break;
+
+                case "Carne": type = 3;
+                    break;
+
+                case "Vegetariano": type = 4;
+                    break;
+
+                case "Locale": type=5;
+                    break;
+            }
+
+            Restaurant existingRest = bsRestaurant.CreateEntity(idSelected, type, seats, avgPrice, name, pIva, street, city, phoneNum);
+            FrmManageRest editForm = new FrmManageRest(idSelected,existingRest);
 
             editForm.ShowDialog();
         }
@@ -138,12 +185,7 @@ namespace Restaurant_Manager
             //Viene negata la scrittura all'interno della ComboBox e inizializzata con l'elemento "Tutti i tipi"
             SetComboBox();
         }
-        private void dgvRestaurant_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
-            FrmReservation reservationForm = new FrmReservation(idSelected);
-            reservationForm.ShowDialog();
-        }
+
 
     }
 }

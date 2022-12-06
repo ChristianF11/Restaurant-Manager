@@ -12,15 +12,14 @@ namespace Data_layer
 {
     public class DsReservation
     {
-        public void Create(Reservation reservation)
+        public void Create(Reservation reservation,DbData dbData) //Metodo con transazione
         {
             //Al momento della creazione viene aggiornata anche la colonna dei posti occupati nella tabella "Restaurant"
-            DbData genericOperation = new DbData();
 
             string query = $"insert into Reservation values({reservation.IdRestaurant},'{reservation.Username}',convert(datetime2,'{reservation.RequestDate}',103)," +
                 $"convert(datetime2,'{reservation.ReservationDate}',103),{reservation.NumCustomers},{reservation.Price}) ";
 
-            genericOperation.Create(query);
+            dbData.Create(query);
 
         }
 
@@ -70,21 +69,20 @@ namespace Data_layer
 
         }
 
-        public void Update(Reservation reservation, int id, DbData dbData)
+        public void Update(Reservation reservation, int id, DbData dbData) //Metodo con transazione
         {
             string query = $"update Reservation set IdRestaurant = {reservation.IdRestaurant},Username = '{reservation.Username}',RequestDate = convert(datetime2,'{reservation.RequestDate}',103)," +
                 $"ReservationDate = convert(datetime2,'{reservation.ReservationDate}',103),NumberCustomers = {reservation.NumCustomers},Price = {reservation.Price} where IdReservation = {id}";
 
-            dbData.UpdateTrans(query);
+            dbData.Update(query);
 
         }
 
-        public void Delete(int idReservation)
-        {
-            DbData genericOperation = new DbData(); 
+        public void Delete(int idReservation, DbData dbData) //Metodo con transazione
+        { 
             string query = $"delete from Reservation where IdReservation = {idReservation}";
 
-            genericOperation.Delete(query);
+            dbData.Delete(query);
         }
 
         /// <summary>
@@ -93,8 +91,14 @@ namespace Data_layer
         public int CheckUsername(string username)
         {
             DbData genericOperation = new DbData();
+            int value = 0;
+
+            genericOperation.Open();
             string query = $"select count(*) from Customer where Username = '{username}'";
-            return genericOperation.Execute(query);
+            value = genericOperation.Execute(query);
+            genericOperation.Close();
+
+            return value;
         }
 
         /// <summary>
@@ -103,18 +107,25 @@ namespace Data_layer
         public int CheckRestaurant(int id)
         {
             DbData genericOperation = new DbData();
+            int value = 0;
+
+            genericOperation.Open();
             string query = $"select count(*) from Restaurant where IdRestaurant = '{id}'";
-            return genericOperation.Execute(query);
+            value = genericOperation.Execute(query);
+            genericOperation.Close();
+
+            return value;
         }
 
         /// <summary>
         /// Restituisce il valore di quanti posti rimarrebbero contando anche i clienti che stanno prenotando
         /// </summary>
-        public int CountActualSeats(int idRestaurant, DateTime reservationDate, int numCustomers)
+        public int CountActualSeats(int idRestaurant, DateTime reservationDate, int newCustomers)
         {
             DbData genericOperation = new DbData();
             int seatsTaken = 0;
             
+            genericOperation.Open();
             try
             {
                 //Numero di posti occupati (se la query non ritorna nessun valore verrà ritornato il valore totale di posti liberi siccome non c'è nessuna prenotazione)
@@ -125,12 +136,14 @@ namespace Data_layer
                     $"where r.IdRestaurant = {idRestaurant} and ReservationDate = convert(datetime2, '{reservationDate}', 103) group by Seats END";
 
                 //Numero di posti occupati - clienti che stanno prenotando
-                seatsTaken = genericOperation.Execute(query) - numCustomers;
+                seatsTaken = genericOperation.Execute(query) - newCustomers;
             }
             catch
             {
                 seatsTaken = 0;
             }
+            genericOperation.Close();
+
             return seatsTaken;
         }
 
@@ -142,6 +155,7 @@ namespace Data_layer
             DbData genericOperation = new DbData();
             int seatsTaken = 0;
 
+            genericOperation.Open();
             try
             {
                 //Numero di posti occupati
@@ -153,6 +167,8 @@ namespace Data_layer
             {
                 seatsTaken = 0;
             }
+            genericOperation.Close();
+
             return seatsTaken;
         }
 
@@ -166,6 +182,7 @@ namespace Data_layer
             DbData genericOperation = new DbData();
             int emptySeats = 0;
 
+            genericOperation.Open();
             try
             {
                 //Posti liberi
@@ -176,6 +193,7 @@ namespace Data_layer
             {
                 return emptySeats;
             }
+            genericOperation.Close();
 
             return emptySeats;
         }
@@ -186,9 +204,14 @@ namespace Data_layer
         public int GetPrice(int numCustomers, int idRestaurant)
         {
             DbData genericOperation = new DbData();
-            string query = $"select r.AveragePrice * {numCustomers} from Restaurant r left join Reservation rs on r.IdRestaurant = rs.IdReservation where r.IdRestaurant = {idRestaurant}";
+            int price = 0;
 
-            return genericOperation.Execute(query);
+            genericOperation.Open();
+            string query = $"select r.AveragePrice * {numCustomers} from Restaurant r left join Reservation rs on r.IdRestaurant = rs.IdReservation where r.IdRestaurant = {idRestaurant}";
+            price = genericOperation.Execute(query);
+            genericOperation.Close();
+
+            return price;
         }
 
         /// <summary>
@@ -197,9 +220,28 @@ namespace Data_layer
         public int GetNumCustomers(int idReservation) //Ritorna il numero di clienti presenti in una prenotazione (utile per la funzione "Modifica")
         {
             DbData genericOperation = new DbData();
-            string query = $"select NumberCustomers from Reservation where IdReservation = {idReservation}";
+            int numCustomers = 0;
 
-            return genericOperation.Execute(query);
+            genericOperation.Open();
+            string query = $"select NumberCustomers from Reservation where IdReservation = {idReservation}";
+            numCustomers= genericOperation.Execute(query);
+            genericOperation.Close();
+
+            return numCustomers;
+        }
+
+        public int GetRestaurantId(int idReservation)
+        {
+            DbData genericOperation = new DbData();
+            int idRestaurant = 0;
+
+            genericOperation.Open();
+            string query = $"select IdRestaurant from Reservation where IdReservation = {idReservation}";
+
+            idRestaurant = genericOperation.Execute(query);
+            genericOperation.Close();
+
+            return idRestaurant;
         }
     }
 }

@@ -71,12 +71,31 @@ namespace Business_layer
             return rest;
         }
 
-        public void Create(Restaurant restaurant) 
+        public Restaurant CreateEntity(int idRestaurant,int type, int seats, double avgPrice, string name, string pIva, string street, string city, string phoneNum)
+        {
+            Restaurant rest = new Restaurant(idRestaurant,type,seats,avgPrice,name,pIva,street,city,phoneNum);
+
+            return rest;
+        }
+
+        public void Create(Restaurant restaurant, ref string message) 
         {
             //Metodo che inserisce il ristorante nel db
+            DbData dbData = new DbData();
             DsRestaurant restaurantData = new DsRestaurant();
-            restaurantData.Create(restaurant);
 
+            dbData.Open();
+            try
+            {
+                //QUAAAAAA
+                restaurantData.Create(restaurant,dbData);
+                message = "Operazione andata a buon fine";
+            }
+            catch(Exception ex)
+            {
+                message = "Ops! Qualcosa è andato storto";
+            }
+            dbData.Close();
         }
 
         public DataTable Read(string name,string city,int type, string selectedOrder)
@@ -116,26 +135,40 @@ namespace Business_layer
             return restNameTable;
         }
 
-        public void Update(Restaurant restaurant, int id)
+        public void Update(Restaurant restaurant, int id, ref string message)
         {
+            DbData dbData = new DbData();
             DsRestaurant restaurantData = new DsRestaurant();
-            restaurantData.Update(restaurant, id);
+
+            dbData.Open();
+            try
+            {
+                restaurantData.Update(restaurant, id,dbData);
+                message = "Operazione andata a buon fine";
+            }
+            catch(Exception ex)
+            {
+                message = "Ops! Qualcosa è andato storto";
+            }
+            dbData.Close();
         }
 
         public void Delete(int id,ref string message) 
         {
-           
+            DbData dbData = new DbData();
+            DsRestaurant restaurantData = new DsRestaurant();
+
+            dbData.Open();
             try
             {
-                DsRestaurant restaurantData = new DsRestaurant();
-                restaurantData.Delete(id);
-
+                restaurantData.Delete(id,dbData);
                 message = "Elemento rimosso";
             }
             catch(Exception ex)
             {
                 message = "Nessun ristorante selezionato";
             }
+            dbData.Close();
 
         }
 
@@ -143,7 +176,7 @@ namespace Business_layer
         public void ClearFields(ref ComboBox cmbType, ref TextBox txtName, ref TextBox txtIva, ref TextBox txtStreet, ref TextBox txtCity, ref TextBox txtTelephone, 
             ref NumericUpDown valueSeats, ref NumericUpDown valueAvgPrice)
         {
-            cmbType.Text = string.Empty;
+            cmbType.SelectedIndex = 0;
             txtName.Text = string.Empty;
             txtIva.Text = string.Empty;
             txtStreet.Text = string.Empty;

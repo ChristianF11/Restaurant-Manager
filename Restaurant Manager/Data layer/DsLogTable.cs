@@ -11,9 +11,13 @@ namespace Data_layer
     {
         //Tutti i tipi di operazioni saranno degli "insert" nella tabella "LogTable"
 
-        public void Create(LogTable log)
+        public void Create(LogTable log, DbData dbData)
         {
+            int lastID = dbData.Execute("SELECT TOP 1 IdReservation FROM Reservation ORDER BY IdReservation DESC");
+            string query = $"insert into LogTable values({lastID}, {log.IdRestaurant}, '{log.Username}', " +
+                $"convert(datetime,'{log.OperationDate}',103), {log.OperationType}, '{log.OperationDescription}')";
 
+            dbData.Create(query);
         }
 
         public void Update(LogTable log, DbData dbData)
@@ -21,12 +25,15 @@ namespace Data_layer
             string query = $"insert into LogTable values({log.IdReservation}, {log.IdRestaurant}, '{log.Username}', " +
                 $"convert(datetime,'{log.OperationDate}',103), {log.OperationType}, '{log.OperationDescription}')";
 
-            dbData.UpdateTrans(query); 
+            dbData.Update(query); 
         }
 
-        public void Delete(LogTable log)
+        public void Delete(LogTable log, DbData dbData)
         {
+            string query = $"insert into LogTable values({log.IdReservation}, {log.IdRestaurant}, '{log.Username}', " +
+                $"convert(datetime,'{log.OperationDate}',103), {log.OperationType}, '{log.OperationDescription}')";
 
+            dbData.Delete(query);
         }
 
     }

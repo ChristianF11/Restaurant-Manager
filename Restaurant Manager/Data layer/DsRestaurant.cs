@@ -12,13 +12,12 @@ namespace Data_layer
     public class DsRestaurant
     {
 
-        public void Create(Restaurant restaurant)
+        public void Create(Restaurant restaurant,DbData dbData)
         {
-            DbData genericOperation = new DbData();
             string query = $"insert into Restaurant values('{restaurant.BusinessName}','{restaurant.PIva}','{restaurant.Street}','{restaurant.City}','{restaurant.TelephoneNum}',{restaurant.Type}," +
             $"{restaurant.Seats},{restaurant.AvgPrice})";
 
-            genericOperation.Create(query);
+            dbData.Create(query);
 
         }
 
@@ -47,22 +46,20 @@ namespace Data_layer
             return restNameTable;
         }
 
-        public void Update(Restaurant restaurant, int id)
+        public void Update(Restaurant restaurant, int id,DbData dbData)
         {
-            DbData genericOperation = new DbData();
             string query = $"update Restaurant set BusinessName = '{restaurant.BusinessName}',pIVA = '{restaurant.PIva}',Street = '{restaurant.Street}',City = '{restaurant.City}'," +
             $"PhoneNumber = '{restaurant.TelephoneNum}',Type = {restaurant.Type},Seats = {restaurant.Seats}, AveragePrice = {restaurant.AvgPrice} where IdRestaurant = {id}";
 
-            genericOperation.Update(query);
+            dbData.Update(query);
 
         }
 
-        public void Delete(int id)
+        public void Delete(int id, DbData dbData)
         {
-            DbData genericOperation = new DbData();
 
             string query = $"delete from Restaurant where IdRestaurant = {id}";
-            genericOperation.Delete(query);
+            dbData.Delete(query);
         }
 
         //Metodo che controlla l'unicità delle seguenti proprietà
@@ -70,10 +67,15 @@ namespace Data_layer
         {
 
             DbData genericOperation = new DbData();
+            int value = 0;
+
+            genericOperation.Open();
             string query = $"select count(*) from Restaurant where BusinessName = '{restaurant.BusinessName}' and City = '{restaurant.City}' and Street = '{restaurant.Street}'" +
                 $"or pIva = '{restaurant.PIva}' or PhoneNumber = '{restaurant.TelephoneNum}'";
+            value = genericOperation.Execute(query);
+            genericOperation.Close();
 
-            return genericOperation.Execute(query);
+            return value;
 
         }
 

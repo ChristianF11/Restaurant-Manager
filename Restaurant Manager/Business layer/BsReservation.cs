@@ -95,10 +95,27 @@ namespace Business_layer
             return reservation;
         }
 
-        public void Create(Reservation reservation)
+        public void Create(LogTable log,Reservation reservation,ref string message)
         {
+            DbData dbData = new DbData();
             DsReservation reservationData = new DsReservation();
-            reservationData.Create(reservation);
+            DsLogTable logTable = new DsLogTable();
+
+            dbData.Open();
+            dbData.BeginTrans();
+            try
+            {
+                reservationData.Create(reservation,dbData);
+                logTable.Create(log,dbData);
+
+                dbData.CommitTrans();
+                message = "Operazione andata a buon fine";
+            }
+            catch(Exception ex)
+            {
+                message = "Ops! Qualcosa è andato storto";
+            }
+            dbData.Close();
         }
 
         public DataTable Read(string customerName, string city, string selectedOrder, bool futureReservations) //Metodo Read generale di tutti i ristoranti
@@ -141,7 +158,6 @@ namespace Business_layer
 
         public void Update(LogTable log, Reservation reservation, int id, ref string message)
         {
-            //Creare dbData con metodo di BeginTransaction
             DbData dbData = new DbData();
             DsReservation reservationData = new DsReservation();
             DsLogTable logTable = new DsLogTable();
@@ -152,22 +168,39 @@ namespace Business_layer
             {
                 reservationData.Update(reservation,id,dbData);
                 logTable.Update(log, dbData);
+                
                 dbData.CommitTrans();
                 message = "Operazione andata a buon fine";
             }
             catch(Exception ex)
             {
                 dbData.RollbackTrans();
-                message = "Errore! Ripsristino dei dati";
+                message = "Ops! Qualcosa è andato storto";
             }
             dbData.Close();
         }
 
-        public void Delete(int idReservation, ref string message)
+        public void Delete(LogTable log, int idReservation, ref string message)
         {
-                DsReservation reservationData = new DsReservation();
-                reservationData.Delete(idReservation);
+            DbData dbData = new DbData();
+            DsReservation reservationData = new DsReservation();
+            DsLogTable logTable = new DsLogTable();
+
+            dbData.Open();
+            dbData.BeginTrans();
+            try
+            {
+                reservationData.Delete(idReservation,dbData);
+                logTable.Delete(log,dbData);
                 message = "Prenotazione cancellata";
+
+                dbData.CommitTrans();
+            }
+            catch(Exception ex)
+            {
+                dbData.RollbackTrans();
+                message = "Ops! Qualcosa è andato storto";
+            }
         }
 
         public void ClearFields(ref NumericUpDown valueCustomers, ref ComboBox cmbCustomers, ref DataGridView dgvRestaurants)
@@ -208,12 +241,21 @@ namespace Business_layer
             return numCustomers;
         }
 
-        public int GetRestoredSeats(int idRestaurant, DateTime reservationDate, int idReservation) //Numero di posti senza una determinata prenotazione (in quanto sta per essere modificata)
+        public int GetRestoredSeats(int idRestaurant, DateTime reservationDate, int idReservation) //Numero di posti senza contare i clienti della prenotazione che si sta modificando
         {
             int restoredSeats = GetEmptySeats(idRestaurant, reservationDate) + GetNumCustomers(idReservation);
 
             return restoredSeats;
         }
 
+        public int GetRestaurantId(int idReservation)
+        {
+            DsReservation reservationData = new DsReservation();
+            int idRestaurant = 0;
+
+            idRestaurant = reservationData.GetRestaurantId(idReservation); 
+
+            return idRestaurant;
+        }
     }
 }

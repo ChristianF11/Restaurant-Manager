@@ -34,6 +34,13 @@ namespace Business_layer
             return logTable;
         }
 
+        public LogTable CreateEntity(int idRestaurant, int operationType, string username, DateTime operationDate)
+        {
+            LogTable logTable = new LogTable(idRestaurant, operationType, username, GetOperationType(operationType), operationDate);
+
+            return logTable;
+        }
+
         //I nomi dei metodi riguardano i 3 tipi di operazioni eseguibili su un qualsiasi oggetto del gestionale (Creazione, Aggiornamento, Eliminazione), non sul log (che sarà sempre creato)
         public void Update(LogTable log, DbData dbData)
         {
