@@ -78,6 +78,7 @@ namespace Restaurant_Manager
 
         private void dgvRestaurant_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //Al doppio click su una riga vengono mostrate tutte le prenotazioni di quel ristorante
             int idSelected = (int)dgvRestaurant.CurrentRow.Cells[0].Value;
             FrmReservation reservationForm = new FrmReservation(idSelected);
             reservationForm.ShowDialog();
@@ -157,6 +158,7 @@ namespace Restaurant_Manager
         }
         private void SetComboBox()
         {
+            //Viene negata la scrittura nella ComboBox e settata sul primo valore
             cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbType.SelectedIndex = 0;
             cmbOrder.DropDownStyle = ComboBoxStyle.DropDownList;

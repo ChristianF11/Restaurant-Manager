@@ -30,12 +30,14 @@ namespace Business_layer
                 return false;
             }
 
+            //Verifica che il numero di telefono sia composto da 10 numeri
             if (customer.PhoneNum.Length != 10 || !uint.TryParse(customer.PhoneNum, out uint result))
             {
                 message = "Numero di telefono non valido";
                 return false;
             }
 
+            //Verifica che la mail non contenga spazi e che abbia una sola '@'
             if (customer.Email.Contains(" ") || customer.Email.Split('@').Length - 1 > 1)
             {
                 message = "Email non valida";

@@ -215,7 +215,7 @@ namespace Data_layer
         /// <summary>
         /// Restituisce il numero di clienti di una specifica prenotazione
         /// </summary>
-        public int GetNumCustomers(int idReservation) //Ritorna il numero di clienti presenti in una prenotazione (utile per la funzione "Modifica")
+        public int GetNumCustomers(int idReservation)
         {
             DbData genericOperation = new DbData();
             int numCustomers = 0;

@@ -41,7 +41,6 @@ namespace Business_layer
             return logTable;
         }
 
-        //I nomi dei metodi riguardano i 3 tipi di operazioni eseguibili su un qualsiasi oggetto del gestionale (Creazione, Aggiornamento, Eliminazione), non sul log (che sarà sempre creato)
         public void Update(LogTable log, DbData dbData)
         {
             DsLogTable logTableData = new DsLogTable();
@@ -50,12 +49,14 @@ namespace Business_layer
 
         public void Create(LogTable log, DbData dbData)
         {
-
+            DsLogTable logTableData = new DsLogTable();
+            logTableData.Create(log,dbData);
         }
 
         public void Delete(LogTable log, DbData dbData) 
         { 
-        
+            DsLogTable logTableData = new DsLogTable();
+            logTableData.Delete(log,dbData);
         }
 
     }

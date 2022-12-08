@@ -35,7 +35,7 @@ namespace Data_layer
 
         }
 
-        public DataTable ReadName(string city) //Metodo "speciale" che legge solo i nomi per le "listbox"
+        public DataTable ReadName(string city) //Metodo "speciale" che legge solo i nomi per le "ListBox / ComboBox"
         {
             DbData dbData = new DbData();
             DataTable restNameTable = new DataTable();

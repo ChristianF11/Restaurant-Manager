@@ -128,13 +128,13 @@ namespace Restaurant_Manager
         {
             BsReservation bsReservation = new BsReservation();
 
-            HideButtons();
+            HideButtons(); //Se è stato scelto un determinato ristorante (dalla pagina "FrmRestaurant") vengono nascosti alcuni bottoni
 
             if (!specificRestaurant)
-                dgvReservation.DataSource = bsReservation.Read("", "", "ID", false);
+                dgvReservation.DataSource = bsReservation.Read("", "", "ID", false); //Caricamento della lista completa
 
             else
-                dgvReservation.DataSource = bsReservation.Read(idRestSelected, "", "", "ID", false);
+                dgvReservation.DataSource = bsReservation.Read(idRestSelected, "", "", "ID", false); //Caricamento delle prenotazioni di solo quel ristorante
 
             dgvReservation.Columns[0].Visible = false;
 

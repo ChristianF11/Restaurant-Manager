@@ -64,17 +64,17 @@ namespace Business_layer
                 message = "Inserire un numero valido di posti da prenotare";
                 return false;
             }
-                
 
-            if (reservationData.CountActualSeats(reservation.IdRestaurant, reservation.ReservationDate, reservation.NumCustomers) < 0 && !edit) //Verifica che ci sia ancora posto
+            //Verifica che ci sia ancora posto durante una nuova prenotazione
+            if (reservationData.CountActualSeats(reservation.IdRestaurant, reservation.ReservationDate, reservation.NumCustomers) < 0 && !edit) 
             {
-                message = "Spiacenti, ma siamo al completo. Prova a prenotare per un altro giorno";
+                message = "Spiacenti, ma sembra non esserci posto. Prova a prenotare per un altro giorno";
                 return false;
             }
-            //In questo caso la prenotazione viene modificat e quindi il numero di clienti da verificare è il nuovo valore che sostituirà quello vecchio
+            //In questo caso la prenotazione viene modificata e quindi il numero di clienti da verificare è il nuovo valore che sostituirà quello vecchio
             else if(edit && GetRestoredSeats(reservation.IdRestaurant,reservation.ReservationDate,idSelected) - reservation.NumCustomers < 0)
             {
-                message = "Spiacenti, ma siamo al completo. Prova a prenotare per un altro giorno";
+                message = "Spiacenti, ma sembra non esserci posto. Prova a prenotare per un altro giorno";
                 return false;
             }
 
@@ -118,7 +118,8 @@ namespace Business_layer
             dbData.Close();
         }
 
-        public DataTable Read(string customerName, string city, string selectedOrder, bool futureReservations) //Metodo Read generale di tutti i ristoranti
+        //Metodo Read generale di tutti i ristoranti
+        public DataTable Read(string customerName, string city, string selectedOrder, bool futureReservations)
         {
             DataTable dtReservation = new DataTable();
             DsReservation reservationData = new DsReservation();
@@ -137,7 +138,8 @@ namespace Business_layer
             return dtReservation;
         }
 
-        public DataTable Read(int idRestaurant, string customerName, string city, string selectedOrder, bool futureReservations) //Overload del metodo Read, specifico per un ristorante
+        //Overload del metodo Read, specifico per un ristorante
+        public DataTable Read(int idRestaurant, string customerName, string city, string selectedOrder, bool futureReservations)
         {
             DataTable dtReservation = new DataTable();
             DsReservation reservationData = new DsReservation();
@@ -232,7 +234,7 @@ namespace Business_layer
             return avgPrice;
         }
 
-        public int GetNumCustomers(int idReservation)
+        public int GetNumCustomers(int idReservation) //Restituisce il numero di clienti in una prenotazione
         {
             DsReservation reservationData = new DsReservation();
             int numCustomers = 0;

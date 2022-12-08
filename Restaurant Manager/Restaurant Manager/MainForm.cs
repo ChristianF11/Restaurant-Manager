@@ -13,23 +13,12 @@ namespace Restaurant_Manager
 {
     public partial class MainForm : Form
     {
-        //IL RIFERIMENTO alle ENTITIES verrà RIMOSSO nel momento in cui termineranno i test nel Business layer
         public MainForm()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
         {
 
         }

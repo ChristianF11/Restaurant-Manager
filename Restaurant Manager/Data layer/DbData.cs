@@ -96,7 +96,6 @@ namespace Data_layer
 
             try
             {
-                //var value = command.ExecuteScalar();
                 var value = command.ExecuteScalar();
                 result = Convert.ToInt32(value);
             }

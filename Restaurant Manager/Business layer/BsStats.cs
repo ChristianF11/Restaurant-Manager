@@ -11,7 +11,7 @@ namespace Business_layer
 {
     public class BsStats
     {
-        public DataTable GetRestaurantsIncome(int month) //Metodo che restituisce l'incasso (in ordine) di tutti i ristoranti
+        public DataTable GetRestaurantsIncome(int month)
         {
             DsStats statsData = new DsStats();
             DataTable dt = new DataTable();

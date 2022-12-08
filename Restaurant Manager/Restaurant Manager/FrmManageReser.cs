@@ -91,6 +91,12 @@ namespace Restaurant_Manager
             txtPrice.Text = GetPrice().ToString() + "€";
         }
 
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            dgvRestaurants.DataSource = bsRestaurant.ReadName(txtCity.Text);
+        }
+
         private void SaveElement()
         {
             BsReservation bsReservation = new BsReservation();
@@ -174,13 +180,6 @@ namespace Restaurant_Manager
 
             return date;
         }
-
-        private void txtCity_TextChanged(object sender, EventArgs e)
-        {
-            BsRestaurant bsRestaurant = new BsRestaurant();
-            dgvRestaurants.DataSource = bsRestaurant.ReadName(txtCity.Text);
-        }
-
         private int GetPrice()
         {
             BsReservation bsReservation = new BsReservation();
@@ -230,6 +229,7 @@ namespace Restaurant_Manager
         } 
         private List<string> GetUsernames()
         {
+            //Raccoglie tutti gli username in una lista
             BsCustomer bsCustomer = new BsCustomer();
             List<string> username = new List<string>();
             DataTable dt = new DataTable();

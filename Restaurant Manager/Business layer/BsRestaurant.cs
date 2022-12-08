@@ -32,12 +32,14 @@ namespace Business_layer
                 return false;
             }
 
+            //Verifica che la partita IVA sia composta da 11 numeri
             if (restaurant.PIva.Length != 11 || !long.TryParse(restaurant.PIva, out long pIva) && !restaurant.PIva.Contains(" "))
             {
                 message = "Partita IVA non valida";
                 return false;
             }
 
+            //Verifica che il numero di telefono sia composto da 10 numeri
             if (restaurant.TelephoneNum.Length != 10 || !uint.TryParse(restaurant.TelephoneNum, out uint telephoneNum) && !restaurant.TelephoneNum.Contains(" "))
             {
                 message = "Numero di telefono non valido";
@@ -94,7 +96,6 @@ namespace Business_layer
             dbData.Open();
             try
             {
-                //QUAAAAAA
                 restaurantData.Create(restaurant,dbData);
                 message = "Operazione andata a buon fine";
             }

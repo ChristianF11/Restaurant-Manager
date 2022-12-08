@@ -105,7 +105,7 @@ namespace Restaurant_Manager
         private void ExecuteLoadProcedures()
         {
             BsCustomer bsCustomer = new BsCustomer();
-            dgvCustomer.DataSource = bsCustomer.Read("", "", "", false);
+            dgvCustomer.DataSource = bsCustomer.Read("", "", "", false); //Caricamento della lista completa
 
             foreach (DataGridViewColumn column in dgvCustomer.Columns) //Viene negato il sort cliccando sulla header della colonna
             {

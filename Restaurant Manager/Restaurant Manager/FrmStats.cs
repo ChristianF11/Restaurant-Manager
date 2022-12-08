@@ -77,7 +77,7 @@ namespace Restaurant_Manager
             List<int> values = new List<int>();
             Series series = new Series();
 
-            if (clear)
+            if (clear) //Se erano presenti altri dati, prima viene pulito il grafico
             {
                 names.Clear();
                 values.Clear();
@@ -87,7 +87,7 @@ namespace Restaurant_Manager
             series = new Series(title);
             chartName.Series.Add(series);
 
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++) //Inserimento dei dati all'interno delle liste
             {
                 names.Add(dt.Rows[i][0].ToString());
                 values.Add(Convert.ToInt32(dt.Rows[i][1]));
@@ -100,6 +100,7 @@ namespace Restaurant_Manager
             else
                 chartName.ChartAreas[0].Area3DStyle.Enable3D = false;
 
+            //Design del grafico
             chartName.Series[0].ChartType = SeriesChartType.Pie;
             chartName.Series[0].IsValueShownAsLabel= true;
             chartName.Series[0].Font = new System.Drawing.Font("Rockwell", 18);
@@ -114,14 +115,14 @@ namespace Restaurant_Manager
             List<int> values = new List<int>();
             Series series = new Series();
 
-            if (clear)
+            if (clear) //Se erano presenti altri dati, prima viene pulito il grafico
             {
                 names.Clear();
                 values.Clear();
                 chartName.Series.Clear();
             }
 
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++) //Inserimento dei nomi e dei valori all'interno delle liste 
             {
                 names.Add(dt.Rows[i][0].ToString());
                 values.Add(Convert.ToInt32(dt.Rows[i][1]));
@@ -138,7 +139,7 @@ namespace Restaurant_Manager
             else
                 chartName.ChartAreas[0].AxisY.Maximum = 0;
 
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++) //Creazione e inserimento della serie nel grafico
             {
                 string xAxisValue = names[i];
                 int yAxisValue = values[i];
@@ -216,6 +217,7 @@ namespace Restaurant_Manager
 
         private Title EditTitle(string title)
         {
+            //Design del titolo
             Title chartTitle = new Title();
             chartTitle.Font = new Font("Rockwell", 18, FontStyle.Underline);
             chartTitle.Text = title;
@@ -225,13 +227,9 @@ namespace Restaurant_Manager
 
         private void PrepareComboBox(ComboBox comboBox) //Impedisce la scrittura all'interno e setta di default il primo valore
         {
+            //Setta la ComboBox sul mese corrente
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox.SelectedIndex = DateTime.Now.Month - 1;
-        }
-
-        private void btnBack_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void EnableDisable3D()
