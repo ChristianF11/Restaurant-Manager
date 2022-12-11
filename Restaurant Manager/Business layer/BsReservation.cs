@@ -113,6 +113,7 @@ namespace Business_layer
             }
             catch(Exception ex)
             {
+                dbData.RollbackTrans();
                 message = "Ops! Qualcosa è andato storto";
             }
             dbData.Close();
