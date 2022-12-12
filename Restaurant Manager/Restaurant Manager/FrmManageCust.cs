@@ -76,7 +76,7 @@ namespace Restaurant_Manager
 
             if (!bsCustomer.IsValid(entity, ref message, ref title, edit))
             {
-                OperationMessage.GetCustomError(message, title);
+                OperationMessage.ShowCustomError(message, title);
             }
 
             else
@@ -84,7 +84,7 @@ namespace Restaurant_Manager
                 if (edit)
                 {
                     bsCustomer.Update(entity, ref message);
-                    OperationMessage.GetCustomMessage(message, "Modifica cliente");
+                    OperationMessage.ShowCustomMessage(message, "Modifica cliente");
                 }
 
                 else
@@ -92,7 +92,7 @@ namespace Restaurant_Manager
                     bsCustomer.Create(entity, ref message);
                     bsCustomer.ClearFields(ref txtPassword, ref txtCity, ref txtPhoneNum, ref txtEmail, ref rtxtInfo, ref cbxIsAdmin);
                     txtUsername.Text = "";
-                    OperationMessage.GetCustomMessage(message, "Nuovo cliente");
+                    OperationMessage.ShowCustomMessage(message, "Nuovo cliente");
                 }
             }
         }

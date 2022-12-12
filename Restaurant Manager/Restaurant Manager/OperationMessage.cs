@@ -9,27 +9,27 @@ namespace Restaurant_Manager
 {
     static class OperationMessage
     {
-        public static void GetGenericMessage()
+        public static void ShowGenericMessage()
         {
             MessageBox.Show("Operazione andata a buon fine", "Esito operazione", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static void GetGenericError()
+        public static void ShowGenericError()
         {
             MessageBox.Show("Qualcosa è andato storto", "Esito operazione", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void GetCustomMessage(string message, string title)
+        public static void ShowCustomMessage(string message, string title)
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static void GetCustomError(string message, string title)
+        public static void ShowCustomError(string message, string title)
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void GetCustomWarning(string message, string title)
+        public static void ShowCustomWarning(string message, string title)
         {
             MessageBox.Show(message,title,MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -53,7 +53,7 @@ namespace Restaurant_Manager
             return res;
         }
 
-        public static void GetIsEmpty()
+        public static void ShowIsEmpty()
         {
             MessageBox.Show("Nessun elemento in lista. Impossibile effettuare l'operazione", "Errore operazione", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

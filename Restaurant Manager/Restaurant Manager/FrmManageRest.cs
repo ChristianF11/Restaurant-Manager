@@ -73,25 +73,25 @@ namespace Restaurant_Manager
 
             if (!bsRestaurant.IsValid(entityRestaurant, ref message, ref title, edit))
             {
-                OperationMessage.GetCustomError(message, title);
+                OperationMessage.ShowCustomError(message, title);
             }
             else
             {
                 if (message.Length > 0)
-                    OperationMessage.GetCustomWarning(message, "Modifica posti");
+                    OperationMessage.ShowCustomWarning(message, "Modifica posti");
 
                 try
                 {
                     if (edit)
                     {
                         bsRestaurant.Update(entityRestaurant, idSelected, ref message);
-                        OperationMessage.GetCustomMessage(message, "Modifica ristorante");
+                        OperationMessage.ShowCustomMessage(message, "Modifica ristorante");
                     }
 
                     else
                     {
                         bsRestaurant.Create(entityRestaurant, ref message);
-                        OperationMessage.GetCustomMessage(message, "Nuovo ristorante");
+                        OperationMessage.ShowCustomMessage(message, "Nuovo ristorante");
                     }
 
                     if(!edit)
@@ -101,7 +101,7 @@ namespace Restaurant_Manager
 
                 catch (Exception ex)
                 {
-                    OperationMessage.GetGenericError();
+                    OperationMessage.ShowGenericError();
                 }
             }
         }

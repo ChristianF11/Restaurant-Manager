@@ -73,7 +73,7 @@ namespace Restaurant_Manager
         {
             //Metodo che conta i posti liberi in un determinato ristorante in un determinato giorno
             if (CountRows() == 0)
-                OperationMessage.GetCustomError("Nessun ristorante presente in lista", "Operazione non riuscita");
+                OperationMessage.ShowCustomError("Nessun ristorante presente in lista", "Operazione non riuscita");
             else
             {
                 txtSeats.Text = GetEmptySeats();
@@ -91,12 +91,6 @@ namespace Restaurant_Manager
             txtPrice.Text = GetPrice().ToString() + "€";
         }
 
-        private void txtCity_TextChanged(object sender, EventArgs e)
-        {
-            BsRestaurant bsRestaurant = new BsRestaurant();
-            dgvRestaurants.DataSource = bsRestaurant.ReadName(txtCity.Text);
-        }
-
         private void SaveElement()
         {
             BsReservation bsReservation = new BsReservation();
@@ -107,7 +101,6 @@ namespace Restaurant_Manager
             string message = "";
             int price = 0;
             Reservation entity;
-            LogTable logEntity;
 
             if(dgvRestaurants.CurrentCell != null)
             {
@@ -123,23 +116,21 @@ namespace Restaurant_Manager
 
             if (!bsReservation.IsValid(entity, ref message, ref title, edit, idSelected))
             {
-                OperationMessage.GetCustomError(message, title);
+                OperationMessage.ShowCustomError(message, title);
             }
 
             else
             {
                 if (edit)
                 {
-                    logEntity = bsLogTable.CreateEntity(idSelected, entity.IdRestaurant,0,entity.Username, DateTime.Now);
-                    bsReservation.Update(logEntity,entity, idSelected, ref message);
-                    OperationMessage.GetCustomMessage(message, "Modifica prenotazione");
+                    bsReservation.Update(entity, idSelected, ref message);
+                    OperationMessage.ShowCustomMessage(message, "Modifica prenotazione");
                     this.Hide();
                 }
                 else
                 {
-                    logEntity = bsLogTable.CreateEntity(idSelected, entity.IdRestaurant, 1, entity.Username, DateTime.Now);
-                    bsReservation.Create(logEntity,entity,ref message);
-                    OperationMessage.GetCustomMessage(message,"Nuova prenotazione");
+                    bsReservation.Create(entity,ref message);
+                    OperationMessage.ShowCustomMessage(message,"Nuova prenotazione");
                 }
               
                 bsReservation.ClearFields(ref valueCustomers, ref cmbCustomers, ref dgvRestaurants);
@@ -180,6 +171,13 @@ namespace Restaurant_Manager
 
             return date;
         }
+
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+            BsRestaurant bsRestaurant = new BsRestaurant();
+            dgvRestaurants.DataSource = bsRestaurant.ReadName(txtCity.Text);
+        }
+
         private int GetPrice()
         {
             BsReservation bsReservation = new BsReservation();

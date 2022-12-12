@@ -95,18 +95,21 @@ namespace Business_layer
             return reservation;
         }
 
-        public void Create(LogTable log,Reservation reservation,ref string message)
+        public void Create(Reservation reservation,ref string message)
         {
+            BsLogTable bsLogTable = new BsLogTable();
             DbData dbData = new DbData();
             DsReservation reservationData = new DsReservation();
             DsLogTable logTable = new DsLogTable();
+
+            LogTable logEntity = bsLogTable.CreateEntity(reservation.IdRestaurant,1,reservation.Username,DateTime.Now);
 
             dbData.Open();
             dbData.BeginTrans();
             try
             {
                 reservationData.Create(reservation,dbData);
-                logTable.Create(log,dbData);
+                logTable.Create(logEntity,dbData);
 
                 dbData.CommitTrans();
                 message = "Operazione andata a buon fine";
@@ -159,18 +162,21 @@ namespace Business_layer
             return dtReservation;
         }
 
-        public void Update(LogTable log, Reservation reservation, int id, ref string message)
+        public void Update(Reservation reservation, int id, ref string message)
         {
+            BsLogTable bsLogTable = new BsLogTable();
             DbData dbData = new DbData();
             DsReservation reservationData = new DsReservation();
             DsLogTable logTable = new DsLogTable();
 
+            LogTable logEntity = bsLogTable.CreateEntity(id,reservation.IdRestaurant,0,reservation.Username,DateTime.Now);
+            
             dbData.Open();
             dbData.BeginTrans();
             try
             {
                 reservationData.Update(reservation,id,dbData);
-                logTable.Update(log, dbData);
+                logTable.Update(logEntity, dbData);
                 
                 dbData.CommitTrans();
                 message = "Operazione andata a buon fine";

@@ -243,6 +243,7 @@ namespace Restaurant_Manager
             this.valueSeats.Name = "valueSeats";
             this.valueSeats.Size = new System.Drawing.Size(139, 26);
             this.valueSeats.TabIndex = 6;
+            this.valueSeats.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblSeats
             // 
@@ -275,6 +276,7 @@ namespace Restaurant_Manager
             this.valueAvgPrice.Name = "valueAvgPrice";
             this.valueAvgPrice.Size = new System.Drawing.Size(139, 26);
             this.valueAvgPrice.TabIndex = 7;
+            this.valueAvgPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblNote
             // 

@@ -57,7 +57,7 @@ namespace Restaurant_Manager
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (CountRows() == 0)
-                OperationMessage.GetIsEmpty();
+                OperationMessage.ShowIsEmpty();
 
             else
                 DeleteElement();
@@ -66,7 +66,7 @@ namespace Restaurant_Manager
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (CountRows() == 0)
-                OperationMessage.GetIsEmpty();
+                OperationMessage.ShowIsEmpty();
 
             else
                 UpdateElement();
@@ -95,7 +95,7 @@ namespace Restaurant_Manager
             {
                 log = GetLogEntity();
                 bsReservation.Delete(log,idSelected, ref message);
-                OperationMessage.GetCustomMessage(message, "Eliminazione Prenotazione");
+                OperationMessage.ShowCustomMessage(message, "Eliminazione Prenotazione");
                 CheckFilterFields();
                 dgvReservation.DataSource = bsReservation.Read(txtName.Text,txtCity.Text,cmbOrder.Text,cbxFutureReser.Checked);
             }

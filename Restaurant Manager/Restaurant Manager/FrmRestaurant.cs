@@ -46,7 +46,7 @@ namespace Restaurant_Manager
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (CountRows() == 0)
-                OperationMessage.GetIsEmpty();
+                OperationMessage.ShowIsEmpty();
 
             else
                 DeleteElement();
@@ -55,7 +55,7 @@ namespace Restaurant_Manager
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if(CountRows() == 0)
-                OperationMessage.GetIsEmpty();
+                OperationMessage.ShowIsEmpty();
 
             else
                 UpdateElement();
@@ -93,7 +93,7 @@ namespace Restaurant_Manager
             if (DialogResult.Yes == OperationMessage.GetGenericQuestion())
             {
                 bsRestaurant.Delete(idSelected, ref message);
-                OperationMessage.GetCustomWarning(message, "Eliminazione Ristorante");
+                OperationMessage.ShowCustomWarning(message, "Eliminazione Ristorante");
                 CheckFilterFields();
                 dgvRestaurant.DataSource = bsRestaurant.Read(txtName.Text,txtCity.Text,cmbType.SelectedIndex,cmbOrder.Text);
             }
