@@ -1,0 +1,6 @@
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Entities\bin\Release\Entities.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Entities\bin\Release\Entities.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Entities\obj\Release\Entities.csproj.AssemblyReference.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Entities\obj\Release\Entities.csproj.CoreCompileInputs.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Entities\obj\Release\Entities.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Entities\obj\Release\Entities.pdb

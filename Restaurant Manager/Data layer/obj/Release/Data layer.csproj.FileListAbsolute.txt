@@ -1,0 +1,9 @@
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\bin\Release\Data layer.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\bin\Release\Data layer.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\bin\Release\Entities.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\bin\Release\Entities.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\obj\Release\Data layer.csproj.AssemblyReference.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\obj\Release\Data layer.csproj.CoreCompileInputs.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\obj\Release\Data layer.csproj.CopyComplete
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\obj\Release\Data layer.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Data layer\obj\Release\Data layer.pdb

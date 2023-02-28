@@ -1,0 +1,25 @@
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Restaurant Manager.exe.config
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Restaurant Manager.exe
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Restaurant Manager.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Business layer.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Entities.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Data layer.dll
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Business layer.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Entities.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\bin\Release\Data layer.pdb
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant Manager.csproj.AssemblyReference.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant Manager.csproj.SuggestedBindingRedirects.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.FrmManageCust.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.FrmManageReser.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.FrmManageRest.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.FrmCustomer.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.FrmReservation.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.FrmRestaurant.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.FrmStats.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.MainForm.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant_Manager.Properties.Resources.resources
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant Manager.csproj.GenerateResource.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant Manager.csproj.CoreCompileInputs.cache
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant Manager.csproj.CopyComplete
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant Manager.exe
+C:\Users\Christian\Desktop\GitHub\Restaurant-Manager\Restaurant Manager\Restaurant Manager\obj\Release\Restaurant Manager.pdb
